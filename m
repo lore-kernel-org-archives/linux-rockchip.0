@@ -2,74 +2,70 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8669D606A31C
-	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Nov 2026 18:17:05 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A5955606A31C
+	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Nov 2026 18:43:29 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=mVOHqQ/H;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=arm.com header.i=@arm.com header.a=rsa-sha256 header.s=foss header.b=Cyrj0nr+
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=t1vMbY3s;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=zohomail header.b=AlhFf8zC
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:From:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=B16szZAnk20fnfcRMH5cSTIpWx3ZgssruBsX9fEgB/E=; b=mVOHqQ/HKSg/3b9hiohnHFbj4h
-	FukJeGD1Ov4e+27fYNhsnNDjca7Ku5DRUnri+zNlv+HfeaG6Zv5FCqnfc2EDFM6hLJs+l5NxBGQrn
-	BZnlf+kcZtlm6DOlPiEFpiOVVJY2Y0Qm+AMvcF4x0qqPcbIdY10WCjB3BA58o/VMqdgScpF5BUXiq
-	vn/8Y/N2ZattwEUnM7CvJt77F6e+cdtwNJatTZtxSDfd9TAm/UIN62gPiHNooZaDCvfQPF+JLc514
-	sXglRCkojkhaCf4xn8GN3A4PLWXE1q8Xbdk/XZYs6+lI1YE/uhIrSaZq+IVrSwdPMK3gJdR5YMb6N
-	S7sNxVKA==;
+	bh=gVtanb0TXzv9TBHUJ+LBoyUMaFqp75zR5Xg2hQ3wN3Q=; b=t1vMbY3sIgFGq9pcNINoZ94p4i
+	yWthcJUHm4+rnOe7RULg7EkKzNn20sCRRPvLBnIHby7CLhL4jAFMPHc4+T9w5XQaMLLdFGAbQDPzD
+	MWib1wUEBbZDUDrOttHHCws8qKsPyGPkviJWIZrp8EaP9wNjhJaYfsbmLq5EpJE41IZVKU5DnZNVR
+	CI0mbGiF0e+LgL1CAQor3mdYt7nYEAzVOpJxnfQX2SFmYf15zUOXdB2/O3YhXc2Up0MbdzXJGp7VC
+	mbBlONOIa51uf/+1YgMFyfFEYfEyzCEr8OTtIbHo0oPT2UziKcOosfSm2KrXw4x6WX75doReiC4GV
+	R9jLOPyA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xX0VG-0000000HO7h-2kCR;
-	Fri, 27 Nov 2026 18:16:58 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xX0VD-0000000HO72-2nkQ;
-	Fri, 27 Nov 2026 18:16:57 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 699331575;
-	Fri, 27 Nov 2026 10:16:51 -0800 (PST)
-Received: from [10.2.212.23] (e121345-lin.cambridge.arm.com [10.2.212.23])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 4CC783F86C;
-	Fri, 27 Nov 2026 10:16:51 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=arm.com; s=foss;
-	t=1795803414; bh=6imln1W2Yy1aPN/smnTpJTPts3LNPdp2Py2G8tyPdSw=;
-	h=Date:From:Subject:To:Cc:References:In-Reply-To:From;
-	b=Cyrj0nr+Aawpo4a9zscl6bwOk0Ckq97a90PJDU6Zc5xrVZ/I3+WGA1BXAgrX+o+iB
-	 9D8+slEkc9p2uO0X7wiZF90OZfeY5xl+tPiJX6++jX9vm1PUww2Ws4dWeR+33FPyfQ
-	 RC1U0HfsJvGpo10Uyw8MvP8t+ubp08BZ5OSdJgEA=
-Message-ID: <03b2548c-e451-408e-b5df-a5dec8c290f8@arm.com>
-Date: Fri, 27 Nov 2026 18:16:48 +0000
+	id 1xX0ur-0000000HSXh-1Ibb;
+	Fri, 27 Nov 2026 18:43:25 +0000
+Received: from sender5-op-o11.zoho.com ([165.173.182.11])
+	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
+	id 1xX0uH-0000000HSOT-39Qe;
+	Fri, 27 Nov 2026 18:42:50 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1795804954; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=WcZtN3tD/zjvkk8uI44gdbTyPfvaOlx2Uyw+n6EalGUJfhu2vyRP3ATf6Fs40uUjjalYJ977Uv0z2PRkZEQd4IE76JryonkGpgoiw1qvX9Tjg50seYZmaLv9K8mvWj/gPVkYdhK0u8bXblt9FClGbhL12aU4fpfWVvHFl6VtlEk=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1795804954; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=RZV2Bz1rnR1nwBwCIHteBeBwrgGrqm/NvJnIi7wGD7A=; 
+	b=msZ1BEW68rpZfIn05UPZaNVYPC8P2EHyim38o+oe5zt9X9dp44yOvAx9CnvPK5qD/D1GBqYnuT/2sBQJt4EHNFrJqJF3szqKvjcqHtF+1tXkCDkPW/S46i+J8E8M7FLiXTWXTUVGU/U0NSV+81pRf4Z5ehYkZFrVipV5e7U4UzA=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=detlev.casanova@collabora.com;
+	dmarc=pass header.from=<detlev.casanova@collabora.com>
+DKIM-Signature: a=rsa-sha256; b=AlhFf8zCtIALPrXe8zga3TTnuSQt0lRzQGYtAzDrHn++w3fCVG+LhzmCx3usebRtnZHI1BJiwQhUVIvcEw6uiMt6Y9Crx6rnJoiYG0SEBR0fRflpO+xdg7OInUwN4YW4I9QP9CdbTZaNb+O6aUic1mFDxOzvtuMlUIk52JxFIY4=; c=relaxed/relaxed; s=zohomail; d=collabora.com; v=1; bh=RZV2Bz1rnR1nwBwCIHteBeBwrgGrqm/NvJnIi7wGD7A=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
+Received: by smtp.zohomail.com with SMTPS id 1795804951277426.7074106650923;
+	Fri, 27 Nov 2026 10:42:31 -0800 (PST)
+From: Detlev Casanova <detlev.casanova@collabora.com>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Heiko Stuebner <heiko@sntech.de>, Hans Verkuil <hverkuil+cisco@kernel.org>,
+ Jonas Karlman <jonas@kwiboo.se>,
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Cc: Sven =?UTF-8?B?UMO8c2NoZWw=?= <s.pueschel@pengutronix.de>,
+ kernel@collabora.com, linux-media@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH v2 2/5] media: rkvdec: Remove unused need_reset
+Date: Fri, 27 Nov 2026 13:42:29 -0500
+Message-ID: <sHCcy4ZARIqHsoGbYpMAqg@collabora.com>
+In-Reply-To: <c0da8a7d22c6b837c2c8d62e6d267b54d6ed28f4.camel@collabora.com>
+References: <20260810-rkvdec-multicore-v2-0-986f89d22cdc@collabora.com>
+ <20260810-rkvdec-multicore-v2-2-986f89d22cdc@collabora.com>
+ <c0da8a7d22c6b837c2c8d62e6d267b54d6ed28f4.camel@collabora.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-From: Robin Murphy <robin.murphy@arm.com>
-Subject: Re: [PATCH 4/9] soc: rockchip: grf: Assign the StreamIDs of the
- RK3588 PHP SMMU masters
-To: aiyengar1990@gmail.com, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@kernel.org>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- David Wu <david.wu@rock-chips.com>, Damien Le Moal <dlemoal@kernel.org>,
- Niklas Cassel <cassel@kernel.org>, Serge Semin <fancer.lancer@gmail.com>,
- netdev@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-ide@vger.kernel.org,
- Pranjal Shrivastava <praan@google.com>, Will Deacon <will@kernel.org>,
- iommu@lists.linux.dev, Shawn Lin <shawn.lin@rock-chips.com>,
- Sebastian Reichel <sebastian.reichel@collabora.com>
-References: <20261113-mmu600-php-v1-0-231196049a3b@gmail.com>
- <20261113-mmu600-php-v1-4-231196049a3b@gmail.com>
-Content-Language: en-GB
-In-Reply-To: <20261113-mmu600-php-v1-4-231196049a3b@gmail.com>
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261127_101655_828705_A1E1F9AA 
-X-CRM114-Status: GOOD (  19.35  )
-X-Spam-Score: -4.4 (----)
+X-CRM114-CacheID: sfid-20261127_104249_859132_E44EC4F1 
+X-CRM114-Status: GOOD (  11.05  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,114 +75,28 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-15.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
-	version=4.0.1
+	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
+	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 13/11/2026 4:38 pm, Arun Iyengar via B4 Relay wrote:
-> From: Arun Iyengar <aiyengar1990@gmail.com>
-> 
-> The StreamIDs of the six masters behind the RK3588 PHP SMMU come from
-> PHP GRF registers that reset to 0 and are never programmed, so the SMMU
-> can not tell the masters apart.
-> 
-> Assign StreamIDs 1-6 on both AXI channels. 0 stays unused, so a master
-> that loses its ID is aborted instead of using another device's tables.
-
-Urgh... could you at least hide this in U-Boot and have that inject the 
-corresponding "iommus" entries into the DTB it's passing, similar to 
-what the NXP Layerscape platforms do for their "iommu-map" generation?
-
-StreamIDs are really not meant to be programmable, and even if they are 
-then that is not supposed to be exposed to OSes. The Arm Base System 
-Architecture[1] explicitly calls this out:
-
-   R_ITS_DEV_9: The relationships between a device, its StreamID and
-   its DeviceID are considered static by OS or hypervisor software. If
-   the mapping is not fixed by hardware, the relationship between a
-   StreamID and a DeviceID must not change after system initialization,
-   and OS drivers must not be required to set it up.
-
-Even just in practical terms, how is this going to work if someone boots 
-a new kernel with an older DT or vice-versa, and one set of hard-coded 
-values then fails to correspond to the other?
-
-Thanks,
-Robin.
-
-[1] https://support.arm.com/documentation/den0094/latest/
-
-> Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
-> ---
->   drivers/soc/rockchip/grf.c | 37 +++++++++++++++++++++++++++++++++++++
->   1 file changed, 37 insertions(+)
-> 
-> diff --git a/drivers/soc/rockchip/grf.c b/drivers/soc/rockchip/grf.c
-> index b459607c118a..3f0f82a2119f 100644
-> --- a/drivers/soc/rockchip/grf.c
-> +++ b/drivers/soc/rockchip/grf.c
-> @@ -168,6 +168,40 @@ static const struct rockchip_grf_info rk3588_sysgrf __initconst = {
->   	.num_values = ARRAY_SIZE(rk3588_defaults),
->   };
->   
-> +/* PHP SMMU StreamIDs: bits 15:0, no write-enable mask */
-> +#define RK3588_PHP_GRF_GMAC0_SID_AW	0x0074
-> +#define RK3588_PHP_GRF_GMAC1_SID_AW	0x007c
-> +#define RK3588_PHP_GRF_SATA0_SID_AW	0x0084
-> +#define RK3588_PHP_GRF_SATA1_SID_AW	0x008c
-> +#define RK3588_PHP_GRF_SATA2_SID_AW	0x0094
-> +#define RK3588_PHP_GRF_GMAC0_SID_AR	0x009c
-> +#define RK3588_PHP_GRF_GMAC1_SID_AR	0x00a4
-> +#define RK3588_PHP_GRF_SATA0_SID_AR	0x00ac
-> +#define RK3588_PHP_GRF_SATA1_SID_AR	0x00b4
-> +#define RK3588_PHP_GRF_SATA2_SID_AR	0x00bc
-> +#define RK3588_PHP_GRF_USB3OTG2_SID_AR	0x00c4
-> +#define RK3588_PHP_GRF_USB3OTG2_SID_AW	0x00cc
-> +
-> +static const struct rockchip_grf_value rk3588_defaults_php_grf[] __initconst = {
-> +	{ "gmac0 write streamid", RK3588_PHP_GRF_GMAC0_SID_AW, 1 },
-> +	{ "gmac0 read streamid", RK3588_PHP_GRF_GMAC0_SID_AR, 1 },
-> +	{ "gmac1 write streamid", RK3588_PHP_GRF_GMAC1_SID_AW, 2 },
-> +	{ "gmac1 read streamid", RK3588_PHP_GRF_GMAC1_SID_AR, 2 },
-> +	{ "sata0 write streamid", RK3588_PHP_GRF_SATA0_SID_AW, 3 },
-> +	{ "sata0 read streamid", RK3588_PHP_GRF_SATA0_SID_AR, 3 },
-> +	{ "sata1 write streamid", RK3588_PHP_GRF_SATA1_SID_AW, 4 },
-> +	{ "sata1 read streamid", RK3588_PHP_GRF_SATA1_SID_AR, 4 },
-> +	{ "sata2 write streamid", RK3588_PHP_GRF_SATA2_SID_AW, 5 },
-> +	{ "sata2 read streamid", RK3588_PHP_GRF_SATA2_SID_AR, 5 },
-> +	{ "usb3otg2 write streamid", RK3588_PHP_GRF_USB3OTG2_SID_AW, 6 },
-> +	{ "usb3otg2 read streamid", RK3588_PHP_GRF_USB3OTG2_SID_AR, 6 },
-> +};
-> +
-> +static const struct rockchip_grf_info rk3588_phpgrf __initconst = {
-> +	.values = rk3588_defaults_php_grf,
-> +	.num_values = ARRAY_SIZE(rk3588_defaults_php_grf),
-> +};
-> +
->   static const struct of_device_id rockchip_grf_dt_match[] __initconst = {
->   	{
->   		.compatible = "rockchip,rk3036-grf",
-> @@ -202,6 +236,9 @@ static const struct of_device_id rockchip_grf_dt_match[] __initconst = {
->   	}, {
->   		.compatible = "rockchip,rk3576-ioc-grf",
->   		.data = (void *)&rk3576_iocgrf,
-> +	}, {
-> +		.compatible = "rockchip,rk3588-php-grf",
-> +		.data = (void *)&rk3588_phpgrf,
->   	}, {
->   		.compatible = "rockchip,rk3588-sys-grf",
->   		.data = (void *)&rk3588_sysgrf,
-> 
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgIQoKT24gVGh1cnNkYXksIDE5IE5vdmVtYmVyIDIwMjYgMTI6MzU6NDMgRVNUIE5pY29sYXMg
+RHVmcmVzbmUgd3JvdGU6Cj4gTGUgbHVuZGkgMTAgYW/Du3QgMjAyNiDDoCAxMToyMiAtMDQwMCwg
+RGV0bGV2IENhc2Fub3ZhIGEgw6ljcml0IDoKPiA+IEEgbGVmdC1vdmVyIGZyb20gdGhlIGlvbW11
+IHJlc3RvcmUgbWVjYW5pc20gd2FzIGZvcmdvdHRlbi4KPiA+IEFzIG5lZWRfcmVzZXQgaXMgbmV2
+ZXIgc2V0IHRvIHRydWUsIHRoZSBpZiBoYXMgbm8gdXNlLgo+ID4gCj4gPiBUaGUgYWN0dWFsIHJl
+c3RvcmUgZnVuY3Rpb24gaXMgY2FsbGVkIGFib3ZlIGl0IHZhc2UgdGhlIElSUSBpc24ndCBpbiBh
+Cj4gCj4gVGVsbCBtZSB3aGF0IHlvdSB3YW50ZWQgdG8gc2F5IGluc3RlYWQgaWYgIml0IHZhc2Ug
+dGhlIElSUSIsIG9yIGRlZmluZSB0aGUKPiB2ZXJiICJ0byB2YXNlIj8KCkl0J3Mgbm90IGEgdmVy
+YiwgaXQgaXMgdmVyeSBhbmNpZW50IGJlbGdpYW4gRW5nbGlzaCBtZWFuaW5nICJpbiBjYXNlIi4K
+Cj4gPiBzdWNjZXNzIHN0YXR1cy4KPiA+IAo+ID4gU2lnbmVkLW9mZi1ieTogRGV0bGV2IENhc2Fu
+b3ZhIDxkZXRsZXYuY2FzYW5vdmFAY29sbGFib3JhLmNvbT4KPiAKPiBSZXZpZXdlZC1ieTogTmlj
+b2xhcyBEdXJlc25lIDxuaWNvbGFzLmR1ZnJlc25lQGNvbGxhYm9yYS5jb20+CgpEZXRsZXYuCgoK
+Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJv
+Y2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0
+dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
