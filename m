@@ -2,90 +2,77 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9AAFE606A31C
-	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Nov 2026 16:53:41 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7DB93606A682
+	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Nov 2026 17:16:30 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=gTpgOcAB;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=samsung.com header.i=@samsung.com header.a=rsa-sha256 header.s=mail20170921 header.b=uXdcXHCN
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=2k7Rpmfo;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=qFinFgku
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:From:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=Td3Vep8YK9l6UAYgXfO/R0dOrXo3MMqnjXZY0CiNsgs=; b=gTpgOcAB9WRhBdr7XPjczQbv7U
-	xgGUHJ7vIbGoJ2tNjQ3pwkA1ttP+0IAfjCazY3OZ3Jn/ZTUC0feQGcTuBnPThD89D3D/PIqS3RQ5L
-	G7vV+t6xBQn0CgXy6fsyCWamAcBDBLblciR/G8pvfHKoXUvV4AP+G15rtslTbgqv67FYz7zBiN7Pv
-	MwM3YlpoPKQYaIorCi/Jp1ZL8cSYqBpPxhyOjYAgGWOT3sjke2v2pq05P4IoNudjMU2LQVKyJS8xK
-	izspLex1wz24KMZ8EfC3wujb6oVNCtEQOZSLwEk69uDcx/2lFS5oA+jxbE5AI62e5mlh92ZtLsNs/
-	LHDq2c4g==;
+	bh=1AI+qoM+9yc0dhKy6TzlsUUYSYVD2BN86nWwLyiZduw=; b=2k7Rpmfo2hy+E2p7mWmycT2VVg
+	b+svu3uM3hU/RaVZeZHRLt2f+dbyxt0eHSHZee3tk8DP4QE2uLS+DvOza5sniPAng6t6anFke5noa
+	/JZxA84mHiB7dPmDYgmTgWzfpYrqr//12PXronqlooV+Dy6B/uVhq1R9C5M+Fvm4R+A4N0SVFo0+Z
+	RUqgbi6ZOXFbNF+L6CwvnS4STkHUT0ugPs8kdyMUIA+/b9rmPL82uXXmhiQlqynsVypvhEfFsY8ZR
+	3+ObJ7J0AskiEoS9LQcT3yej/05N/Zq69DZlcufCDoZ+/GdOOPdq5evyy3iANsYv7zEKKvaw76KG+
+	2hcGGHhg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWzCb-0000000HAAC-3Hit;
-	Fri, 27 Nov 2026 16:53:37 +0000
-Received: from mailout2.w1.samsung.com ([210.118.77.12])
+	id 1xWzYf-0000000HDv8-0JBn;
+	Fri, 27 Nov 2026 17:16:25 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWzCU-0000000HA85-3n97;
-	Fri, 27 Nov 2026 16:53:35 +0000
-Received: from eucas1p2.samsung.com (unknown [182.198.249.207])
-	by mailout2.w1.samsung.com (KnoxPortal) with ESMTP id 20261127165320euoutp024c5fcdfeb78bcc21adbc48f75c3ca089~r9SFz3d-_1155811558euoutp024;
-	Fri, 27 Nov 2026 16:53:20 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout2.w1.samsung.com 20261127165320euoutp024c5fcdfeb78bcc21adbc48f75c3ca089~r9SFz3d-_1155811558euoutp024
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
-	s=mail20170921; t=1795798400;
-	bh=7eCRdkskUVIKAV4F73pc7bqV887F0lnrxukv66qVTv4=;
-	h=Date:Subject:To:Cc:From:In-Reply-To:References:From;
-	b=uXdcXHCNDgUvKYjGzs4I6Y/LbSNrmKUYF/1I7VJEdq5FMAsBOJnK/421qd1tvZBCH
-	 LhDrXlSqopL/8bPiDI3uNpIQZPrPJqWZ8PpjEnUggYOoykHsf67rgoaMckrVXdQB0r
-	 q/UFtioXKgOj9nRw/8+BsmCSOkgieKfI3SQj27S8=
-Received: from eusmtip1.samsung.com (unknown [203.254.199.221]) by
-	eucas1p2.samsung.com (KnoxPortal) with ESMTPA id
-	20261127165320eucas1p2d67ab9f6e81486993b7490f3746c914c~r9SFgBiTE0677506775eucas1p22;
-	Fri, 27 Nov 2026 16:53:20 +0000 (GMT)
-Received: from [192.168.1.44] (unknown [106.210.136.40]) by
-	eusmtip1.samsung.com (KnoxPortal) with ESMTPA id
-	20261127165318eusmtip137bf72803c990386bb415f5deb6f1ddb~r9SDzrCr51687116871eusmtip1Y;
-	Fri, 27 Nov 2026 16:53:18 +0000 (GMT)
-Message-ID: <eb7ec558-7f5e-4fa6-b8de-db99c0b56467@samsung.com>
-Date: Fri, 27 Nov 2026 17:53:18 +0100
+	id 1xWzYW-0000000HDrv-0fe8;
+	Fri, 27 Nov 2026 17:16:23 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1795799773;
+	bh=Br7d/EbtTMulCZaZxq3YC/liaH0efyOsf+b53eHwjkc=;
+	h=From:Subject:Date:To:Cc:From;
+	b=qFinFgkuYYSsiD4u53vG2Uf9KfX2AozTAapw8J6LzZqqY/14XvHm1at3WYvYY/E/E
+	 1AGZH7bctkZJyalXkSULe7R33miLQmC22Ku19XHQm9p1gWt7JYgsZhhQA9pukmKLlm
+	 vZ4433dIfVATPmFMdXlouwMYAVie0coX13xGlLCikeGt49Rc7g9NQRJqNr2f+GRwF+
+	 lM51YsQgVmmOiS9R6fF8H5nMQp6hO7Xi3WbK0M3JftOQh0f1kGwsumyde40APbekRv
+	 uLU/s6NF87sYx4iAclJ5Z3XhXKqsgDk2NAYN65NZQqXXdxfd7xyqRgP8jbWCD29iYb
+	 5pnlW6DtDgtDw==
+Received: from [192.168.0.15] (unknown [100.64.0.170])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: detlev)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 34E9217E0183;
+	Fri, 27 Nov 2026 18:16:12 +0100 (CET)
+From: Detlev Casanova <detlev.casanova@collabora.com>
+Subject: [PATCH v2 0/4] media: Track v4l2 buffers through an allocator
+Date: Fri, 27 Nov 2026 12:16:09 -0500
+Message-Id: <20261127-v4l2-add-mem-tracker-v2-0-73b0494260e7@collabora.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v8 00/18] drm: starfive: jh7110: Enable display
- subsystem
-To: Neil Armstrong <neil.armstrong@linaro.org>, Rob Herring
-	<robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Robert Foss
-	<rfoss@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Luca Ceresoli
-	<luca.ceresoli@bootlin.com>, Maarten Lankhorst
-	<maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>, Philipp Zabel
-	<p.zabel@pengutronix.de>, Emil Renner Berthing <kernel@esmil.dk>, Hal Feng
-	<hal.feng@starfivetech.com>, Heiko Stuebner <heiko@sntech.de>, Paul Walmsley
-	<pjw@kernel.org>, Palmer Dabbelt <palmer@dabbelt.com>, Albert Ou
-	<aou@eecs.berkeley.edu>, Alexandre Ghiti <alex@ghiti.fr>, Dominique
-	Belhachemi <db@domibel.de>, Andy Yan <andyshrk@163.com>, David Airlie
-	<airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Yakir Yang
-	<kuankuan.y@gmail.com>, Dmitry Baryshkov
-	<dmitry.baryshkov@oss.qualcomm.com>, Conor Dooley <conor@kernel.org>,
-	William Qiu <william.qiu@starfivetech.com>, Xingyu Wu
-	<xingyu.wu@starfivetech.com>, Sandy Huang <hjc@rock-chips.com>, Manivannan
-	Sadhasivam <mani@kernel.org>
-Content-Language: en-US
-From: Michal Wilczynski <m.wilczynski@samsung.com>
-In-Reply-To: <20261124-jh7110-clean-send-v8-0-de92635dd857@samsung.com>
-X-CMS-MailID: 20261127165320eucas1p2d67ab9f6e81486993b7490f3746c914c
-X-Msg-Generator: CA
-X-RootMTR: 20261124155359eucas1p2f7d4e5137f38415561ce77fd55023466
-X-EPHeader: CA
-X-CMS-RootMailID: 20261124155359eucas1p2f7d4e5137f38415561ce77fd55023466
-References: <CGME20261124155359eucas1p2f7d4e5137f38415561ce77fd55023466@eucas1p2.samsung.com>
-	<20261124-jh7110-clean-send-v8-0-de92635dd857@samsung.com>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/23PwW7DIAwG4FeJOI+JUEIgp71H1YNjzMqWlA7Sa
+ FOVdx+hk3rZ8Zdsf7/vLFMKlNnQ3FmiNeQQLyXIl4bhGS7vxIMrmUkhtdCt5KuaJAfn+EwzXxL
+ gJyXuQAhjsFegFSur10Q+fNezx9Mj59v4Qbjst/4mEn3dirc8xp5c0SsmzBPzu0QcCDX1XgvQO
+ KyVGiETxzjPYRka43pP1pgOtfRowXaj7zpn3SiVclb3EgyAQ7aXOoe8xPRTX1/b2qHCttX/f7m
+ 2XHArhAfV0YE0vGGcJhhjgtfSgJ22bfsF3x11A1EBAAA=
+X-Change-ID: 20260612-v4l2-add-mem-tracker-da0088c74a64
+To: Tomasz Figa <tfiga@chromium.org>, 
+ Marek Szyprowski <m.szyprowski@samsung.com>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, Heiko Stuebner <heiko@sntech.de>, 
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+Cc: kernel@collabora.com, linux-kernel@vger.kernel.org, 
+ linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, 
+ Detlev Casanova <detlev.casanova@collabora.com>
+X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261127_085332_557488_D4B9FAA2 
-X-CRM114-Status: GOOD (  12.32  )
-X-Spam-Score: -2.8 (--)
+X-CRM114-CacheID: sfid-20261127_091617_014405_A61F4E72 
+X-CRM114-Status: GOOD (  19.26  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,48 +82,147 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Joshua Peisach <jpeisach@ubuntu.com>, devicetree@vger.kernel.org, Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Chaoyi Chen <chaoyi.chen@rock-chips.com>, Maud Spierings <maud_spierings@murena.io>, linux-rockchip@lists.infradead.org, Conor Dooley <conor.dooley@microchip.com>, Icenowy Zheng <zhengxingda@iscas.ac.cn>, Byron Stanoszek <gandalf@winds.org>, =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>, linux-riscv@lists.infradead.org, Graham Markall <hello@big-grey.co.uk>, Owen O'Hehir <oo.hehir@gmail.com>, linux-arm-kernel@lists.infradead.org, Marek Szyprowski <m.szyprowski@samsung.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-5.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-21.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
-	autolearn=no autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
+Hello,
 
+Currently, the only way to track buffers allocated by v4l2 from usespace
+is to use the subsystem available debug information (e.g.:
+/sys/kernel/debug/dma_buf/bufinfo).
+But that information is generic and cannot be matched to a v4l2 driver or
+to a userspace application: It is merely information about the allocation.
 
-On 11/24/26 16:52, Michal Wilczynski wrote:
-> This series enables the display subsystem on the StarFive JH7110.
-> 
-> Merging: everything except the DT patch goes through drm-misc:
-> 
->   drm-misc                     1-16, 18
->     drivers/gpu/drm/bridge/, include/drm/bridge/, the display bindings,
->     and, as Conor asked, the StarFive SoC drivers and bindings (patches
->     4-6, 14 and 15, which carry his Acked-by), since the display
->     bindings and drivers belong together. Patches 1 and 2 are inno-hdmi
->     fixes with Fixes: tags; they apply to Rockchip as much as to StarFive
->     and are independent of the rest, so they can go on their own.
-> 
->   Conor's tree                 17
->     The DT patch is included for review and testing only. As Conor
->     asked, I will resend it to him on its own once the rest is applied.
-> 
+Other types of allocations require the developper to find where they are
+exposed and how to link them to their test.
 
-Hi,
-Patches 1 and 2 are now in a separate series with a third inno hdmi
-fix, so they can be applied on their own merit [1].
+This can become hard to track when mutliple drivers are working at the
+same time.
 
-v9 will drop them.
+To improve that, add a small wrapper around buffer allocations to keep
+track of them at the video device level so that we can add debug
+information to them like a name, userspace pid/fd that did the
+allocation,... and expose them to userspace via a debugfs entry.
 
-[1] - https://lore.kernel.org/all/20261127-inno-hdmi-ddc-of-node-v1-0-465622e1b7ad@samsung.com/
+It currently only supports DMA buffer allocations and adds support for
+VB2 allocations too.
+Other kind of memory tracking can be added later.
+The verisilicon and rkvdec drivers have been ported to use the tracked
+dma alloactions.
+
+Note that this depends on the ftrace support patch series[1] that
+provides fd/pid info in the v4l2_fh struct.
+That series is a bit old, so this is based on an older linux version, but
+that only changes things for the last 2 commits.
+
+A v4l2top utility[2] has been made, to be used in parallel with the
+fdinfo patch series[3], to show the list of active streams with their HW
+and memory usage.
+
+With this, debugfs looks like this when decoding a HEVC 1080p stream with
+rkvdec on rk3588:
+
+  root # cat /sys/kernel/debug/v4l2/fdc38100.video-codec/mem 
+  created-by                      fd              pid             size            label
+  -------------------------------------------------------------------------------------
+  gst-launch-1.0                  7               635             39184           vdpu381-hevc-priv-tbl
+  gst-launch-1.0                  7               635             4177920         cap-00000000ac34392e-7
+  gst-launch-1.0                  7               635             4177920         cap-00000000ac34392e-6
+  gst-launch-1.0                  7               635             4177920         cap-00000000ac34392e-5
+  gst-launch-1.0                  7               635             4177920         cap-00000000ac34392e-4
+  gst-launch-1.0                  7               635             4177920         cap-00000000ac34392e-3
+  gst-launch-1.0                  7               635             4177920         cap-00000000ac34392e-2
+  gst-launch-1.0                  7               635             4177920         cap-00000000ac34392e-1
+  gst-launch-1.0                  7               635             4177920         cap-00000000ac34392e-0
+  gst-launch-1.0                  7               635             3133440         out-000000005c0230f6-1
+  gst-launch-1.0                  7               635             3133440         out-000000005c0230f6-0
+  =====================================================================================
+  Total size: 39729424
+
+[1]: https://lore.kernel.org/all/20260610-v4l2-add-ftrace-v2-0-9756edf72ac1@collabora.com/
+[2]: https://github.com/cazou/v4l2top/tree/upstream
+[3]: https://lore.kernel.org/all/20260706-v4l2-add-fdinfo-v3-0-d556568cf38e@collabora.com/
+
+Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+---
+Changes in v2:
+- Use the already created v4l2 debugfs directory.
+- Link to v1: https://patch.msgid.link/20260916-v4l2-add-mem-tracker-v1-0-900fa45e3e6a@collabora.com
+
+To: Tomasz Figa <tfiga@chromium.org>
+To: Marek Szyprowski <m.szyprowski@samsung.com>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>
+To: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+To: Philipp Zabel <p.zabel@pengutronix.de>
+To: Heiko Stuebner <heiko@sntech.de>
+To: Detlev Casanova <detlev.casanova@collabora.com>
+To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+Cc: kernel@collabora.com
+Cc: linux-kernel@vger.kernel.org
+Cc: linux-media@vger.kernel.org
+Cc: linux-rockchip@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org
+
+---
+Detlev Casanova (4):
+      media: Add a v4l2 memory allocations tracker
+      media: Store v4l2_fh in the vb_queue
+      media: verisilicon: Switch to tracked dma allocations
+      media: rkvdec: Switch to tracked dma allocations
+
+ .../media/common/videobuf2/videobuf2-dma-contig.c  |  27 ++-
+ .../media/platform/rockchip/rkvdec/rkvdec-h264.c   |  14 +-
+ .../media/platform/rockchip/rkvdec/rkvdec-hevc.c   |  14 +-
+ .../media/platform/rockchip/rkvdec/rkvdec-rcb.c    |  21 ++-
+ .../platform/rockchip/rkvdec/rkvdec-vdpu381-h264.c |  14 +-
+ .../platform/rockchip/rkvdec/rkvdec-vdpu381-hevc.c |  14 +-
+ .../platform/rockchip/rkvdec/rkvdec-vdpu383-h264.c |  14 +-
+ .../platform/rockchip/rkvdec/rkvdec-vdpu383-hevc.c |  14 +-
+ .../media/platform/rockchip/rkvdec/rkvdec-vp9.c    |  33 ++--
+ drivers/media/platform/rockchip/rkvdec/rkvdec.c    |   4 +
+ drivers/media/platform/verisilicon/hantro.h        |   1 +
+ drivers/media/platform/verisilicon/hantro_drv.c    |   4 +
+ drivers/media/platform/verisilicon/hantro_h264.c   |   7 +-
+ drivers/media/platform/verisilicon/hantro_hevc.c   | 100 ++++++-----
+ drivers/media/platform/verisilicon/hantro_mpeg2.c  |  16 +-
+ .../media/platform/verisilicon/hantro_postproc.c   |  14 +-
+ drivers/media/platform/verisilicon/hantro_vp8.c    |  25 +--
+ drivers/media/platform/verisilicon/hantro_vp9.c    |  34 +++-
+ .../verisilicon/rockchip_vpu981_hw_av1_dec.c       | 160 +++++++++++-------
+ drivers/media/v4l2-core/Makefile                   |   1 +
+ drivers/media/v4l2-core/v4l2-allocator.c           | 187 +++++++++++++++++++++
+ drivers/media/v4l2-core/v4l2-device.c              |   4 +-
+ include/media/v4l2-allocator.h                     |  26 +++
+ include/media/v4l2-device.h                        |   3 +
+ include/media/videobuf2-core.h                     |   5 +
+ 25 files changed, 559 insertions(+), 197 deletions(-)
+---
+base-commit: 8d7fe9885c62fc9a95bf55d9db244d9672a8aadc
+change-id: 20260612-v4l2-add-mem-tracker-da0088c74a64
+prerequisite-change-id: 20260608-v4l2-add-ftrace-aec6e7f60a6c:v4
+prerequisite-patch-id: 1642377e7eb8e2b9c08ba2edfe1627f246d18dec
+prerequisite-patch-id: cbb31b868fe441e12390ed4f722c66a09d5da018
+prerequisite-patch-id: 9f311d567e9c362b5ed00330e5d6cc6de9c94118
+prerequisite-patch-id: fe7cd355f47da859fb1384cb02285f01ea230d35
+prerequisite-patch-id: a92d7089a6ddef832e764a958d83e0402f6d83f3
+prerequisite-patch-id: a9d89bb00db27935b66419eb3e6b225ef9381fe6
+prerequisite-patch-id: 4bec038b584ae24fe4127164998ff81e30fe14d6
+prerequisite-patch-id: 662455e7c49a81f89759dd6b576650d7803015d3
+prerequisite-patch-id: 088f331d5bc7ce94e392ec07d954838ee294aefa
 
 Best regards,
--- 
-Michal Wilczynski <m.wilczynski@samsung.com>
+--  
+Detlev Casanova <detlev.casanova@collabora.com>
+
 
 _______________________________________________
 Linux-rockchip mailing list
