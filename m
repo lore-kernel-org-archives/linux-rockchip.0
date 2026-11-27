@@ -2,101 +2,92 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 29F1A606A31C
-	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Nov 2026 19:23:56 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E4CC7606A32C
+	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Nov 2026 19:26:38 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=U8PiYSDE;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=ReTuEmdy
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=tJXJapd9;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=OF3EfNgR
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=Ro2oH1OGzRFLeMCZScztSSDVUGISukRlPzKcwsf5MSs=; b=U8PiYSDExVsNONhkQQAsH/NiPf
-	NileqJ+7pg2a2keygwuo0gykHCex0OgJZyivYM/OK1AVEGmOA1sZQN/LmWxCgjGdUGfcYZ1YGOKHP
-	airmUW25CaYlWyEsz/vrt8LvY8LHhCrvx7dsWMQO4wpLowI5kPe5ei/1kNUHDz8OXWcej9Y0l4Exc
-	AG3cSY312Q2YSeznVL//ZxobkWDy8j0CZmwAT8AAoyzJc56L8LFTwPRfBleBN/putq7LAY/p6FxXC
-	sp8tadNJBw20eQOP82C61hNu6diIL+ouapgzuMNkTI2WQaPAUdtnEmawPM9XgTnaNif5gN3LdeJxb
-	qLtqQ8nQ==;
+	bh=A8pE+QEy1Xnbw5gXMkwV6/rX+ygQUXtk9SWSNR/TP+E=; b=tJXJapd9sR3e+0cFZohxKsLjsh
+	PPi6QJONh2AsjwDpKxOT1khGZq3OUVPpu250oUd7RGbhMGIxdCoTMbkPdlL308NVXzU4QfttLPlgW
+	jai/lrUoDqvqQgOSZyV7raB/fHCvSpTljn0lAaaQELa11EtyesV8R5oXeSIqMDZ2v6hOQl/GWCRA7
+	C36jh2lQ5M0qM7q1mV1smGj6iTzWleIgwNu3rNws8K+CLsY/ny4iuItlnIwAobP8FzThS50lO6D1a
+	SL8IdHBodZ1WOktvBkRV54a/No9DToxFO5KUKgjTBVLNzx0GLe1YL4kRgg+GXhGGjRTlB1mSKjrWB
+	Ov6Qiw7g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xX1Xo-0000000HXSc-3noU;
-	Fri, 27 Nov 2026 19:23:40 +0000
-Received: from mail-oa1-x2c.google.com ([2001:4860:4864:20::2c])
+	id 1xX1ad-0000000HXwk-19Aq;
+	Fri, 27 Nov 2026 19:26:35 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xX1Xj-0000000HXQ8-3u6U
-	for linux-rockchip@lists.infradead.org;
-	Fri, 27 Nov 2026 19:23:37 +0000
-Received: by mail-oa1-x2c.google.com with SMTP id 586e51a60fabf-4adea5b7a2fso3074099fac.2
-        for <linux-rockchip@lists.infradead.org>; Fri, 27 Nov 2026 11:23:35 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1795807415; x=1796412215; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=sr3t56lz2ew1ExXZcTsdCaVtIgRa73m8p4gNG8bPmz4=;
-        b=ReTuEmdyT6bIgTqHUVRNNHTwF6ApgP41fn9QzZPRG+ZC8u7YyVSPgI/coBae2w7I9h
-         4OmewpDIJreVNixYEALWUlfvHQbR23VK9rlARAuyjk6tzMG8iHtAblWTc+T1qk4RZmvh
-         ItufW63ftp/Lhf1eDcM0dPH+uNvh0nPYMPX43oqUOKk4CmqYzzMUuF851L3hUOU4Qozq
-         7TfTVh7n3Orat9KHlqxHpf6FHF+LYO01U55+X8KfOBSDw4o1vC4Lu0NibQO2ptZGQ/KE
-         r0WFc++vGc1OeqFaw6/uRd0nLQn6oNsjm16hKjMffKG8MEMX0X5ZDY0jsCiAHgM9Q0vZ
-         kF/g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1795807415; x=1796412215;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=sr3t56lz2ew1ExXZcTsdCaVtIgRa73m8p4gNG8bPmz4=;
-        b=uIqyknKheCT/6cKlLYqjHk2e6wguc33DLYwASOmUl9SXmwA3DQGCaHp2JHdoA2mwMD
-         hbalLEQrTygbMuRUwIYxmfCwUJscDHGAs/+ejsYoEelLXkrHFtNtbqDQC97f421HIW4x
-         8aB8tIND8LL1OpXIHzRoZYTKJCCjw2w8ve6y0TGeE/2lPN7KrWDtWA2eBIHIhujhuJ7P
-         4otog9e3oQeVwtGQLiWqkQbtwZFPC1IZzN7QOSd3s1UvWudA+Ke+zwcIWCA07oH6/ONs
-         VaXfZwB6tfXmNW0vQvkadlqfprb4bl8P5ZTT0/SjfDkD2cS6NVLHSxZMxi6F1SoQPLU1
-         WTXg==
-X-Gm-Message-State: APuU4Z9E+5FFrlj0ik+Q0uvibihxDrGS6K9CQaIHBtvsnPbIVJArDA7n
-	FgJxoEEiLFBCqFuwAsUXOiBvmm6IS080dvNIQ1rhM+eOnHRKsbcxH3lTyCp5qA==
-X-Gm-Gg: AZFdTZeSl8yOLkOLC/+U2V4rVEVQbx6wn5j3/1e+C/YYdLbHun8JICgmxlC9Rxk6afs
-	haFoL3aEwqd3d1dLKlV+3qONZt9i19ImueMNnzFHw8TyQZScj+zGJA86UZVsJZeoFkXzleCF+QS
-	+NYcQqFEZlkSIcF2ShejbbnALEOw4VuS5avv0nSJyfzJjW/6+ltqF7/CxNg8AhHgQ24xlISUxfi
-	wvMbImVJeZCEtpMhU7jNDmSW4P2qUHibClZl20Wh6VbjXa9qqvxws30+1isekOa52WMsk8mX1VL
-	BHAUR/aTjc1hla5Z2Z03HnarZkmX8x2eXHYyJuvDPLnd65Iwe9CjyAQgwVQ2l0kONGQv66yeGCP
-	lPDUqAIIGLU4Gfgkp5KTuzN8dzQ/rsfvYC5X9xwRTwqHmv1bRoKB24Sb5lICVch2hmGI2oo16oh
-	IE9lqC3yGZ6T1ox97NCFfmyUmuQoun4HFjm9LtGGX2bf+RImq53Sp9FjEyvSnB0E7c0qjyvlteX
-	THmirLdtukeR2Jg4wJrFtaaIU6PST2jj7i37RFClyi72q8jfXVHqhub6fSaQG8j7DoevsjFQlUD
-	Mfh7gS28NjfP8isW+ubzxLzJ7SehiQ==
-X-Received: by 2002:a05:6870:828c:b0:47c:c8e6:23df with SMTP id 586e51a60fabf-4bc84f22914mr23087614fac.27.1795807414615;
-        Fri, 27 Nov 2026 11:23:34 -0800 (PST)
-Received: from neuromancer ([75.28.21.198])
-        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-4bc60891cf6sm24044850fac.13.2026.11.27.11.23.33
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 27 Nov 2026 11:23:33 -0800 (PST)
-From: Chris Morgan <macroalpha82@gmail.com>
-To: linux-rockchip@lists.infradead.org
-Cc: devicetree@vger.kernel.org,
-	shawn.lin@rock-chips.com,
-	linux-pm@vger.kernel.org,
-	heiko@sntech.de,
-	conor+dt@kernel.org,
-	krzk+dt@kernel.org,
-	robh@kernel.org,
-	sre@kernel.org,
-	t.schramm@manjaro.org,
-	xsf@rock-chips.com,
-	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH V5 1/3] dt-bindings: power: cw2015: add cw2215, cw2217, and cw2218
-Date: Fri, 27 Nov 2026 13:23:28 -0600
-Message-ID: <20261127192330.610452-2-macroalpha82@gmail.com>
-X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20261127192330.610452-1-macroalpha82@gmail.com>
-References: <20261127192330.610452-1-macroalpha82@gmail.com>
+	id 1xX1aZ-0000000HXwL-0anh;
+	Fri, 27 Nov 2026 19:26:31 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 7ED1845528;
+	Fri, 27 Nov 2026 19:26:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B31B11F00899;
+	Fri, 27 Nov 2026 19:26:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1795807589;
+	bh=0Bj2HfA+RacmXf4tT16y1Nvz3cM+4pVUyjdUHKbVS6w=;
+	h=From:To:Cc:Subject:Date;
+	b=OF3EfNgRN+x5+FYr5KfqcWvf0pbWlwgu+0wy2XuPXwrMt+6BFUZmr7IYsMxke1tAR
+	 2H8siDyj/38n9CKtkV67H4YremSwVVgxOnjHAr+9vMeaE1GtIwYIQFOR+GranT1NZW
+	 Z5rGvx0cm7bFnbSxl1BHRpCy247QHU65ILaXuRcKrAtczFR5DBelI0c+GyMqHLSF6s
+	 go8ygOgIiF4g/Ni+xoE5tVBPdpNbs+fXk6ahqf7HS6wGdBpBLyyojE0YAW5Nsp1iaI
+	 voET/Ktf0U33MxcyO0+8ZMT9aQVAzF9sb0h/TIwQi1dwFyN5Mf+8geIV26Y31p5Xzm
+	 oHrdZ0DzRtdlg==
+From: Lee Jones <lee@kernel.org>
+To: lee@kernel.org,
+	Heiko Stuebner <heiko@sntech.de>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org,
+	"Thomas Richard (TI)" <thomas.richard@bootlin.com>,
+	Andrea della Porta <andrea.porta@suse.com>,
+	Brian Masney <bmasney+clk@redhat.com>,
+	Conor Dooley <conor.dooley@microchip.com>,
+	Dominique Belhachemi <db@domibel.de>,
+	Doug Anderson <dianders@chromium.org>,
+	Emil Renner Berthing <kernel@esmil.dk>,
+	Florian Fainelli <florian.fainelli@broadcom.com>,
+	Hal Feng <hal.feng@starfivetech.com>,
+	Jerome Brunet <jbrunet+clk@baylibre.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Joshua Peisach <jpeisach@ubuntu.com>,
+	Linus Walleij <linusw@kernel.org>,
+	linux-clk@vger.kernel.org,
+	linux-omap@vger.kernel.org,
+	linux-tegra@vger.kernel.org,
+	Michael Turquette <mturquette@linaro.org>,
+	Michal Wilczynski <m.wilczynski@samsung.com>,
+	Naushir Patuck <naush@raspberrypi.com>,
+	Nishanth Menon <nm@ti.com>,
+	Palmer Dabbelt <palmer@rivosinc.com>,
+	Prashant Gaikwad <pgaikwad@nvidia.com>,
+	Rob Herring <robh@kernel.org>,
+	Rosen Penev <rosenp@gmail.com>,
+	Santosh Shilimkar <ssantosh@kernel.org>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Tero Kristo <kristo@kernel.org>,
+	Thierry Reding <thierry.reding@kernel.org>,
+	Thomas Abraham <thomas.ab@samsung.com>,
+	Timo Alho <talho@nvidia.com>,
+	Tony Lindgren <tony@atomide.com>,
+	Wentao Liang <vulab@iscas.ac.cn>,
+	Xingyu Wu <xingyu.wu@starfivetech.com>
+Subject: [PATCH 00/10] clk: Fix OOB writes, UAFs, ERR_PTR dereferences, and rate-calc bugs (batch 2)
+Date: Fri, 27 Nov 2026 19:25:24 +0000
+Message-ID: <20261127192620.3443537-1-lee@kernel.org>
+X-Mailer: git-send-email 2.56.1.839.g22a8290db9-goog
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261127_112335_980881_3011D72F 
-X-CRM114-Status: GOOD (  12.56  )
-X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,108 +100,84 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,
-	FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-11.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Chris Morgan <macromorgan@hotmail.com>
+These issues were reported by Sashiko.
 
-Add bindings for the Cellwise cw2215/cw2217/cw2218 i2C interface
-battery gauge. It is similar in function to the existing cw2015 but
-with a different register layout. Each of the cw2215, cw2217 and cw2218
-only really differ in the minor specs and the hardware ID they display
-when queried. shunt-resistor-micro-ohms is a property in use for
-multiple devices so not appending a vendor prefix to it.
+This is batch 2 of Common Clock Framework fixes, based on clk/clk-next.
+It addresses output array OOB writes in ti/fapll, ERR_PTR dereferences
+and double-unregister in tegra/bpmp, notifier UAFs and global array
+mutation in starfive/jh7110 and rockchip/cpu, rate and parent lookup
+bugs in rp1, and allocation error handling in sci-clk and icst.
 
-Update the minItems and maxItems for the battery profile so that the
-cw2015 continues to have a min and max of 64, but the new hardware has
-a max of 80.
+Cc: "Thomas Richard (TI)" <thomas.richard@bootlin.com>
+Cc: Andrea della Porta <andrea.porta@suse.com>
+Cc: Brian Masney <bmasney+clk@redhat.com>
+Cc: Conor Dooley <conor.dooley@microchip.com>
+Cc: Dominique Belhachemi <db@domibel.de>
+Cc: Doug Anderson <dianders@chromium.org>
+Cc: Emil Renner Berthing <kernel@esmil.dk>
+Cc: Florian Fainelli <florian.fainelli@broadcom.com>
+Cc: Hal Feng <hal.feng@starfivetech.com>
+Cc: Heiko Stuebner <heiko@sntech.de>
+Cc: Jerome Brunet <jbrunet+clk@baylibre.com>
+Cc: Jonathan Hunter <jonathanh@nvidia.com>
+Cc: Joshua Peisach <jpeisach@ubuntu.com>
+Cc: Linus Walleij <linusw@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-clk@vger.kernel.org
+Cc: linux-omap@vger.kernel.org
+Cc: linux-rockchip@lists.infradead.org
+Cc: linux-tegra@vger.kernel.org
+Cc: Michael Turquette <mturquette@linaro.org>
+Cc: Michal Wilczynski <m.wilczynski@samsung.com>
+Cc: Naushir Patuck <naush@raspberrypi.com>
+Cc: Nishanth Menon <nm@ti.com>
+Cc: Palmer Dabbelt <palmer@rivosinc.com>
+Cc: Prashant Gaikwad <pgaikwad@nvidia.com>
+Cc: Rob Herring <robh@kernel.org>
+Cc: Rosen Penev <rosenp@gmail.com>
+Cc: Santosh Shilimkar <ssantosh@kernel.org>
+Cc: Stephen Boyd <sboyd@kernel.org>
+Cc: Tero Kristo <kristo@kernel.org>
+Cc: Thierry Reding <thierry.reding@kernel.org>
+Cc: Thomas Abraham <thomas.ab@samsung.com>
+Cc: Timo Alho <talho@nvidia.com>
+Cc: Tony Lindgren <tony@atomide.com>
+Cc: Wentao Liang <vulab@iscas.ac.cn>
+Cc: Xingyu Wu <xingyu.wu@starfivetech.com>
 
-Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
----
- .../bindings/power/supply/cw2015_battery.yaml | 41 ++++++++++++++++---
- 1 file changed, 36 insertions(+), 5 deletions(-)
+Lee Jones (10):
+  clk: ti: fapll: Fix output clock array allocation and bounds check
+  clk: tegra: bpmp: Drop manual clock unregister on provider failure
+  clk: starfive: jh7110-sys: Use devres for PLL0 clock and notifier
+  clk: starfive: jh7110: Duplicate top clock bulk arrays per device
+  clk: rockchip: cpu: Allocate rate_table before registering notifier
+  clk: tegra: bpmp: Skip ERR_PTR entries in tegra_bpmp_clk_of_xlate()
+  clk: rp1: Propagate determine_rate() return value for PLL dividers
+  clk: rp1: Reference secondary PLL divider clk_hw in parent tables
+  clk: keystone: sci-clk: Check allocation failure before copying clock
+    array
+  clk: versatile: icst: Check kasprintf() and put parent node on error
 
-diff --git a/Documentation/devicetree/bindings/power/supply/cw2015_battery.yaml b/Documentation/devicetree/bindings/power/supply/cw2015_battery.yaml
-index f7bde324153d..2db80287def4 100644
---- a/Documentation/devicetree/bindings/power/supply/cw2015_battery.yaml
-+++ b/Documentation/devicetree/bindings/power/supply/cw2015_battery.yaml
-@@ -14,12 +14,13 @@ description: |
-   phandle in monitored-battery. If specified the driver uses the
-   charge-full-design-microamp-hours property of the battery.
- 
--allOf:
--  - $ref: power-supply.yaml#
--
- properties:
-   compatible:
--    const: cellwise,cw2015
-+    enum:
-+      - cellwise,cw2015
-+      - cellwise,cw2215
-+      - cellwise,cw2217
-+      - cellwise,cw2218
- 
-   reg:
-     maxItems: 1
-@@ -32,7 +33,7 @@ properties:
-       back a test report with the binary blob.
-     $ref: /schemas/types.yaml#/definitions/uint8-array
-     minItems: 64
--    maxItems: 64
-+    maxItems: 80
- 
-   cellwise,monitor-interval-ms:
-     description:
-@@ -43,12 +44,42 @@ properties:
-     minItems: 1
-     maxItems: 8 # Should be enough
- 
-+  shunt-resistor-micro-ohms:
-+    description:
-+      The value, in micro-ohms, of the shunt resistor used for sampling
-+      the battery current.
-+    minimum: 1000
-+    maximum: 50000
-+    default: 1500
-+
-   monitored-battery: true
- 
- required:
-   - compatible
-   - reg
- 
-+allOf:
-+  - $ref: power-supply.yaml#
-+  - if:
-+      properties:
-+        compatible:
-+          contains:
-+            enum:
-+              - cellwise,cw2015
-+    then:
-+      properties:
-+        shunt-resistor-micro-ohms: false
-+
-+        cellwise,battery-profile:
-+          minItems: 64
-+          maxItems: 64
-+
-+    else:
-+      properties:
-+        cellwise,battery-profile:
-+          minItems: 80
-+          maxItems: 80
-+
- additionalProperties: false
- 
- examples:
+ drivers/clk/clk-rp1.c                         | 32 +++++++++----------
+ drivers/clk/keystone/sci-clk.c                |  8 +++--
+ drivers/clk/rockchip/clk-cpu.c                | 26 +++++++--------
+ .../clk/starfive/clk-starfive-jh7110-isp.c    |  9 ++++--
+ .../clk/starfive/clk-starfive-jh7110-sys.c    |  5 +--
+ .../clk/starfive/clk-starfive-jh7110-vout.c   |  9 ++++--
+ drivers/clk/tegra/clk-bpmp.c                  | 14 +-------
+ drivers/clk/ti/fapll.c                        | 13 +++++---
+ drivers/clk/versatile/clk-icst.c              |  5 +++
+ 9 files changed, 66 insertions(+), 55 deletions(-)
+
 -- 
-2.53.0
+2.56.1.839.g22a8290db9-goog
 
 
 _______________________________________________
