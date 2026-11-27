@@ -2,74 +2,90 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A4DB9606A31C
-	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Nov 2026 16:47:27 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9AAFE606A31C
+	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Nov 2026 16:53:41 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=ZOf4dhto;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=DfMAiQdT
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=gTpgOcAB;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=samsung.com header.i=@samsung.com header.a=rsa-sha256 header.s=mail20170921 header.b=uXdcXHCN
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:From:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=lgHgKe6zPkDPFcr9y/XE4rb0ntijMQmFNTM3rjykS8Q=; b=ZOf4dhtooHPvvyaK2kl31JGBu8
-	qkmZO23W0imdlovR4BKtKMnT5sZRuDXowHvi3BCkrF8V2LT+idSmD1K5Kx4hIQioN4jLt3scsoWtV
-	w1Wx7ajPN/W44K8mTDziiPyNPbyQ3FOhG3NMjBTJVWVSBw+mex6H84VJRTEkd6S2S28PIYuFt8pup
-	TtOIseFPc28avlNGoQtE6GKBMG2akCGJhMgR8tH8qMN3vdQVjpjrJG+5UK7HUOX6QT09wyJRk6Vqp
-	ufeEAC7TbgobLMCVqPBOOsktnES/NtfFkViETO/u2KTH0rH+FRlYCQTdGNw1KsmD/GtEkhO1v5Ole
-	9x47Q2YA==;
+	bh=Td3Vep8YK9l6UAYgXfO/R0dOrXo3MMqnjXZY0CiNsgs=; b=gTpgOcAB9WRhBdr7XPjczQbv7U
+	xgGUHJ7vIbGoJ2tNjQ3pwkA1ttP+0IAfjCazY3OZ3Jn/ZTUC0feQGcTuBnPThD89D3D/PIqS3RQ5L
+	G7vV+t6xBQn0CgXy6fsyCWamAcBDBLblciR/G8pvfHKoXUvV4AP+G15rtslTbgqv67FYz7zBiN7Pv
+	MwM3YlpoPKQYaIorCi/Jp1ZL8cSYqBpPxhyOjYAgGWOT3sjke2v2pq05P4IoNudjMU2LQVKyJS8xK
+	izspLex1wz24KMZ8EfC3wujb6oVNCtEQOZSLwEk69uDcx/2lFS5oA+jxbE5AI62e5mlh92ZtLsNs/
+	LHDq2c4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWz6Z-0000000H9IJ-0hvQ;
-	Fri, 27 Nov 2026 16:47:23 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1xWzCb-0000000HAAC-3Hit;
+	Fri, 27 Nov 2026 16:53:37 +0000
+Received: from mailout2.w1.samsung.com ([210.118.77.12])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWz5E-0000000H8NM-1D1k;
-	Fri, 27 Nov 2026 16:46:03 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1795797958;
-	bh=Bxc8NEyDBUAYf72MPzeam6V/+fXECf3K+tlbsq+D+c4=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=DfMAiQdT73P4gDRHUOQsFCrPjT6Rf2xJ/xO6bt/DViSdS/DZ0fWMmNXt1LIY9j1T5
-	 oW7pEbKXi3IXbJAydTZAKsQYpRk96cCaJWwQDWxR4YZT1q4388wGH1+pxgeWcGWAax
-	 4ktMLi3m5+IOw6tR5NOaWb7JCHvfxgqFU/miRoJl3GyseTaFWpCFZuL/yUzbATTniw
-	 zBG8aS0nXcDGkH5+SCiw/KDckibIxeTfqUVtJsfDfvd2PDtd64k2JBGg09awM5BWCp
-	 2ScJkKOuuYFhpoUJ1wBM7tMHBs8O4tdDsaWVISmzjAEsl7vuKGkM2y5af4vvG+YDAL
-	 /kIg7d7FXbELA==
-Received: from [192.168.0.15] (unknown [100.64.0.170])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: detlev)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8629E17E0BA9;
-	Fri, 27 Nov 2026 17:45:56 +0100 (CET)
-From: Detlev Casanova <detlev.casanova@collabora.com>
-Date: Fri, 27 Nov 2026 11:45:13 -0500
-Subject: [PATCH v4 9/9] media: hantro: Add v4l2_hw run/done traces
+	id 1xWzCU-0000000HA85-3n97;
+	Fri, 27 Nov 2026 16:53:35 +0000
+Received: from eucas1p2.samsung.com (unknown [182.198.249.207])
+	by mailout2.w1.samsung.com (KnoxPortal) with ESMTP id 20261127165320euoutp024c5fcdfeb78bcc21adbc48f75c3ca089~r9SFz3d-_1155811558euoutp024;
+	Fri, 27 Nov 2026 16:53:20 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mailout2.w1.samsung.com 20261127165320euoutp024c5fcdfeb78bcc21adbc48f75c3ca089~r9SFz3d-_1155811558euoutp024
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
+	s=mail20170921; t=1795798400;
+	bh=7eCRdkskUVIKAV4F73pc7bqV887F0lnrxukv66qVTv4=;
+	h=Date:Subject:To:Cc:From:In-Reply-To:References:From;
+	b=uXdcXHCNDgUvKYjGzs4I6Y/LbSNrmKUYF/1I7VJEdq5FMAsBOJnK/421qd1tvZBCH
+	 LhDrXlSqopL/8bPiDI3uNpIQZPrPJqWZ8PpjEnUggYOoykHsf67rgoaMckrVXdQB0r
+	 q/UFtioXKgOj9nRw/8+BsmCSOkgieKfI3SQj27S8=
+Received: from eusmtip1.samsung.com (unknown [203.254.199.221]) by
+	eucas1p2.samsung.com (KnoxPortal) with ESMTPA id
+	20261127165320eucas1p2d67ab9f6e81486993b7490f3746c914c~r9SFgBiTE0677506775eucas1p22;
+	Fri, 27 Nov 2026 16:53:20 +0000 (GMT)
+Received: from [192.168.1.44] (unknown [106.210.136.40]) by
+	eusmtip1.samsung.com (KnoxPortal) with ESMTPA id
+	20261127165318eusmtip137bf72803c990386bb415f5deb6f1ddb~r9SDzrCr51687116871eusmtip1Y;
+	Fri, 27 Nov 2026 16:53:18 +0000 (GMT)
+Message-ID: <eb7ec558-7f5e-4fa6-b8de-db99c0b56467@samsung.com>
+Date: Fri, 27 Nov 2026 17:53:18 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261127-v4l2-add-ftrace-v4-9-24138479002f@collabora.com>
-References: <20261127-v4l2-add-ftrace-v4-0-24138479002f@collabora.com>
-In-Reply-To: <20261127-v4l2-add-ftrace-v4-0-24138479002f@collabora.com>
-To: Daniel Almeida <daniel.almeida@collabora.com>, 
- Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Steven Rostedt <rostedt@goodmis.org>, 
- Masami Hiramatsu <mhiramat@kernel.org>, 
- Mathieu Desnoyers <mathieu.desnoyers@efficios.com>, 
- Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
- Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
- Philipp Zabel <p.zabel@pengutronix.de>, Heiko Stuebner <heiko@sntech.de>
-Cc: linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, 
- linux-trace-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, kernel@collabora.com, 
- Detlev Casanova <detlev.casanova@collabora.com>
-X-Mailer: b4 0.15.2
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v8 00/18] drm: starfive: jh7110: Enable display
+ subsystem
+To: Neil Armstrong <neil.armstrong@linaro.org>, Rob Herring
+	<robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Robert Foss
+	<rfoss@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Luca Ceresoli
+	<luca.ceresoli@bootlin.com>, Maarten Lankhorst
+	<maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>, Philipp Zabel
+	<p.zabel@pengutronix.de>, Emil Renner Berthing <kernel@esmil.dk>, Hal Feng
+	<hal.feng@starfivetech.com>, Heiko Stuebner <heiko@sntech.de>, Paul Walmsley
+	<pjw@kernel.org>, Palmer Dabbelt <palmer@dabbelt.com>, Albert Ou
+	<aou@eecs.berkeley.edu>, Alexandre Ghiti <alex@ghiti.fr>, Dominique
+	Belhachemi <db@domibel.de>, Andy Yan <andyshrk@163.com>, David Airlie
+	<airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Yakir Yang
+	<kuankuan.y@gmail.com>, Dmitry Baryshkov
+	<dmitry.baryshkov@oss.qualcomm.com>, Conor Dooley <conor@kernel.org>,
+	William Qiu <william.qiu@starfivetech.com>, Xingyu Wu
+	<xingyu.wu@starfivetech.com>, Sandy Huang <hjc@rock-chips.com>, Manivannan
+	Sadhasivam <mani@kernel.org>
+Content-Language: en-US
+From: Michal Wilczynski <m.wilczynski@samsung.com>
+In-Reply-To: <20261124-jh7110-clean-send-v8-0-de92635dd857@samsung.com>
+X-CMS-MailID: 20261127165320eucas1p2d67ab9f6e81486993b7490f3746c914c
+X-Msg-Generator: CA
+X-RootMTR: 20261124155359eucas1p2f7d4e5137f38415561ce77fd55023466
+X-EPHeader: CA
+X-CMS-RootMailID: 20261124155359eucas1p2f7d4e5137f38415561ce77fd55023466
+References: <CGME20261124155359eucas1p2f7d4e5137f38415561ce77fd55023466@eucas1p2.samsung.com>
+	<20261124-jh7110-clean-send-v8-0-de92635dd857@samsung.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261127_084602_120036_610BF38F 
-X-CRM114-Status: GOOD (  15.29  )
-X-Spam-Score: -2.1 (--)
+X-CRM114-CacheID: sfid-20261127_085332_557488_D4B9FAA2 
+X-CRM114-Status: GOOD (  12.32  )
+X-Spam-Score: -2.8 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,125 +95,48 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: Joshua Peisach <jpeisach@ubuntu.com>, devicetree@vger.kernel.org, Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Chaoyi Chen <chaoyi.chen@rock-chips.com>, Maud Spierings <maud_spierings@murena.io>, linux-rockchip@lists.infradead.org, Conor Dooley <conor.dooley@microchip.com>, Icenowy Zheng <zhengxingda@iscas.ac.cn>, Byron Stanoszek <gandalf@winds.org>, =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>, linux-riscv@lists.infradead.org, Graham Markall <hello@big-grey.co.uk>, Owen O'Hehir <oo.hehir@gmail.com>, linux-arm-kernel@lists.infradead.org, Marek Szyprowski <m.szyprowski@samsung.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-5.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
+	autolearn=no autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Add the trace calls as well as retrieving the number of clock cycles for
-the rockchip_vpu core.
 
-Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
----
- drivers/media/platform/verisilicon/hantro.h               | 3 +++
- drivers/media/platform/verisilicon/hantro_drv.c           | 9 +++++++++
- drivers/media/platform/verisilicon/rockchip_vpu981_regs.h | 1 +
- drivers/media/platform/verisilicon/rockchip_vpu_hw.c      | 2 ++
- 4 files changed, 15 insertions(+)
 
-diff --git a/drivers/media/platform/verisilicon/hantro.h b/drivers/media/platform/verisilicon/hantro.h
-index 0353de154a1e..3f7c54f81f3b 100644
---- a/drivers/media/platform/verisilicon/hantro.h
-+++ b/drivers/media/platform/verisilicon/hantro.h
-@@ -193,6 +193,8 @@ hantro_vdev_to_func(struct video_device *vdev)
-  *			shared with interrupt handlers.
-  * @variant:		Hardware variant-specific parameters.
-  * @watchdog_work:	Delayed work for hardware timeout handling.
-+ * @hw_cycles:		Hardware cycles used by the current job, if reported
-+ *			by the variant. Reset to 0 when a job is started.
-  */
- struct hantro_dev {
- 	struct v4l2_device v4l2_dev;
-@@ -213,6 +215,7 @@ struct hantro_dev {
- 	spinlock_t irqlock;
- 	const struct hantro_variant *variant;
- 	struct delayed_work watchdog_work;
-+	u32 hw_cycles;
- };
- 
- /**
-diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
-index 3734ea701145..45bf926c0480 100644
---- a/drivers/media/platform/verisilicon/hantro_drv.c
-+++ b/drivers/media/platform/verisilicon/hantro_drv.c
-@@ -25,6 +25,8 @@
- #include <media/videobuf2-core.h>
- #include <media/videobuf2-vmalloc.h>
- 
-+#include <trace/events/v4l2.h>
-+
- #include "hantro_v4l2.h"
- #include "hantro.h"
- #include "hantro_hw.h"
-@@ -106,6 +108,7 @@ void hantro_irq_done(struct hantro_dev *vpu,
- 	 * and will take care of finishing the job.
- 	 */
- 	if (cancel_delayed_work(&vpu->watchdog_work)) {
-+		trace_v4l2_hw_done(ctx->fh.tgid, ctx->fh.fd, vpu->hw_cycles);
- 		if (result == VB2_BUF_STATE_DONE && ctx->codec_ops->done)
- 			ctx->codec_ops->done(ctx);
- 		hantro_job_finish(ctx, result);
-@@ -122,6 +125,9 @@ void hantro_watchdog(struct work_struct *work)
- 	ctx = v4l2_m2m_get_curr_priv(vpu->m2m_dev);
- 	if (ctx) {
- 		vpu_err("frame processing timed out!\n");
-+
-+		trace_v4l2_hw_done(ctx->fh.tgid, ctx->fh.fd, vpu->hw_cycles);
-+
- 		if (ctx->codec_ops->reset)
- 			ctx->codec_ops->reset(ctx);
- 		hantro_job_finish(ctx, VB2_BUF_STATE_ERROR);
-@@ -159,6 +165,8 @@ void hantro_end_prepare_run(struct hantro_ctx *ctx)
- 	v4l2_ctrl_request_complete(src_buf->vb2_buf.req_obj.req,
- 				   &ctx->ctrl_handler);
- 
-+	trace_v4l2_hw_run(ctx->fh.tgid, ctx->fh.fd);
-+
- 	/* Kick the watchdog. */
- 	schedule_delayed_work(&ctx->dev->watchdog_work,
- 			      msecs_to_jiffies(2000));
-@@ -182,6 +190,7 @@ static void device_run(void *priv)
- 
- 	v4l2_m2m_buf_copy_metadata(src, dst);
- 
-+	vpu->hw_cycles = 0;
- 	ret = ctx->codec_ops->run(ctx);
- 	if (ret)
- 		hantro_job_finish(ctx, VB2_BUF_STATE_ERROR);
-diff --git a/drivers/media/platform/verisilicon/rockchip_vpu981_regs.h b/drivers/media/platform/verisilicon/rockchip_vpu981_regs.h
-index e4008da64f19..96b85470208b 100644
---- a/drivers/media/platform/verisilicon/rockchip_vpu981_regs.h
-+++ b/drivers/media/platform/verisilicon/rockchip_vpu981_regs.h
-@@ -451,6 +451,7 @@
- #define av1_pp0_dup_ver			AV1_DEC_REG(394, 16, 0xff)
- #define av1_pp0_dup_hor			AV1_DEC_REG(394, 24, 0xff)
- 
-+#define AV1_CYCLE_COUNT			(AV1_SWREG(63))
- #define AV1_TILE_OUT_LU			(AV1_SWREG(65))
- #define AV1_REFERENCE_Y(i)		(AV1_SWREG(67) + ((i) * 0x8))
- #define AV1_SEGMENTATION		(AV1_SWREG(81))
-diff --git a/drivers/media/platform/verisilicon/rockchip_vpu_hw.c b/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
-index 02673be9878e..04f26d6fded2 100644
---- a/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
-+++ b/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
-@@ -433,6 +433,8 @@ static irqreturn_t rk3588_vpu981_irq(int irq, void *dev_id)
- 	vdpu_write(vpu, 0, AV1_REG_INTERRUPT);
- 	vdpu_write(vpu, AV1_REG_CONFIG_DEC_CLK_GATE_E, AV1_REG_CONFIG);
- 
-+	vpu->hw_cycles = vdpu_read(vpu, AV1_CYCLE_COUNT);
-+
- 	hantro_irq_done(vpu, state);
- 
- 	return IRQ_HANDLED;
+On 11/24/26 16:52, Michal Wilczynski wrote:
+> This series enables the display subsystem on the StarFive JH7110.
+> 
+> Merging: everything except the DT patch goes through drm-misc:
+> 
+>   drm-misc                     1-16, 18
+>     drivers/gpu/drm/bridge/, include/drm/bridge/, the display bindings,
+>     and, as Conor asked, the StarFive SoC drivers and bindings (patches
+>     4-6, 14 and 15, which carry his Acked-by), since the display
+>     bindings and drivers belong together. Patches 1 and 2 are inno-hdmi
+>     fixes with Fixes: tags; they apply to Rockchip as much as to StarFive
+>     and are independent of the rest, so they can go on their own.
+> 
+>   Conor's tree                 17
+>     The DT patch is included for review and testing only. As Conor
+>     asked, I will resend it to him on its own once the rest is applied.
+> 
 
+Hi,
+Patches 1 and 2 are now in a separate series with a third inno hdmi
+fix, so they can be applied on their own merit [1].
+
+v9 will drop them.
+
+[1] - https://lore.kernel.org/all/20261127-inno-hdmi-ddc-of-node-v1-0-465622e1b7ad@samsung.com/
+
+Best regards,
 -- 
-2.56.1
-
+Michal Wilczynski <m.wilczynski@samsung.com>
 
 _______________________________________________
 Linux-rockchip mailing list
