@@ -2,76 +2,62 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CCF0C606A31E
-	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Nov 2026 13:59:25 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 16AC9606A327
+	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Nov 2026 14:55:40 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=dWPhjSJ7;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=jqEMdzdc
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=mJrXAqUl;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=L2HuUT3C
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:References:In-Reply-To:
-	Cc:To:From:Subject:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=HAIhi/+U3u1Avub3UjysWKWyrD0Wcrp0gc/Nps1bGMo=; b=dWPhjSJ7bGQUSEkiE2nMd3N1Z2
-	viYUqmYL4tNNig4cfLPaMQsCCsc2LCaBSQe1Xs4dG1H9vleVMUkYC2a5eXna5GtMiGHf9o6x0RIC5
-	rpvhuriFpUmfQZT2g6xyF+nBAw4dRiNGIKwMVBp+1J8Tt1HBpDi8Dji7QniIAj6ZHA0Yyg8vxwKK3
-	Dp3prteWBIB75d9RVpqh2q0dyWCyIp+FrJlTjzZTq50BcB8CMujjeMuj5ndA2jYpdT2gy7xQ5GUlH
-	8tnMfxyFeJQq45x0kngijrKN8XcmIV6T9Ct0cavqjcDdJ9JFWud5P4t4Y1gUoZzAgYIxgsy8f7Mum
-	5cyFIXnQ==;
+	bh=t/ReaN6Csng5LYuHLMATsjYY/zSaEaorlVVebn+CcmU=; b=mJrXAqUldCIT6KgeeBt99lajfz
+	5L2y3aGuQ5GKqjfrn0HB1T/rnUsa5m5oNEWoTY3cJI1eR7NvQEx4BMG2AT7uTkc6i9hd/uVRq5jiA
+	swsbQtIkAY285d6nV+/2E9EHvZbSDkyP1B9vNHilYgnGE61eYyzykq9pRcAWu74JuIo01CGoQTMVo
+	qATJ2VYW6TfAk7rMpPzAXvGX6l4qmabpDiUV+JDB7hMOXtFPZkzJoRMyt2VXXOKKGlQPycYKuXAUv
+	A6Cig3sni9KOj/mDRmJMwIRnPixjlAFz/fK/yqGRUokJ2k8EDrShgz2dDkvjzaVyTskXe8Hj4WVo0
+	hCuwuz6Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWwTy-0000000GK7T-1xY0;
-	Fri, 27 Nov 2026 13:59:22 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1xWxMO-0000000Gf3Z-1FSd;
+	Fri, 27 Nov 2026 14:55:36 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWwTw-0000000GK6h-3g8H;
-	Fri, 27 Nov 2026 13:59:21 +0000
+	id 1xWxMJ-0000000Gf1w-3gpx;
+	Fri, 27 Nov 2026 14:55:31 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 656E643B7D;
-	Fri, 27 Nov 2026 13:59:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7F4C81F00898;
-	Fri, 27 Nov 2026 13:59:15 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 5287C61949;
+	Fri, 27 Nov 2026 14:55:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D2E0D1F00897;
+	Fri, 27 Nov 2026 14:55:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1795787959;
-	bh=XCDRmkitv6anE5VKogqW8AH2LDMw98gqCBV3wPici/o=;
-	h=Subject:From:To:Cc:In-Reply-To:References:Date;
-	b=jqEMdzdcdUD9uZKKpUuXz4leJnRtw6K6Pph6ng77JUjfAdTRfV+fwQUN1tggPzH9i
-	 NQfXmd1EStzlvRkRsiu6/r/xsCK/eSmrSV8IidLe5Im8wL7Jc/FI/KMibzE9oUw9jW
-	 Ji/9JRAnDvoZcG4i+GyQ/V0zRlMg3swlawdEVBIArNwVZ5Nt/6TY53vaVLAly/p6Yy
-	 vRroxsNcyBBeKF5rMqPWl1n/R/U4xjy0+v9IBCOBFNDNQNpm0RjPZ16H2fggpHV+i+
-	 BvPx3YLXRb/YerZUCxxNkN4bS1515ZQEPIyc0IGfCdRYiMMrqbBvqRLUROOP2l1+Qe
-	 MTj/sXcoou16Q==
+	s=k20260515; t=1795791330;
+	bh=OCgPSJCtkLPChPlH/cIJkEpJiXlfTFmVvAKhTHQJgqY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=L2HuUT3CnX4MStpcPpQ63AT0KBYYiJG7/NYaFsRI3bhFagI04jjiFnLu/VYq8UTRi
+	 uoNN3e6RenM1WsnofSDUx01FAGpjUIKfbacGa5nXuagjz021FD5JhVR5ppYbsXHA4H
+	 VSAf7F/i2KkKx5JFJEZJCjQwb5qCELRZ962+zcu8us5WvREd8SQGdO7oJtX30REAM0
+	 P/bMz8A9SZG5Wvld8OEq/C9hV+hBm0vg9D/ZP3S8fbsIoUy1qpSnNqNcI6+Y5UfXUn
+	 MBL3uzcaQWs2o4ld71RN0uQaLGkjp/4HquuzyQycPlSVwI6i9WsDyb4rz1RAB53I6H
+	 ceU1F21fIlVCw==
+Date: Fri, 27 Nov 2026 14:55:25 +0000
+From: Lee Jones <lee@kernel.org>
+To: aiyengar1990@gmail.com
+Cc: Arnd Bergmann <arnd@arndb.de>, mfd@lists.linux.dev,
+	linux-kernel@vger.kernel.org, Mark Brown <broonie@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH v2] mfd: syscon: Give each syscon its own lockdep class
+Message-ID: <20261127145525.GV38590@joneslee-macbookpro.roam.internal>
+References: <20261122-syscon-lockdep-v2-1-868056a6a808@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Subject: Re: [PATCH v2] phy: rockchip: naneng-combphy: fix RK3588 SATA
- pipe_con1 register offset
-From: Manivannan Sadhasivam <mani@kernel.org>
-To: Ricardo Pardini <ricardo@pardini.net>
-Cc: Vinod Koul <vkoul@kernel.org>, 
- Neil Armstrong <neil.armstrong@linaro.org>, 
- Manivannan Sadhasivam <mani@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Lucas Tanure <tanure@linux.com>, linux-phy@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org, Yifeng Zhao <yifeng.zhao@rock-chips.com>, 
- stable@vger.kernel.org, Sebastian Reichel <sebastian.reichel@collabora.com>
-In-Reply-To: <20261115-rk3588-combphy-sata2-6g-v2-1-778e0e8011fe@pardini.net>
-References: <20261115-rk3588-combphy-sata2-6g-v2-1-778e0e8011fe@pardini.net>
-Date: Fri, 27 Nov 2026 19:29:11 +0530
-Message-Id: <179578795149.13164.15084635377833975036.b4-reply@b4>
-X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1828; i=mani@kernel.org;
- h=from:subject:message-id; bh=fei2KZ8hHxwdWll/UxDcgcWAumc1W/CM9dYMtiFW9PE=;
- b=owEBbQGS/pANAwAKAVWfEeb+kc71AcsmYgBrCYyy36JOz4vBxPy+mlD2r/Ndn68OJGR1ec6Jt
- EVD7aaKLtuJATMEAAEKAB0WIQRnpUMqgUjL2KRYJ5dVnxHm/pHO9QUCawmMsgAKCRBVnxHm/pHO
- 9TMHCACRD8CQM4Zuum6FbyZ4wvFcFX4htMB2HCjPoLWqCi8hvdKdTijsn4B0/LxbOnumZ8RMbOc
- iB6GpGWNMq0AdZ/k/Pgsp23ssTAyydiM0zEgmeA1nwsZ73NF3nGeO+zak63H2ScV24/e8BpeMjN
- s/TSAAK6xi3C3scr26C8kgaZ1cQP+bKO6uSXrbU3LyhF+o5JX5oSXpCBTCk2MRwwb96/38K48kK
- iJ4+p7SDMKnL0Luw36eME/rJlbmxvQkLdAEoS9ahl7fI4ytXlgvIvVszVlbLPtbs/9JqiK+kGWB
- YzYpWJV8l1W6B0qX7u8Lonpm7Ek8oAMTbloToFVBjUWIo5zm
-X-Developer-Key: i=mani@kernel.org; a=openpgp;
- fpr=C668AEC3C3188E4C611465E7488550E901166008
+Content-Disposition: inline
+In-Reply-To: <20261122-syscon-lockdep-v2-1-868056a6a808@gmail.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,57 +70,156 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-11.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 2026-11-15 16:48 +0100, Ricardo Pardini wrote:
-> From: Yifeng Zhao <yifeng.zhao@rock-chips.com>
-> 
-> On RK3588, the sata2 PHY speed is selected by sata2_phy_spdmode in
-> PHP_GRF_PHP_CON1[1:0] (offset 0x0004), with sata2_phy_rx_err in bit 2.
-> rk3588_combphy_grfcfgs has pipe_con1_for_sata at offset 0x0000 though,
-> so the value 0x2 (6.0 Gb/s, rx_err cleared) ends up in PHP_GRF_PHP_CON0
-> and CON1 is never written.
-> 
-> This leaves sata2 at its 1.5 Gb/s reset value, so the link only trains
-> at 1.5 Gb/s, even with a 6 Gb/s capable disk and no SControl speed
-> limit. sata0 and sata1 are not affected: their speed fields are in
-> PHP_GRF_PHP_CON0 and are set by pipe_con0_for_sata.
-> 
-> The misplaced write also lands in PHP_GRF_PHP_CON0[2:0], which are the
-> PCIe link reset grant bits, and turns on the one for pcie3x2 whenever a
-> combphy is put in SATA mode. No effect from that is known, but this
-> stops it too.
-> 
-> The register layout is described in the RK3588 TRM V1.0 Part1, section
-> 6.17 "PHP_GRF Register Description".
-> 
-> Tested with an mSATA SSD on sata2 (combphy2_psu). Before:
-> 
->   ata2: SATA link up 1.5 Gbps (SStatus 113 SControl 300)
->   Timing O_DIRECT disk reads: 374 MB in 3.01 seconds = 124.45 MB/sec
-> 
-> After:
-> 
->   ata2: SATA link up 6.0 Gbps (SStatus 133 SControl 300)
->   Timing O_DIRECT disk reads: 1266 MB in 3.00 seconds = 421.78 MB/sec
-> 
-> Fixes: a03c44277253 ("phy: rockchip: Add naneng combo phy support for RK3588")
-> Cc: stable@vger.kernel.org
-> Signed-off-by: Yifeng Zhao <yifeng.zhao@rock-chips.com>
-> [rewrite commit message]
-> Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-> Signed-off-by: Ricardo Pardini <ricardo@pardini.net>
+On Sun, 22 Nov 2026, Arun Iyengar via B4 Relay wrote:
 
-Reviewed-by: Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>
+> From: Arun Iyengar <aiyengar1990@gmail.com>
+> 
+> All syscon regmaps share one lockdep class, as regmap_init_mmio() uses a
+> static key per call site. Lockdep then mixes up unrelated syscons: on
+> RK3588 the clock-gated VO1 GRF calls clk_enable() under its regmap lock,
+> while the CRU's GRF gates take the SYS GRF regmap lock under enable_lock.
+> This is reported as a circular dependency and disables lockdep.
 
-- Mani
+This needs fixing in Regmap, not Syscon!
 
+Have you looked into __regmap_lockdep_wrapper()?
 
+Or perhaps 'struct regmap_config' could take an optional 'lock_key'?
+
+> Lock each syscon regmap with its own spinlock and lockdep class.
+> 
+> Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
+> ---
+> Tested on an Orange Pi 5 (RK3588S) with a 7.3 based kernel that has
+> out-of-tree DisplayPort patches, lockdep and KASAN on. Without the patch
+> lockdep reports the cycle during boot. With it /proc/lockdep shows one
+> syscon lock -> enable_lock and enable_lock -> another syscon lock, there
+> is no report and lockdep stays on. Build-tested on for-mfd-next.
+> 
+> Applies on top of "mfd: syscon: Put the clock after regmap_exit()":
+> https://lore.kernel.org/r/20261119-syscon-clk-uaf-v1-1-dc4a4c1be353@gmail.com
+> 
+> Developed with Claude (Anthropic), which wrote the code and the commit
+> message. I reviewed every change.
+> ---
+> Changes in v2:
+> - __acquires/__releases: name the argument, not a local (Sashiko).
+> - Link to v1: https://patch.msgid.link/20261120-syscon-lockdep-v1-1-aed779a004b8@gmail.com
+> ---
+>  drivers/mfd/syscon.c | 36 +++++++++++++++++++++++++++++++++++-
+>  1 file changed, 35 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/mfd/syscon.c b/drivers/mfd/syscon.c
+> index 3ff4e024542b..480ac178968a 100644
+> --- a/drivers/mfd/syscon.c
+> +++ b/drivers/mfd/syscon.c
+> @@ -13,6 +13,7 @@
+>  #include <linux/err.h>
+>  #include <linux/hwspinlock.h>
+>  #include <linux/list.h>
+> +#include <linux/lockdep.h>
+>  #include <linux/mutex.h>
+>  #include <linux/of.h>
+>  #include <linux/of_address.h>
+> @@ -20,6 +21,7 @@
+>  #include <linux/reset.h>
+>  #include <linux/mfd/syscon.h>
+>  #include <linux/slab.h>
+> +#include <linux/spinlock.h>
+>  
+>  static DEFINE_MUTEX(syscon_list_lock);
+>  static LIST_HEAD(syscon_list);
+> @@ -29,8 +31,29 @@ struct syscon {
+>  	struct regmap *regmap;
+>  	struct reset_control *reset;
+>  	struct list_head list;
+> +	spinlock_t lock;
+> +	unsigned long lock_flags;
+> +	struct lock_class_key lock_key;
+>  };
+>  
+> +static void syscon_lock(void *arg)
+> +__acquires(&((struct syscon *)arg)->lock)
+> +{
+> +	struct syscon *syscon = arg;
+> +	unsigned long flags;
+> +
+> +	spin_lock_irqsave(&syscon->lock, flags);
+> +	syscon->lock_flags = flags;
+> +}
+> +
+> +static void syscon_unlock(void *arg)
+> +__releases(&((struct syscon *)arg)->lock)
+> +{
+> +	struct syscon *syscon = arg;
+> +
+> +	spin_unlock_irqrestore(&syscon->lock, syscon->lock_flags);
+> +}
+> +
+>  static const struct regmap_config syscon_regmap_config = {
+>  	.reg_bits = 32,
+>  	.val_bits = 32,
+> @@ -114,12 +137,21 @@ static struct syscon *of_syscon_register(struct device_node *np, bool check_res)
+>  	if (!syscon_config.max_register)
+>  		syscon_config.max_register_is_0 = true;
+>  
+> +	lockdep_register_key(&syscon->lock_key);
+> +	spin_lock_init(&syscon->lock);
+> +	lockdep_set_class(&syscon->lock, &syscon->lock_key);
+> +	if (!syscon_config.use_hwlock) {
+> +		syscon_config.lock = syscon_lock;
+> +		syscon_config.unlock = syscon_unlock;
+> +		syscon_config.lock_arg = syscon;
+> +	}
+
+Duplicating regmap's internal spinlock callbacks here just to give each syscon
+its own 'lock_class_key' feels like working around regmap in the wrong layer.
+Could we either pass a per-syscon key into __regmap_init_mmio_clk() or add an
+optional 'lock_key' to 'struct regmap_config' so regmap core handles the lockdep
+class directly without open-coding syscon_lock() and syscon_unlock() here?
+
+> +
+>  	regmap = regmap_init_mmio(NULL, base, &syscon_config);
+>  	kfree(syscon_config.name);
+>  	if (IS_ERR(regmap)) {
+>  		pr_err("regmap init failed\n");
+>  		ret = PTR_ERR(regmap);
+> -		goto err_regmap;
+> +		goto err_key;
+>  	}
+>  
+>  	if (check_res) {
+> @@ -159,6 +191,8 @@ static struct syscon *of_syscon_register(struct device_node *np, bool check_res)
+>  	regmap_exit(regmap);
+>  	if (!IS_ERR(clk))
+>  		clk_put(clk);
+> +err_key:
+> +	lockdep_unregister_key(&syscon->lock_key);
+>  err_regmap:
+>  	iounmap(base);
+>  	return ERR_PTR(ret);
+> 
+> ---
+> base-commit: 1cb7268b6638c411fc32f373e965eb8ba9e9b2b4
+> change-id: 20261115-syscon-lockdep-d133fb58c2be
+> prerequisite-message-id: <20261119-syscon-clk-uaf-v1-1-dc4a4c1be353@gmail.com>
+> prerequisite-patch-id: 7cf33abeabb3eeaf1ba8ac6c461726fca87702cd
+> 
+> Best regards,
+> --  
+> Arun Iyengar <aiyengar1990@gmail.com>
+> 
+> 
+
+-- 
+Lee Jones
 
 _______________________________________________
 Linux-rockchip mailing list
