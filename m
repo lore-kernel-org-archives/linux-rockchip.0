@@ -2,87 +2,63 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5F016606A31C
-	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Nov 2026 10:52:33 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D5C78606A31C
+	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Nov 2026 11:11:03 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=jP6ZSeXU;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=ek6yrIXA
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=wD/5j3Hk;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=zohomail header.b=fnizvGli
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:Cc:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=KLiG7P/oAE4y9r9eqMUXufvSX4i0/FJTOX6ME2YtoyQ=; b=jP6ZSeXUUjfYFvUVDZ9kvICLuE
-	fOLjnaothVw4jj4JjINTzlgC2E88Y3V0qzgErAZ5eUCWFsdP3kL+FXd16sBi90Qb0OI0ZpEmPgoSy
-	3bie4oOWpoaW9+ksd6cM+GuueWTxbAhOV2BnLUP/VQhOGLqN3IMMwMTuFXRoIgioneQLLpRiOPIbm
-	cBj0+W3vUXqgkBconEyd2u8ODAAX/+3Y6ou+/FcFJhkDx6RwgIYdRa7AJfS5k7vZS35Ex/ZPlnXFP
-	zp2MBu0Xdce7Ppq24BvjHExf0Itb2EKeDowgRasa+kp9cF1VVjkfs0Y8SS4CyTHeJ5N9IlBdZBHph
-	vX5vFIxA==;
+	bh=EqpgKsUD3X8iRNocyQwJK/R4g3gTmhB4f5hD2VzQtLg=; b=wD/5j3HkTsJXQwGG2/zY6II1sO
+	oPZItjqOXaQDs6EkkCvrGbJ6/X9LEbCbmKKE8Nxr+QBmxKPeYtJ1DGEB5BHBXRl7UE7ZjNLy8s7jB
+	sQRosPaY3g7N/+FyeeproEsC3rSeDckVk1dk48vgQ3FPLqlJC2YcYk1ZHzH9NO/AVvz6nETX5MYHH
+	/p+XkkdHmatrr8Av1+5vJa0GDCyDiyQMcLX1HYCKzHqrjRtKOyQPYZ+3CCxCv8m2acaNeO9EBHcPt
+	2Zkh6OaW9Of0JSrutG5F+PfbJmoapj4ijS2o/djl+R47Yeh/u5/qaSC2ABIkCvZVjRs7Hv5cqum7p
+	cNpRIi0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWtZ7-0000000Fh0D-2Kz8;
-	Fri, 27 Nov 2026 10:52:29 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1xWtqz-0000000FkV2-2Imx;
+	Fri, 27 Nov 2026 11:10:57 +0000
+Received: from sender5-op-o11.zoho.com ([165.173.182.11])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWtYZ-0000000FgTF-0OLQ;
-	Fri, 27 Nov 2026 10:51:58 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1795776708;
-	bh=bLT7/p31yej9A0BHu5GC1yHX78QpVwmRd/Nbhy5mNqM=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=ek6yrIXA0e4f6+bExFdDCycDhUaQfsFcpY0hcd/dRMuVDEfhD9hYdYs6pdZLeCzGY
-	 rd+HL694qVdPJEw3R7pCKL2ckbdRr3zyIDDPDuuOsNE/Lp4rak4N7EALAnyrno3Hni
-	 +04nEjEH2K7H8+PHzoP7VIr0Ieg8/2Wes6tT9v6I5G6wmxBXXCQDzTDKeOlpHeB+RI
-	 XnLFjXPr8RJGwlYIyvhr/vwddxvu68pPou2+lvUP8SacrItNdBViKwwwc1IrKEyMgI
-	 qqHcnoY8Cl9U+qEjKJg2IMN2HbXbzCarW2NU0qEDkNE9E1rGt5LrnEMS/2CFRqfaqI
-	 vSCTKflRrQM+Q==
-Received: from jupiter.universe (unknown [100.64.1.62])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519)
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id B47EC17E0CA0;
-	Fri, 27 Nov 2026 11:51:48 +0100 (CET)
-Received: by jupiter.universe (Postfix, from userid 1000)
-	id 1821D48004C; Fri, 27 Nov 2026 11:51:48 +0100 (CET)
+	id 1xWtqv-0000000FkUJ-2Op2;
+	Fri, 27 Nov 2026 11:10:56 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1795777829; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=a8kmxRhuP5lxuxlojNXAIhQ1L+75cRsEbByPLn3ftBHMUj9oG9mTx7PArvI5a+ZS6iWDmDyu4JpuvZkCC6p54iVlkOLudBQAYIPpQdCQGpv75aE7/N2eiAV2OBpAA9mOVCCxGxfxQaHaAbw1hyNpfqwj2zjKpoDxnatTON/cHYw=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1795777829; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=+37UfqKqX+TJbR+xq7UVWHeaqVYwEZPU+usFmpTGwuo=; 
+	b=PWuZco1L4rVObSyiC+jWQeRLyLZONNIywFAOSO76as126ZRJ/eE+MqdPExL73bPaVbSOQyLRCdZVsvEudybloNDqRCpowUMVSihqQkv9KTDVzOG9UQgpqgZ8jdCBhQ+y/vsH147LXvWOnZrYW2qfsN9NKw0fX1+eUr8vVaNUW4A=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
+	dmarc=pass header.from=<sebastian.reichel@collabora.com>
+DKIM-Signature: a=rsa-sha256; b=fnizvGliRm6udOM5RoPw6WuI/I4rXFx18OTEGxxtyOWVCNDKJYkD/l3zc4wfinBMONiA+k+XK6c6sg5vvgsto4mXqA4N6vbC6cTzt1te0TdSrfUyJX6LLVlTZwNEepk0cDFMw4x5G5d1CdgNv50MdxCgpKkF16VZJ9JN/2xyEOQ=; c=relaxed/relaxed; s=zohomail; d=collabora.com; v=1; bh=+37UfqKqX+TJbR+xq7UVWHeaqVYwEZPU+usFmpTGwuo=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
+Received: by smtp.zohomail.com with SMTPS id 1795777826148667.3884646870919;
+	Fri, 27 Nov 2026 03:10:26 -0800 (PST)
+Received: by venus (Postfix, from userid 1000)
+	id 94313180918; Fri, 27 Nov 2026 12:10:21 +0100 (CET)
+Date: Fri, 27 Nov 2026 12:10:21 +0100
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Fri, 27 Nov 2026 11:51:48 +0100
-Subject: [PATCH v2 11/11] arm64: dts: rockchip: Add USB-C DP AltMode for
- RK3588 Jaguar
+To: Chaoyi Chen <kernel@airkyi.com>
+Subject: Re: [PATCH v3 0/3] drm/rockchip: vop2: Add 8K support for RK3588 vop2
+Message-ID: <awljo3X3KWpSovjx@venus>
+References: <20261116084555.1061-1-kernel@airkyi.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261127-rockchip-usb-c-dp-altmode-v2-11-77ee78869307@collabora.com>
-References: <20261127-rockchip-usb-c-dp-altmode-v2-0-77ee78869307@collabora.com>
-In-Reply-To: <20261127-rockchip-usb-c-dp-altmode-v2-0-77ee78869307@collabora.com>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Cunhao Lu <1579567540@qq.com>, Chris Morgan <macromorgan@hotmail.com>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- kernel@collabora.com, Sebastian Reichel <sebastian.reichel@collabora.com>
-X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=6620;
- i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=bLT7/p31yej9A0BHu5GC1yHX78QpVwmRd/Nbhy5mNqM=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGsJYMMJkVvjMfEuH8ZfMm8jbU72lJctpKqU2
- EFWGamhQMIMPokCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJrCWDDAAoJENju1/PI
- O/qamaEP/0K6F8xXgDDvsTHjpdykIu7pn0+oOaJFYIl8v8aYy5jUines4Mfj9jaGJ8N5qBaZ5ch
- 650RaBDuBVMFC9FTHMaq6piGBQu7jkglI0OHUTMYg5SMvreMgL0p3T+jMo1bWehWV0br/YFaoHh
- HUsAJmrCOaM0GdzS2YWMUdguKIWOkK65Mx+KL41mH7Bl6JjUuvFQPvUvIcicj710EY+w51g9kg/
- s/7SI2SqpwqW5NoUB6szM+9iIffdVNd9lq5v0aaO1vsTG//eYEuRRGiJ73Omq6hrxLWL3DxFeHp
- L0Oodbzo/ES1tCi+oJiYJbkqYrugzH31rV8YFVt+pHxJg+LouTZKm/hyhTc1jiYWWExR8QxAwP2
- HqYp50CD/8nKfcRp2TyUStIckMniS2vDppAJw7Mrw8+iPiivuPyVKNB9/mg/65R802vWfIUa7tR
- b2xmdDMptVPXJryTtv6EIIoQMSKRfXIVCeBB+km3WMyi1YKwV6zQzJpNamZQbxUzwonlpHFmu4f
- 5jaUu2Iw/89Fg/vGn8xYMrsXjCHOLw4vJiiXPKJ2ksY7wtNnF2W+paaugRVaaUpj726+QOKAoOf
- 0cpU1vAS8oCX7DFYo/5J+qhsgGQqhW60Kmx+SG5OITuPq79TnNbMa5UZUrN9Tw+6oG61lHzsIOO
- jU9Q5EDW6MRkxMbeKQTsx2w==
-X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
- fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
+In-Reply-To: <20261116084555.1061-1-kernel@airkyi.com>
+X-Zoho-Virus-Status: 1
+X-Zoho-AV-Stamp: zmail-av-0.7.7.1.5.4/294.473.96
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261127_025155_397369_2649155F 
-X-CRM114-Status: GOOD (  11.72  )
+X-CRM114-CacheID: sfid-20261127_031053_643394_8028D240 
+X-CRM114-Status: GOOD (  25.80  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -93,341 +69,147 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Simona Vetter <simona@ffwll.ch>, Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, linux-kernel@vger.kernel.org, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Andy Yan <andyshrk@163.com>, Maxime Ripard <mripard@kernel.org>, Sandy Huang <hjc@rock-chips.com>, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, Thomas Zimmermann <tzimmermann@suse.de>, Chaoyi Chen <chaoyi.chen@rock-chips.com>, David Airlie <airlied@gmail.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: multipart/mixed; boundary="===============8402252786062865565=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Properly describe the USB-C setup incl. DP AltMode support, which also
-fixes the USBDP PHY ports description for the RK3588 Jaguar, so that it
-follows the documented ABI.
 
-This also adds the missing mode-switch property to the usbdp PHYs.
+--===============8402252786062865565==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="xz5roaz37kmfattc"
+Content-Disposition: inline
 
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
----
- arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts | 182 ++++++++++++++++++++++---
- 1 file changed, 160 insertions(+), 22 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts b/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts
-index 0446834e84d5..f79b2281ff4c 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts
-@@ -247,6 +247,38 @@ &cpu_l3 {
- 	cpu-supply = <&vdd_cpu_lit_s0>;
- };
- 
-+&dp0 {
-+	status = "okay";
-+};
-+
-+&dp0_in {
-+	dp0_in_vp1: endpoint {
-+		remote-endpoint = <&vp1_out_dp0>;
-+	};
-+};
-+
-+&dp0_out {
-+	dp0_out_con: endpoint {
-+		remote-endpoint = <&usbdp_phy0_dp_in>;
-+	};
-+};
-+
-+&dp1 {
-+	status = "okay";
-+};
-+
-+&dp1_in {
-+	dp1_in_vp2: endpoint {
-+		remote-endpoint = <&vp2_out_dp1>;
-+	};
-+};
-+
-+&dp1_out {
-+	dp1_out_con: endpoint {
-+		remote-endpoint = <&usbdp_phy1_dp_in>;
-+	};
-+};
-+
- &gmac0 {
- 	clock_in_out = "output";
- 	phy-handle = <&rgmii_phy>;
-@@ -367,6 +399,13 @@ connector {
- 				<PDO_FIXED(5000, 1500, PDO_FIXED_DATA_SWAP | PDO_FIXED_USB_COMM)>;
- 			vbus-supply = <&vcc_5v0_usb_c1>;
- 
-+			altmodes {
-+				displayport {
-+					svid = /bits/ 16 <0xff01>;
-+					vdo = <0x00001c46>;
-+				};
-+			};
-+
- 			ports {
- 				#address-cells = <1>;
- 				#size-cells = <0>;
-@@ -375,7 +414,7 @@ port@0 {
- 					reg = <0>;
- 
- 					usbc0_hs: endpoint {
--						remote-endpoint = <&usb_host0_xhci_drd_sw>;
-+						remote-endpoint = <&usb_host0_xhci_hs>;
- 					};
- 				};
- 
-@@ -383,7 +422,7 @@ port@1 {
- 					reg = <1>;
- 
- 					usbc0_ss: endpoint {
--						remote-endpoint = <&usbdp_phy0_typec_ss>;
-+						remote-endpoint = <&usbdp_phy0_ss_out>;
- 					};
- 				};
- 
-@@ -391,7 +430,7 @@ port@2 {
- 					reg = <2>;
- 
- 					usbc0_sbu: endpoint {
--						remote-endpoint = <&usbdp_phy0_typec_sbu>;
-+						remote-endpoint = <&usbdp_phy0_dp_out>;
- 					};
- 				};
- 			};
-@@ -480,6 +519,13 @@ connector {
- 				<PDO_FIXED(5000, 1500, PDO_FIXED_DATA_SWAP | PDO_FIXED_USB_COMM)>;
- 			vbus-supply = <&vcc_5v0_usb_c2>;
- 
-+			altmodes {
-+				displayport {
-+					svid = /bits/ 16 <0xff01>;
-+					vdo = <0x00001c46>;
-+				};
-+			};
-+
- 			ports {
- 				#address-cells = <1>;
- 				#size-cells = <0>;
-@@ -488,7 +534,7 @@ port@0 {
- 					reg = <0>;
- 
- 					usbc1_hs: endpoint {
--						remote-endpoint = <&usb_host1_xhci_drd_sw>;
-+						remote-endpoint = <&usb_host1_xhci_hs>;
- 					};
- 				};
- 
-@@ -496,7 +542,7 @@ port@1 {
- 					reg = <1>;
- 
- 					usbc1_ss: endpoint {
--						remote-endpoint = <&usbdp_phy1_typec_ss>;
-+						remote-endpoint = <&usbdp_phy1_ss_out>;
- 					};
- 				};
- 
-@@ -504,7 +550,7 @@ port@2 {
- 					reg = <2>;
- 
- 					usbc1_sbu: endpoint {
--						remote-endpoint = <&usbdp_phy1_typec_sbu>;
-+						remote-endpoint = <&usbdp_phy1_dp_out>;
- 					};
- 				};
- 			};
-@@ -1102,6 +1148,7 @@ &uart7 {
- 
- /* Type-C on P11 */
- &usbdp_phy0 {
-+	mode-switch;
- 	orientation-switch;
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&typec0_sbu_dc_pins>;
-@@ -1109,24 +1156,47 @@ &usbdp_phy0 {
- 	sbu2-dc-gpios = <&gpio1 RK_PC3 GPIO_ACTIVE_HIGH>; /* Q7_USB_C0_SBU2_DC */
- 	status = "okay";
- 
--	port {
-+	ports {
- 		#address-cells = <1>;
- 		#size-cells = <0>;
- 
--		usbdp_phy0_typec_ss: endpoint@0 {
-+		port@0 {
- 			reg = <0>;
--			remote-endpoint = <&usbc0_ss>;
-+
-+			usbdp_phy0_ss_out: endpoint {
-+				remote-endpoint = <&usbc0_ss>;
-+			};
- 		};
- 
--		usbdp_phy0_typec_sbu: endpoint@1 {
-+		port@1 {
- 			reg = <1>;
--			remote-endpoint = <&usbc0_sbu>;
-+
-+			usbdp_phy0_ss_in: endpoint {
-+				remote-endpoint = <&usb_host0_xhci_ss>;
-+			};
-+		};
-+
-+		port@2 {
-+			reg = <2>;
-+
-+			usbdp_phy0_dp_in: endpoint {
-+				remote-endpoint = <&dp0_out_con>;
-+			};
-+		};
-+
-+		port@3 {
-+			reg = <3>;
-+
-+			usbdp_phy0_dp_out: endpoint {
-+				remote-endpoint = <&usbc0_sbu>;
-+			};
- 		};
- 	};
- };
- 
- /* Type-C on P12 */
- &usbdp_phy1 {
-+	mode-switch;
- 	orientation-switch;
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&typec1_sbu_dc_pins>;
-@@ -1134,18 +1204,40 @@ &usbdp_phy1 {
- 	sbu2-dc-gpios = <&gpio1 RK_PB5 GPIO_ACTIVE_HIGH>; /* Q7_USB_C1_SBU2_DC */
- 	status = "okay";
- 
--	port {
-+	ports {
- 		#address-cells = <1>;
- 		#size-cells = <0>;
- 
--		usbdp_phy1_typec_ss: endpoint@0 {
-+		port@0 {
- 			reg = <0>;
--			remote-endpoint = <&usbc1_ss>;
-+
-+			usbdp_phy1_ss_out: endpoint {
-+				remote-endpoint = <&usbc1_ss>;
-+			};
- 		};
- 
--		usbdp_phy1_typec_sbu: endpoint@1 {
-+		port@1 {
- 			reg = <1>;
--			remote-endpoint = <&usbc1_sbu>;
-+
-+			usbdp_phy1_ss_in: endpoint {
-+				remote-endpoint = <&usb_host1_xhci_ss>;
-+			};
-+		};
-+
-+		port@2 {
-+			reg = <2>;
-+
-+			usbdp_phy1_dp_in: endpoint {
-+				remote-endpoint = <&dp1_out_con>;
-+			};
-+		};
-+
-+		port@3 {
-+			reg = <3>;
-+
-+			usbdp_phy1_dp_out: endpoint {
-+				remote-endpoint = <&usbc1_sbu>;
-+			};
- 		};
- 	};
- };
-@@ -1165,9 +1257,25 @@ &usb_host0_xhci {
- 	usb-role-switch;
- 	status = "okay";
- 
--	port {
--		usb_host0_xhci_drd_sw: endpoint {
--			remote-endpoint = <&usbc0_hs>;
-+	ports {
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+
-+		port@0 {
-+			reg = <0>;
-+
-+			usb_host0_xhci_hs: endpoint {
-+				remote-endpoint = <&usbc0_hs>;
-+			};
-+		};
-+
-+
-+		port@1 {
-+			reg = <1>;
-+
-+			usb_host0_xhci_ss: endpoint {
-+				remote-endpoint = <&usbdp_phy0_ss_in>;
-+			};
- 		};
- 	};
- };
-@@ -1177,9 +1285,25 @@ &usb_host1_xhci {
- 	usb-role-switch;
- 	status = "okay";
- 
--	port {
--		usb_host1_xhci_drd_sw: endpoint {
--			remote-endpoint = <&usbc1_hs>;
-+	ports {
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+
-+		port@0 {
-+			reg = <0>;
-+
-+			usb_host1_xhci_hs: endpoint {
-+				remote-endpoint = <&usbc1_hs>;
-+			};
-+		};
-+
-+
-+		port@1 {
-+			reg = <1>;
-+
-+			usb_host1_xhci_ss: endpoint {
-+				remote-endpoint = <&usbdp_phy1_ss_in>;
-+			};
- 		};
- 	};
- };
-@@ -1208,3 +1332,17 @@ vp0_out_hdmi0: endpoint@ROCKCHIP_VOP2_EP_HDMI0 {
- 		remote-endpoint = <&hdmi0_in_vp0>;
- 	};
- };
-+
-+&vp1 {
-+	vp1_out_dp0: endpoint@a {
-+		reg = <ROCKCHIP_VOP2_EP_DP0>;
-+		remote-endpoint = <&dp0_in_vp1>;
-+	};
-+};
-+
-+&vp2 {
-+	vp2_out_dp1: endpoint@b {
-+		reg = <ROCKCHIP_VOP2_EP_DP1>;
-+		remote-endpoint = <&dp1_in_vp2>;
-+	};
-+};
+--xz5roaz37kmfattc
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v3 0/3] drm/rockchip: vop2: Add 8K support for RK3588 vop2
+MIME-Version: 1.0
 
--- 
-2.53.0
+Hi,
 
+On Mon, Nov 16, 2026 at 04:45:52PM +0800, Chaoyi Chen wrote:
+> From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+> This series adds support for 8K output on the RK3588 VOP2. HDMI is not
+> ready yet, but I believe many people might be interested in this.
+>=20
+> 8K output on the RK3588 is done by splicing two VPs together, with VP0
+> outputting the left half of the screen and VP1 the right half. In
+> addition, 8K planes have to be split in half as well to stay within the
+> width limit of a single plane. Similarly, there are a few post-processing
+> details that need to be handled.
+>=20
+> Note that splice mode is not only usable for 8K output. This means the
+> mode can be tested at 4K and even lower resolutions, by simply changing
+> this one line:
+>=20
+> -#define VOP2_MAX_VP_OUTPUT_WIDTH    4096
+> +#define VOP2_MAX_VP_OUTPUT_WIDTH    (3840 / 2) /* for 4K test */
+>=20
+> And yes, this has been tested at 4K over HDMI on the RK3588 EVB1 :)
+
+I've done this test for 4K over USB-C DP AltMode (using my pending
+patches to get that working in the first place) on the RK3588 EVB1
+(I disabled the HDMI interfaces and routed USB-C to VP0) and it
+works:
+
+Tested-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+
+Greetings,
+
+-- Sebastian
+
+>=20
+> Changes in v3:
+> - Link to v2: https://lore.kernel.org/all/20261029081429.862-1-kernel@air=
+kyi.com/
+> - Cast the result of drm_format_info_min_pitc() to u32 to avoid 64bit div=
+ision.
+> - Rework the left-window splice check to avoid pulling an unrelated CRTC
+>   into non-modeset commits, and use the new CRTC mode instead of the
+>   stale splice_mode flag(Sashiko).
+> - Reserve the splice partner window when the partner VP has no CRTC, so
+>   it cannot be assigned as another VP's primary plane(Sashiko).
+> - Only set the partner VP's CFG_DONE while the new state is in splice
+>   mode; do not force it when leaving splice mode(Sashiko).
+> - Program the main and splice video ports in a single layer-mixer pass,
+>   and apply the YUV overlay mode to both VPs(Sashiko).
+>=20
+> Changes in v2:
+> - Link to v1: https://lore.kernel.org/all/20261022071737.508-1-kernel@air=
+kyi.com/
+> - Missing removal of the replaced line(Heiko).
+> - vop2_win_get_pstate(): use the left window's state only in splice mode(=
+Sashiko).
+> - Reject splice windows already in use by another CRTC(Sashiko).
+> - Check the splice partner via drm_atomic_get_crtc_state() instead of the=
+ runtime flag and unlocked read(Sashiko).
+> - Set splice_mode_right/left_vp before the error paths of vop2_crtc_atomi=
+c_enable()(Sashiko).
+> - Validate each split half against the min width 4 and max input width; a=
+lign NV20/NV30 like NV15(Sashiko).
+> - Latch overlay registers at the left VP's vsync; don't wait for the part=
+ner's own cfg-done(Sashiko).
+> - Program the color key on the window actually being updated(Sashiko).
+>=20
+> Cc: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+> Cc: Sebastian Reichel <sebastian.reichel@collabora.com>
+>=20
+> Chaoyi Chen (3):
+>   drm/rockchip: vop2: Use drm_format_info_min_pitch() for plane offsets
+>   drm/rockchip: vop2: Skip UV plane setup for packed YUV formats
+>   drm/rockchip: vop2: Support 8K output by splicing two video ports
+>=20
+>  drivers/gpu/drm/rockchip/rockchip_drm_drv.h  |   5 +
+>  drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 579 +++++++++++++++++--
+>  drivers/gpu/drm/rockchip/rockchip_drm_vop2.h |  66 ++-
+>  drivers/gpu/drm/rockchip/rockchip_vop2_reg.c | 370 ++++++++----
+>  4 files changed, 857 insertions(+), 163 deletions(-)
+>=20
+> --=20
+> 2.53.0
+>=20
+
+--xz5roaz37kmfattc
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmsJZRgACgkQ2O7X88g7
++pqU3Q//R1kUfPIEKaFvN9LmvJDBrOItlO/k7Nwle8vs14eDYVet8bkNUiE5T2mJ
+PLBSzoc0w9KM1+wGCNzlysIH89dh8o8RZzQPpg+6v+D4TRijTLAuhfA11r6SfVkm
+wtcag4MCwgcMTcVxf7V1bT34sum/Kxnpg4rPw7GpAb3CD0Mu+c0BbWig+ndNp7QS
+iXSi9PECwLWP5o2YSY/GdV6dXy2B74QofXUJmw9ve31fNyNQDI8mj4AyObHgSPbV
+Dk0p9SGCij1ImqyESt8jeMM2sgAspQbKJs2nKxvY6C2L1yzK9zuPbIaooPwTKNfl
+IyJ+c+6rcMWltQRTFkWaNiiWIDPkUxDki2qit3rju8FSxDe5yM3jZTVbTDOYECVA
+e2ysSTjqk9EPMPcpE3UbTJ4w4TVNErIz6vrCmjTpJ67da4kV5iTiBpX1QRRT6poj
+wrWR45O+HzASyAdGbeAjDoibZnrGMBSXSXQl+2VPR2RV6irK8faUn+owW/UvHnxr
+OUinP9Ek67fNCpr7y15V+hBUihSI79IOBK3IR5XAt3l2gFTN39NMiif9UZkX9lDZ
+M6SoADc/lYTfmbScC4QpPQxuMoYuV4IEhcUEC3Jnyp/BPmJ36dY3lll4xac1SESA
+AtW3pXF1WiPxGoY2Ndb5iJ0tn18hzXC10qY56vp6esS/et7zcQg=
+=cg/c
+-----END PGP SIGNATURE-----
+
+--xz5roaz37kmfattc--
+
+
+--===============8402252786062865565==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============8402252786062865565==--
+
