@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 801A3606A31C
-	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Nov 2026 10:41:19 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0BB1D606A321
+	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Nov 2026 10:41:23 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=x2DXDyFY;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=flipper.net header.i=@flipper.net header.a=rsa-sha256 header.s=google header.b=IwpDUpX1
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=HJYa3UFD;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=flipper.net header.i=@flipper.net header.a=rsa-sha256 header.s=google header.b=tF8pX2y7
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,75 +14,75 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=8/LqioTj4hghRwftojRKX5XkwvG9XYgWb9uzS56uwb8=; b=x2DXDyFYP0Pvnq6LWiWFhRtkrH
-	52xERFRa1JjVOSkCCp5P9eSvEBe64tW4JB9PkQpoUXymFSpMgo/ZXh7FO3Qj2TKlo3GvKUign3v8r
-	Baz+QiGlsCd3tYtopR0JHQckFJeUSfa5tlPV8BU9HJvZyUkqroxynhR7ncXHeDYCZKwwiI8if3won
-	EAjRApf0lblIbTSciHi8bwE1MWpVUNxwQBAYw9re5ds+p9qmR9sOgE11gJPA7nCezer8r7IKAIo6n
-	WoNOlkrFq8FIYf6d8VjWRLLB2x47786nHatAnH0w8HeVHOl4gqumCAKv3ROe541km0ayUF+m/gycm
-	Gi0cxphQ==;
+	bh=7a5FLqhl9FxSLg/BrEfqM6keHY7yFxbVjcUeF1kuKUA=; b=HJYa3UFDzIUrkVMJxl1juONznS
+	2Oce4anPylqMfYjRqDPtemW0FLk9/thn5VORbrEXGa783E9amuoXHjtlpi6yI+SPEbbrpMOmNWdcE
+	znR1BY5uyiI2uzOu5AdtJ3bfAWy9RaiayoOmWwBT0RNIHH0z6XS+jJfi0a2E0Oiv6BopSvRVtlzFf
+	w8VffXBTc4CDglXsB8qhR/x8QMrKEmN3JdTmQeVyj/fQJi/ghqKaC2242tgiMnlvlBU+3Jc7YEh3H
+	c33Xv0tjXMYIJzPlB3G20rBEV/rav/R6Djm5rdZsDbi3FItLwgpWA1xQbWUYBmn7FUutPZ9ZCTDsj
+	r9t1oKvQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWtOF-0000000Fdmt-1k5v;
-	Fri, 27 Nov 2026 10:41:15 +0000
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+	id 1xWtOI-0000000FdtD-2dSt;
+	Fri, 27 Nov 2026 10:41:18 +0000
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWtO7-0000000Fdc2-33K9
+	id 1xWtOA-0000000FdeA-2pqG
 	for linux-rockchip@lists.infradead.org;
-	Fri, 27 Nov 2026 10:41:09 +0000
-Received: by mail-wr1-x433.google.com with SMTP id ffacd0b85a97d-4a357b1c649so4575199f8f.3
-        for <linux-rockchip@lists.infradead.org>; Fri, 27 Nov 2026 02:41:07 -0800 (PST)
+	Fri, 27 Nov 2026 10:41:16 +0000
+Received: by mail-wr1-x435.google.com with SMTP id ffacd0b85a97d-4ac109a8a12so4697449f8f.3
+        for <linux-rockchip@lists.infradead.org>; Fri, 27 Nov 2026 02:41:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=flipper.net; s=google; t=1795776066; x=1796380866; darn=lists.infradead.org;
+        d=flipper.net; s=google; t=1795776069; x=1796380869; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=v4a+pdVtUe1EJJdubOOaKfns4F8nxWcG7WQWMntGcGE=;
-        b=IwpDUpX1fnE5WBFd8lUDl8E/s+gY2WWASaNzdQmTzQcaJe/S7TiZmhpbBpoGtkRvcF
-         sKREUOlv+88FseJTV/fEPT9En9rQskEb/5D2lVBBp7swb5mOx2mdxhFVIksmpPbyfZqz
-         LX6GqPPUvfLvxpq8m6LHYXyChCvmVdr1VBpdv4jXYnHEDx/MOt9XMm/vXbAjO0B5vpqO
-         V6aU7ez7xIFa4dDQzp8Qh05MsTRQyRtP2dOna8DfrT1j1eKJOX6gxYgZONTOxrx5t5wr
-         Q/ORkwvlTDk2i2dmRY8hn1jST5IDzaRbe1W9sJEp+rn7atv7mVEEShB3fJ1qM7gJr9QC
-         SQEw==
+        bh=x6CnKCcRFlmFGMoJSdid1DPb05KDzJFKcZoIQ+AcWA0=;
+        b=tF8pX2y7bFk31/OgFtgVR77GYOuWm1KivizkFZVoabWskWEiQCcwlR2LwCXCY1OU7j
+         fJlfxpgD8tH4rhY4/lddg1WPJuxFenwoF9BF6cg4cnjzRZCHNQw3QZbb6kAnNarqms0x
+         Fy+MB2LkXipRH4LPC5mD2HAfE57yejH1mfQU7JHyQkPzTEZF67+tAkcezvBO2wYykgf/
+         Wh+28g+kk9jLehAcQcn/aiSCGvAcLjmq1hBtxWCdENExKdfqL3nySx/JBqKhjlTBEhJZ
+         wMPocLXFUHI0OpLKMp0MXOP30ksBwM3fV8Fq2SSwdt4PoF7t40DoyIkRIREeCyBmHgbo
+         nMvg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1795776066; x=1796380866;
+        d=1e100.net; s=20260707; t=1795776069; x=1796380869;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=v4a+pdVtUe1EJJdubOOaKfns4F8nxWcG7WQWMntGcGE=;
-        b=q5ltoD/i4LGaxILgkIk6tr+m5GItHUBqdyGQf9Nuy/S0Ahm6L1LTM2mNnVr3N+f4A4
-         EwDTB0LkXNCUs+8UnQzEFTz6/yCdhpGVOynSpMmyXepTKy+kdTR+rhu7+lnd7ZO7juAT
-         2jagO9NI+SOm2JFsyzZ9bku7EU1TOpeTeax/5bZf/0U04llw9z1dtc0oSRn2OVnwGnpa
-         2NdmT2bnE+Gep+BEBoxMw0r84atxcDo8K2/oh25eJpFpBlsBoZbjKWwNwNuDfSi03CpU
-         AUjf95H2unuuhw+Z97TgJOJhSKfSJnm/0IiaAA7X7KpQZ27DqnVszRgCW4r3Rjnik3A5
-         oXLg==
-X-Forwarded-Encrypted: i=1; AL+hErFaM5/B9Zo+IKQdLH9KhefWWhHiAaylKftqXdlJqImA7Pgj1mPkPjkWZmP9cX/aECTSQsPiVht7zktqoyizzg==@lists.infradead.org
-X-Gm-Message-State: APuU4Z9qJUNII8QLnbVFQ/4rNxy6PqR7XoL4WVj4GKiZN2pJaM29Ezmo
-	kzr8fjQ/xt9BNFp05n3IcY3j+t+OZsTfP7DKhd1C7+Ns3m/wjTjprQdcT6rV6XeZikmu09sMcs/
-	6oYoWJgQ=
-X-Gm-Gg: AZFdTZeCwFu/GarEu/Mrz0G2tM9cOFuIYdD5aA39Zqn30C5YARlg+tTt1MAwqTL59Rw
-	cN1hcPWBprP8Fz4mx+iG109GFbYZ/+BAGz7ENrX+bD3TF4thYjlEOHqab9xWJwnod429EK+PPCE
-	EweZ9DR8wdfd/KzTv57cv1BLM0FcmRl7Nu013zXpqj7CFTbDaXQ003zZM6mHQHVrAv4rif5EMNP
-	aERXdfbvFbs4fdx6SuZfZUNMqYW7FLvx0+yV6OO6G+ydPxdAvn9r6BPZab6eKf3uNqIjo8ZogTB
-	X2wtpaXq5fV/VB8lSOyqgIcTgFEHXYyGRnKKrrQ3VSFSxBNaJR1yEY9iNBnVfePP6flTT0fZWxq
-	7Dr8Jfwh6ImN6u3aiqx9KU5TGI21DLfdW0hORR6SwwNjTyXmfohhjWMqblqAEvZ+zv/9G7mb4sv
-	mWIdFvUwK4dalDQHlfDjWsvj7VH1sKnp2OPd2OQrcWJ+hcejQS4nf9qtWPA7p6lh3U7kmDIo4Pd
-	/dQ6Kso02HJqhfrqvHR5wf5LTQhrjPZk6RA8y8y1nUaEz/SQ3w1067W9j7DcTRIxXKV+KJ6ypyC
-	YRkeqc/08l8/M74xqS8UgHNZW0VFG0zCUf/TwHG7re6KrgQT5s6LKht4khRrkju3AvcS9nOxcT7
-	BDwi5SoIf
-X-Received: by 2002:a05:6000:2503:b0:4b7:8178:f7ea with SMTP id ffacd0b85a97d-4b78178f825mr23002295f8f.51.1795776065640;
-        Fri, 27 Nov 2026 02:41:05 -0800 (PST)
+        bh=x6CnKCcRFlmFGMoJSdid1DPb05KDzJFKcZoIQ+AcWA0=;
+        b=ewTmt7q4o4ojNLyr2z2XHPhBlZrDj8OZvJM76jPS5yJWyi1mrZdcUxvnOUhdhpUP/9
+         KJZb9uq1HJS7DQfHEoDfd2r1thn1OSqMpZBKSo3U9P6HKms0DUo6XpUOxfamJ96GpwF+
+         i2EfoAja8xkyIDykmszwf0Bc7H02n2OfOmRQh409cm6aEtAiJVRcnRHQsSUmK0nhuacy
+         F8I3VWS0yuCVBh5fOuSMGRas6z0xiXudbJDAPsv0vcmvekIjNfiJGzXAwJqwp2ieBNXb
+         L4WcJqIDUPygDgHnfu9IBl8C4NwQS6s8FCjy6nEMjvxKe0iBztTpkCziJi4a22A+6bHw
+         xdFA==
+X-Forwarded-Encrypted: i=1; AL+hErEfuf80jD6T3zOB1yzMOqn/D8Vg8wclUfOQG+U3z/b7Y0kYZKHkezp/qVJf4w6KjMHHMNn4GUfuvls4YREMdQ==@lists.infradead.org
+X-Gm-Message-State: APuU4Z+weGyKrrKBRX/ITu0Z7JzLltuWaguAz0Eu3AuvP58h00jHMGev
+	N12geDKHzGkF9G3sX/Roc2u6LNASAL/f3mx0P7s2uSdSZrDE753UO/ls/7xNKk1viFGyyMpJcPE
+	lCvco7kA=
+X-Gm-Gg: AZFdTZcRkxGgcr0nzDRMncy4HoDpJSSGq9JXDUWoMzF6bYAaxDqBId+uK/3IuBq06hN
+	+HDkn+SMcP+YEW1a34ZhKverRyf3D7kGE8O8mLUFjDCf0bWQw1ysQPg/EllRxH6iqTCbd3HvxJv
+	LwL0X3hcb83DAoTW7b6UacO+29c8ZNYMCV/mhgg1fP9eXdw06/hIr5rXw6B78/UrCftRKnDiDPC
+	zqklNRTcTeVBQUGbWSYCsQzYCbes3GZc+19HPX999HMZl7hdhu4LXh3dr0oqrAagUjajErgrFwl
+	V0XCyxPnDa+AzL1ztEijWlmoEMCoTxjCiASMlkIlEx0ymgPjHiiPJpsNBplUad+6wc/7zh7DFOl
+	wCv6BfWDb7B8acVFudGpmIupbttyGjym53TQZCMO20nwlOmnxVJvXV13xG2qYg7axp+iH6H4Xdc
+	mKmiv6p2+IAN/mVqbthFZ+nv048Ei8N8a/ARLMrN+pRq2H50sd1nTWhAJAgfqClOk4PNbyJ7TbN
+	G7ZidK8BGCXwoiFl8eoRM2NOt0oTQ+gnaWy6p9f+vQw7+x5jt4jt0Gc3YBjYk0KJoq2kJSg66hW
+	nfDjt5yCE7XHTWZukXFv8EAg+RRCxyQ7rCYCzn9WDkKz+DAEaL12t6DIh/9h8WQcWZKVrJvBwxf
+	UGqa7aIEJ
+X-Received: by 2002:adf:e186:0:b0:48e:20ed:d5e7 with SMTP id ffacd0b85a97d-4abb3a4d37dmr48804786f8f.34.1795776068653;
+        Fri, 27 Nov 2026 02:41:08 -0800 (PST)
 Received: from alchark-surface.localdomain (bba-86-98-194-229.alshamil.net.ae. [86.98.194.229])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-4ab6ae2dcf9sm45597649f8f.32.2026.11.27.02.41.03
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-4ab6ae2dcf9sm45597649f8f.32.2026.11.27.02.41.05
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 27 Nov 2026 02:41:05 -0800 (PST)
+        Fri, 27 Nov 2026 02:41:08 -0800 (PST)
 From: Alexey Charkov <alchark@flipper.net>
-Date: Fri, 27 Nov 2026 14:40:49 +0400
-Subject: [PATCH v2 4/6] usb: typec: fusb302: Handle interrupts in the IRQ
- thread
+Date: Fri, 27 Nov 2026 14:40:50 +0400
+Subject: [PATCH v2 5/6] usb: typec: fusb302: Acknowledge
+ Get_Source_Cap_Extended from the driver
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261127-fusb302-getsourcecap-v2-4-6770eb1e7945@flipper.net>
+Message-Id: <20261127-fusb302-getsourcecap-v2-5-6770eb1e7945@flipper.net>
 References: <20261127-fusb302-getsourcecap-v2-0-6770eb1e7945@flipper.net>
 In-Reply-To: <20261127-fusb302-getsourcecap-v2-0-6770eb1e7945@flipper.net>
 To: Heikki Krogerus <heikki.krogerus@linux.intel.com>, 
@@ -95,17 +95,17 @@ Cc: Sebastian Reichel <sebastian.reichel@collabora.com>,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
  Alexey Charkov <alchark@flipper.net>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=6105; i=alchark@flipper.net;
- h=from:subject:message-id; bh=kTIPW2yAFNq3399UJRyEGQQJQ5Ot4JrKKJTWUyt7UvY=;
- b=owGbwMvMwCW2adGNfoHIK0sZT6slMWRzxpkx56cU58Ux7cg9c23RskXlTEI34j6femrz6dZPM
- YU32XOmdExkYRDjYrAUU2SZ+22J7VQjvlm7PDy+wsxhZQIZIi3SwAAELAx8uYl5pUY6Rnqm2oZ6
- hkY6xjpGDFycAjDV17QY/optnctQtbZrwu4yFWaX09O+Pet7YDUncWdBrF7xjRUPtC0Y/hkV3+u
- fOzd5nU1fvmIk6+6cb+HPeB6k5xhc/vwsa8c1cyYA
+X-Developer-Signature: v=1; a=openpgp-sha256; l=13656; i=alchark@flipper.net;
+ h=from:subject:message-id; bh=+EiLmfbwp2gS/KdLyt4fuAjUMNY2FeAAM1Q+xqJ0G4I=;
+ b=owGbwMvMwCW2adGNfoHIK0sZT6slMWRzxpkpTbTxXXNZ54XKg1eaCUzv/xw5pLPlNm/Ofp3V/
+ +fW/HgzuWMiC4MYF4OlmCLL3G9LbKca8c3a5eHxFWYOKxPIEGmRBgYgYGHgy03MKzXSMdIz1TbU
+ MzTSMdYxYuDiFICpZtNmZNifVFnL8tdYRuv8Rd8L29fcfS584GvgLi6NU/tj1f5t+CPP8E8psrr
+ y/r7Z7yZ+bbvrF2Ah0HDrXtQJv/cb89TfsXxWT2ICAA==
 X-Developer-Key: i=alchark@flipper.net; a=openpgp;
  fpr=9DF6A43D95320E9ABA4848F5B2A2D88F1059D4A5
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261127_024107_814569_A756DF72 
-X-CRM114-Status: GOOD (  19.51  )
+X-CRM114-CacheID: sfid-20261127_024113_929489_79B7E4E4 
+X-CRM114-Status: GOOD (  32.78  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -126,178 +126,366 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The threaded IRQ handler only disables the IRQ and queues irq_work, which
-then does all the handling. The extra hop costs a context switch, and
-leaves the handling at normal priority behind whatever else shares the
-system workqueue.
+The chip implements PD 2.0, whose Message Type field is four bits wide, so
+it decodes the PD 3.0 Get_Source_Cap_Extended (0x11) as a GoodCRC (0x1)
+and never acknowledges it. A PD 3.0 partner asking for the extended source
+capabilities then never sees the message delivered: an Apple Studio
+Display retries it, soft resets, and asks again after the new contract,
+every 94ms, so it never gets as far as DisplayPort.
 
-Handle the interrupt in the IRQ thread instead, as suggested in review of
-the switch to a threaded handler [1]. IRQF_ONESHOT keeps the line masked
-meanwhile. Before resume, the I2C adapter may still be suspended: disable
-the IRQ then, and have resume handle it before enabling it again, so that
-nothing handles it twice at once and it stays a wakeup source. Make
-irq_lock a mutex for that, as disabling an IRQ behind an I2C GPIO
-expander may sleep.
+Send the GoodCRC from the driver once the message is read and its CRC
+checks out, and read the FIFO on CRC_CHK, which such a message still
+raises. Over a 400kHz I2C bus that takes 2ms and more, far beyond 195us
+(tTransmit), but the partner retries with the same MessageID and may
+accept a GoodCRC that comes while it waits for the one to a retry. That
+display sends its retries 0.97ms after each attempt ends, which puts most
+such late GoodCRCs within the window of its second or third attempt. As
+the FIFO is only read while CC is idle, the GoodCRC follows a retry
+already under way rather than colliding with it. Pass the message on to
+TCPM too, so the partner gets an answer rather than asking again.
 
-Verified both at runtime and across suspend on a Rockchip RK3576 board.
+Hold the GoodCRC back while TCPM waits for the outcome of a transmission
+of its own, which that of the GoodCRC would pass for, unless TCPM has
+given up on it already. Keep a collision of the GoodCRC apart from one of
+the next transmission TCPM makes, so that the one does not fail that
+transmission and the other is not lost, also when the GoodCRC goes out
+from outside the IRQ thread, which then handles the interrupt flags read
+to tell them apart. Use revision 2.0 in the header, as the chip does for
+its own GoodCRCs.
 
-Link: https://lore.kernel.org/r/20260312120418.99U0NPWL@linutronix.de [1]
-Suggested-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
-Suggested-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 Signed-off-by: Alexey Charkov <alchark@flipper.net>
 ---
- drivers/usb/typec/tcpm/fusb302.c | 82 +++++++++++++++++++++-------------------
- 1 file changed, 43 insertions(+), 39 deletions(-)
+ drivers/usb/typec/tcpm/fusb302.c | 175 +++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 170 insertions(+), 5 deletions(-)
 
 diff --git a/drivers/usb/typec/tcpm/fusb302.c b/drivers/usb/typec/tcpm/fusb302.c
-index 5cf1b78e7669..aa0e4dbe31db 100644
+index aa0e4dbe31db..c98a74fc7a2a 100644
 --- a/drivers/usb/typec/tcpm/fusb302.c
 +++ b/drivers/usb/typec/tcpm/fusb302.c
-@@ -87,9 +87,13 @@ struct fusb302_chip {
+@@ -124,12 +124,19 @@ struct fusb302_chip {
+ 	bool vbus_on;
+ 	bool charge_on;
+ 	bool pd_rx_on;
++	/* TCPM waits for the outcome of a transmission, started at tx_start */
++	bool tx_pending;
++	ktime_t tx_start;
++	/* The driver sent a GoodCRC, for fusb302_pd_check_ack() */
++	bool ack_check;
+ 	/*
+ 	 * Bytes read from the RX FIFO but not handled yet: the start of a
+ 	 * message to read on, or bytes to find the next message in
+ 	 */
+ 	u8 rx_buf[FUSB302_RX_MSG_MAX];
+ 	u8 rx_len;
++	/* The driver sent a GoodCRC to the message starting rx_buf */
++	bool rx_acked;
+ 	/*
+ 	 * The next message may not be at the start of the buffer.
+ 	 * Look for its start first before processing.
+@@ -143,6 +150,9 @@ struct fusb302_chip {
+ 	enum typec_cc_polarity cc_polarity;
+ 	enum typec_cc_status cc1;
+ 	enum typec_cc_status cc2;
++	/* for a GoodCRC sent by the driver, as the chip does for its own */
++	enum typec_role pwr_role;
++	enum typec_data_role data_role;
+ 	u32 snk_pdo[PDO_MAX_OBJECTS];
  
- 	struct regulator *vbus;
- 
--	spinlock_t irq_lock;
--	struct work_struct irq_work;
-+	/*
-+	 * A mutex, as disabling an IRQ behind an I2C GPIO expander, which
-+	 * fusb302_irq_intn() does under it, may sleep
-+	 */
-+	struct mutex irq_lock;
- 	bool irq_suspended;
-+	/* The IRQ came before resume, which handles it and enables it again */
- 	bool irq_while_suspended;
- 	struct gpio_desc *gpio_int_n;
- 	int gpio_int_n_irq;
-@@ -1943,24 +1947,6 @@ static int fusb302_pd_rx_start(struct fusb302_chip *chip)
- 	return ret;
- }
- 
--static irqreturn_t fusb302_irq_intn(int irq, void *dev_id)
--{
--	struct fusb302_chip *chip = dev_id;
--	unsigned long flags;
--
--	/* Disable our level triggered IRQ until our irq_work has cleared it */
--	disable_irq_nosync(chip->gpio_int_n_irq);
--
--	spin_lock_irqsave(&chip->irq_lock, flags);
--	if (chip->irq_suspended)
--		chip->irq_while_suspended = true;
--	else
--		schedule_work(&chip->irq_work);
--	spin_unlock_irqrestore(&chip->irq_lock, flags);
--
--	return IRQ_HANDLED;
--}
--
- /*
-  * Reading an interrupt register clears its flags in the chip, so keep them
-  * pending until handled: a bus error on a later read would otherwise lose
-@@ -1998,10 +1984,8 @@ static int fusb302_read_interrupts(struct fusb302_chip *chip, u8 *status0)
- 	return ret;
- }
- 
--static void fusb302_irq_work(struct work_struct *work)
-+static void fusb302_irq_handle(struct fusb302_chip *chip)
+ #ifdef CONFIG_DEBUG_FS
+@@ -869,6 +879,7 @@ static void fusb302_pd_rx_reset(struct fusb302_chip *chip, bool cut_short)
  {
--	struct fusb302_chip *chip = container_of(work, struct fusb302_chip,
--						 irq_work);
+ 	chip->rx_len = 0;
+ 	chip->rx_resync = cut_short;
++	chip->rx_acked = false;
+ }
+ 
+ static int fusb302_pd_set_auto_goodcrc(struct fusb302_chip *chip, bool on)
+@@ -883,7 +894,8 @@ static int fusb302_pd_set_auto_goodcrc(struct fusb302_chip *chip, bool on)
+ static int fusb302_pd_set_interrupts(struct fusb302_chip *chip, bool on)
+ {
  	int ret = 0;
- 	u8 interrupt;
- 	u8 interrupta;
-@@ -2128,7 +2112,26 @@ static void fusb302_irq_work(struct work_struct *work)
+-	u8 mask_interrupts = FUSB_REG_MASK_COLLISION;
++	/* See fusb302_pd_rx_ack() for CRC_CHK */
++	u8 mask_interrupts = FUSB_REG_MASK_COLLISION | FUSB_REG_MASK_CRC_CHK;
+ 	u8 maska_interrupts = FUSB_REG_MASKA_RETRYFAIL |
+ 			      FUSB_REG_MASKA_HARDSENT |
+ 			      FUSB_REG_MASKA_TX_SUCCESS |
+@@ -907,6 +919,7 @@ static int fusb302_pd_set_interrupts(struct fusb302_chip *chip, bool on)
+ }
+ 
+ static int fusb302_pd_rx_start(struct fusb302_chip *chip);
++static void fusb302_pd_check_ack_async(struct fusb302_chip *chip);
+ 
+ static int tcpm_set_pd_rx(struct tcpc_dev *dev, bool on)
+ {
+@@ -936,6 +949,8 @@ static int tcpm_set_pd_rx(struct tcpc_dev *dev, bool on)
+ 		fusb302_log(chip, "cannot flush pd tx buffer, ret=%d", ret);
+ 		goto done;
  	}
++	/* Nothing flushed reports its outcome */
++	chip->tx_pending = false;
+ 	ret = on ? fusb302_pd_rx_start(chip) :
+ 		   fusb302_pd_set_auto_goodcrc(chip, false);
+ 	if (ret < 0) {
+@@ -994,6 +1009,8 @@ static int tcpm_set_roles(struct tcpc_dev *dev, bool attached,
+ 			    ret);
+ 		goto done;
+ 	}
++	chip->pwr_role = pwr;
++	chip->data_role = data;
+ 	fusb302_log(chip, "pd header := %s, %s", typec_role_name[pwr],
+ 		    typec_data_role_name[data]);
  done:
+@@ -1128,6 +1145,13 @@ static int tcpm_pd_transmit(struct tcpc_dev *dev, enum tcpm_transmit_type type,
+ 	int ret = 0;
+ 
+ 	mutex_lock(&chip->lock);
++	/*
++	 * See whether a GoodCRC from the driver collided before this goes out:
++	 * a COLLISION from now on is this transmission's, even should the
++	 * check fail
++	 */
++	fusb302_pd_check_ack_async(chip);
++	chip->ack_check = false;
+ 	switch (type) {
+ 	case TCPC_TX_SOP:
+ 	case TCPC_TX_SOP_PRIME:
+@@ -1154,6 +1178,10 @@ static int tcpm_pd_transmit(struct tcpc_dev *dev, enum tcpm_transmit_type type,
+ 			    transmit_type_name[type]);
+ 		ret = -EINVAL;
+ 	}
++	if (ret >= 0) {
++		chip->tx_pending = true;
++		chip->tx_start = ktime_get();
++	}
  	mutex_unlock(&chip->lock);
--	enable_irq(chip->gpio_int_n_irq);
+ 
+ 	return ret;
+@@ -1531,10 +1559,110 @@ static int fusb302_pd_reset(struct fusb302_chip *chip)
+ 				    FUSB_REG_RESET_PD_RESET);
+ }
+ 
++static void fusb302_pd_tx_complete(struct fusb302_chip *chip,
++				   enum tcpm_transmit_status status)
++{
++	chip->tx_pending = false;
++	tcpm_pd_transmit_complete(chip->tcpm_port, status);
 +}
 +
-+static irqreturn_t fusb302_irq_intn(int irq, void *dev_id)
++/*
++ * See whether a GoodCRC the driver sent collided before releasing chip->lock:
++ * by the next interrupt, TCPM may have started a transmission, and the
++ * COLLISION would then be reported against it. The chip sets COLLISION when
++ * TXON finds CC busy, so it is there to see by now. Keep the other bits, which
++ * reading the register clears, pending for fusb302_irq_handle().
++ */
++static int fusb302_pd_check_ack(struct fusb302_chip *chip)
 +{
-+	struct fusb302_chip *chip = dev_id;
++	u8 interrupt;
++	int ret;
 +
-+	mutex_lock(&chip->irq_lock);
-+	if (chip->irq_suspended) {
-+		/* Only once, as resume enables it once */
-+		if (!chip->irq_while_suspended)
-+			disable_irq_nosync(chip->gpio_int_n_irq);
-+		chip->irq_while_suspended = true;
-+		mutex_unlock(&chip->irq_lock);
-+		return IRQ_HANDLED;
++	/* Left set on an error, for fusb302_irq_handle() to tell COLLISION */
++	ret = fusb302_i2c_read(chip, FUSB_REG_INTERRUPT, &interrupt);
++	if (ret < 0)
++		return ret;
++	chip->ack_check = false;
++	if (interrupt & FUSB_REG_INTERRUPT_COLLISION)
++		fusb302_log(chip, "GoodCRC sent by the driver collided");
++	chip->pending_interrupt |= interrupt & ~FUSB_REG_INTERRUPT_COLLISION;
++
++	return 0;
++}
++
++/*
++ * As fusb302_pd_check_ack(), outside the IRQ thread: reading INTERRUPT clears
++ * the flags that raise the IRQ, so have the IRQ thread handle what it read
++ */
++static void fusb302_pd_check_ack_async(struct fusb302_chip *chip)
++{
++	if (!chip->ack_check || fusb302_pd_check_ack(chip) < 0)
++		return;
++	if (chip->pending_interrupt)
++		irq_wake_thread(chip->gpio_int_n_irq, chip);
++}
++
++/*
++ * TCPM waits for the outcome of its last transmission, unless it gave up after
++ * PD_T_TCPC_TX_TIMEOUT, which it does without telling the driver
++ */
++static bool fusb302_pd_tx_waiting(struct fusb302_chip *chip)
++{
++	return chip->tx_pending &&
++	       ktime_ms_delta(ktime_get(), chip->tx_start) <
++	       PD_T_TCPC_TX_TIMEOUT;
++}
++
++/*
++ * The chip only decodes the low four bits of the message type, so it mistakes
++ * Get_Source_Cap_Extended (0x11) for a GoodCRC (0x1): it neither acknowledges
++ * it nor raises GCRCSENT, only CRC_CHK, yet still queues it in the RX FIFO.
++ * Send the GoodCRC from here once the message checks out. It goes out well
++ * after 195us (tTransmit), but the partner retries with the same MessageID and
++ * usually accepts it then, rather than soft reset over and over.
++ */
++static void fusb302_pd_rx_ack(struct fusb302_chip *chip)
++{
++	u16 header = get_unaligned_le16(chip->rx_buf + 1);
++	struct pd_message ack = {};
++	int ret;
++
++	if (chip->rx_discard || chip->rx_acked || pd_header_cnt(header) ||
++	    pd_header_type(header) != PD_CTRL_GET_SOURCE_CAP_EXT ||
++	    (chip->rx_buf[0] & FUSB302_RX_TKN_MASK) == FUSB302_RX_TKN_SOP1)
++		return;
++	chip->rx_acked = true;
++
++	/*
++	 * The outcome of a GoodCRC sent now would pass for that of the
++	 * transmission TCPM waits for, so leave the partner to retry then
++	 */
++	if (fusb302_pd_tx_waiting(chip)) {
++		fusb302_log(chip, "not acknowledging PD message, TX pending");
++		return;
 +	}
-+	mutex_unlock(&chip->irq_lock);
 +
-+	fusb302_irq_handle(chip);
++	/*
++	 * The chip's own GoodCRCs go out as revision 2.0. As it decodes only
++	 * the low four bits of the message type, it treats any GoodCRC it
++	 * sends as one that needs no GoodCRC in return, so it sends this one
++	 * once, without retries or RETRYFAIL, whatever the retry count is.
++	 */
++	ack.header = PD_HEADER_LE(PD_CTRL_GOOD_CRC, chip->pwr_role,
++				  chip->data_role, PD_REV20,
++				  pd_header_msgid(header), 0);
++	ret = fusb302_pd_send_message(chip, TCPC_TX_SOP, &ack);
++	if (ret >= 0)
++		chip->ack_check = true;
++	else
++		fusb302_log(chip, "cannot acknowledge PD message, ret=%d", ret);
++}
 +
-+	return IRQ_HANDLED;
+ static void fusb302_pd_rx_drop(struct fusb302_chip *chip, int n)
+ {
+ 	chip->rx_len -= n;
+ 	memmove(chip->rx_buf, chip->rx_buf + n, chip->rx_len);
++	chip->rx_acked = false;
  }
  
- static int init_gpio(struct fusb302_chip *chip)
-@@ -2226,8 +2229,7 @@ static int fusb302_probe(struct i2c_client *client)
- 	if (!chip->wq)
- 		return -ENOMEM;
+ static bool fusb302_pd_rx_is_token(u8 byte)
+@@ -1680,6 +1808,8 @@ static int fusb302_pd_read_message(struct fusb302_chip *chip)
+ 		dropped++;
+ 	}
  
--	spin_lock_init(&chip->irq_lock);
--	INIT_WORK(&chip->irq_work, fusb302_irq_work);
-+	mutex_init(&chip->irq_lock);
- 	INIT_DELAYED_WORK(&chip->bc_lvl_handler, fusb302_bc_lvl_handler_work);
- 	INIT_DELAYED_WORK(&chip->rx_recheck, fusb302_pd_rx_recheck_work);
- 	init_tcpc_dev(&chip->tcpc_dev);
-@@ -2294,7 +2296,6 @@ static void fusb302_remove(struct i2c_client *client)
++	/* The CRC checks out: acknowledge it, should the chip not have */
++	fusb302_pd_rx_ack(chip);
+ 	chip->rx_resync = false;
+ 	token = chip->rx_buf[0];
+ 	memcpy(&msg, chip->rx_buf + 1, len - 5);
+@@ -1705,7 +1835,7 @@ static int fusb302_pd_read_message(struct fusb302_chip *chip)
+ 	 * to check the message type to ensure correct reporting to TCPM.
+ 	 */
+ 	if (!len && pd_header_type_le(msg.header) == PD_CTRL_GOOD_CRC)
+-		tcpm_pd_transmit_complete(chip->tcpm_port, TCPC_TX_SUCCESS);
++		fusb302_pd_tx_complete(chip, TCPC_TX_SUCCESS);
+ 	else if ((token & FUSB302_RX_TKN_MASK) == FUSB302_RX_TKN_SOP1)
+ 		tcpm_pd_receive(chip->tcpm_port, &msg, TCPC_TX_SOP_PRIME);
+ 	else
+@@ -1847,6 +1977,7 @@ static void fusb302_pd_rx_recheck_work(struct work_struct *work)
+ 		if (ret < 0)
+ 			fusb302_log(chip, "cannot read in PD message, ret=%d",
+ 				    ret);
++		fusb302_pd_check_ack_async(chip);
+ 	}
+ 	mutex_unlock(&chip->lock);
+ }
+@@ -1943,6 +2074,11 @@ static int fusb302_pd_rx_start(struct fusb302_chip *chip)
+ 	if (ret < 0 && gcrc_on)
+ 		fusb302_pd_set_auto_goodcrc(chip, false);
+ 	chip->rx_discard = false;
++	/*
++	 * A GoodCRC sent while reading the FIFO out: see whether it collided
++	 * before TCPM may start a transmission the collision would pass for
++	 */
++	fusb302_pd_check_ack_async(chip);
  
- 	disable_irq_wake(chip->gpio_int_n_irq);
- 	free_irq(chip->gpio_int_n_irq, chip);
--	cancel_work_sync(&chip->irq_work);
- 	cancel_delayed_work_sync(&chip->bc_lvl_handler);
- 	cancel_delayed_work_sync(&chip->rx_recheck);
- 	tcpm_unregister_port(chip->tcpm_port);
-@@ -2306,14 +2307,13 @@ static void fusb302_remove(struct i2c_client *client)
- static int fusb302_pm_suspend(struct device *dev)
- {
- 	struct fusb302_chip *chip = dev->driver_data;
--	unsigned long flags;
+ 	return ret;
+ }
+@@ -1998,6 +2134,7 @@ static void fusb302_irq_handle(struct fusb302_chip *chip)
+ 	bool intr_comp_chng;
  
--	spin_lock_irqsave(&chip->irq_lock, flags);
-+	mutex_lock(&chip->irq_lock);
- 	chip->irq_suspended = true;
--	spin_unlock_irqrestore(&chip->irq_lock, flags);
-+	mutex_unlock(&chip->irq_lock);
- 
--	/* Make sure any pending irq_work is finished before the bus suspends */
--	flush_work(&chip->irq_work);
-+	/* Let an IRQ being handled finish before the bus suspends */
-+	synchronize_irq(chip->gpio_int_n_irq);
- 	/* No RX FIFO recheck may run until the bus is back either */
- 	cancel_delayed_work_sync(&chip->rx_recheck);
- 	return 0;
-@@ -2322,15 +2322,19 @@ static int fusb302_pm_suspend(struct device *dev)
- static int fusb302_pm_resume(struct device *dev)
- {
- 	struct fusb302_chip *chip = dev->driver_data;
--	unsigned long flags;
-+	bool pending;
- 
--	spin_lock_irqsave(&chip->irq_lock, flags);
--	if (chip->irq_while_suspended) {
--		schedule_work(&chip->irq_work);
--		chip->irq_while_suspended = false;
--	}
-+	mutex_lock(&chip->irq_lock);
-+	pending = chip->irq_while_suspended;
-+	chip->irq_while_suspended = false;
- 	chip->irq_suspended = false;
--	spin_unlock_irqrestore(&chip->irq_lock, flags);
-+	mutex_unlock(&chip->irq_lock);
-+
-+	/* The IRQ stays disabled until then, so nothing else handles it */
-+	if (pending) {
-+		fusb302_irq_handle(chip);
-+		enable_irq(chip->gpio_int_n_irq);
-+	}
- 
- 	/* Look at the RX FIFO again, in case suspend cut a recheck short */
  	mutex_lock(&chip->lock);
++again:
+ 	/* grab a snapshot of intr flags */
+ 	intr_togdone = chip->intr_togdone;
+ 	intr_bc_lvl = chip->intr_bc_lvl;
+@@ -2014,6 +2151,22 @@ static void fusb302_irq_handle(struct fusb302_chip *chip)
+ 	chip->pending_interrupt = 0;
+ 	chip->pending_interrupta = 0;
+ 	chip->pending_interruptb = 0;
++
++	/*
++	 * A message the chip didn't acknowledge raises CRC_CHK alone: read it
++	 * out first thing, as its GoodCRC is past due already. Those that came
++	 * before PD was on, which nothing acknowledged, were dropped then.
++	 */
++	if (chip->pd_rx_on && (interrupt & FUSB_REG_INTERRUPT_CRC_CHK) &&
++	    !(interrupta & FUSB_REG_INTERRUPTA_TX_SUCCESS) &&
++	    !(interruptb & FUSB_REG_INTERRUPTB_GCRCSENT)) {
++		/* Still handle the other events then */
++		ret = fusb302_pd_rx_drain(chip);
++		if (ret < 0)
++			fusb302_log(chip,
++				    "cannot read in PD message, ret=%d", ret);
++	}
++
+ 	fusb302_log(chip,
+ 		    "IRQ: 0x%02x, a: 0x%02x, b: 0x%02x, status0: 0x%02x",
+ 		    interrupt, interrupta, interruptb, status0);
+@@ -2061,14 +2214,19 @@ static void fusb302_irq_handle(struct fusb302_chip *chip)
+ 		}
+ 	}
+ 
++	/* Not for TCPM if it came from a GoodCRC the driver sent */
+ 	if (interrupt & FUSB_REG_INTERRUPT_COLLISION) {
+ 		fusb302_log(chip, "IRQ: PD collision");
+-		tcpm_pd_transmit_complete(chip->tcpm_port, TCPC_TX_FAILED);
++		if (chip->ack_check)
++			chip->ack_check = false;
++		else if (chip->tx_pending)
++			fusb302_pd_tx_complete(chip, TCPC_TX_FAILED);
+ 	}
+ 
+ 	if (interrupta & FUSB_REG_INTERRUPTA_RETRYFAIL) {
+ 		fusb302_log(chip, "IRQ: PD retry failed");
+-		tcpm_pd_transmit_complete(chip->tcpm_port, TCPC_TX_FAILED);
++		if (chip->tx_pending)
++			fusb302_pd_tx_complete(chip, TCPC_TX_FAILED);
+ 	}
+ 
+ 	if (interrupta & FUSB_REG_INTERRUPTA_HARDSENT) {
+@@ -2078,7 +2236,7 @@ static void fusb302_irq_handle(struct fusb302_chip *chip)
+ 			fusb302_log(chip, "cannot PD reset, ret=%d", ret);
+ 			goto done;
+ 		}
+-		tcpm_pd_transmit_complete(chip->tcpm_port, TCPC_TX_SUCCESS);
++		fusb302_pd_tx_complete(chip, TCPC_TX_SUCCESS);
+ 	}
+ 
+ 	if (interrupta & FUSB_REG_INTERRUPTA_TX_SUCCESS) {
+@@ -2111,6 +2269,13 @@ static void fusb302_irq_handle(struct fusb302_chip *chip)
+ 		}
+ 	}
+ done:
++	/*
++	 * Not right after the GoodCRC, which would hold up the next one to a
++	 * retry queued meanwhile. Then handle what the check read.
++	 */
++	if (chip->ack_check && fusb302_pd_check_ack(chip) >= 0 &&
++	    chip->pending_interrupt)
++		goto again;
+ 	mutex_unlock(&chip->lock);
+ }
+ 
 
 -- 
 2.56.0
