@@ -2,64 +2,63 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D5C78606A31C
-	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Nov 2026 11:11:03 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4CE78606A326
+	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Nov 2026 11:33:00 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=wD/5j3Hk;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=zohomail header.b=fnizvGli
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=PjN2MqzD;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=ZRRuUfkx
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:Cc:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=EqpgKsUD3X8iRNocyQwJK/R4g3gTmhB4f5hD2VzQtLg=; b=wD/5j3HkTsJXQwGG2/zY6II1sO
-	oPZItjqOXaQDs6EkkCvrGbJ6/X9LEbCbmKKE8Nxr+QBmxKPeYtJ1DGEB5BHBXRl7UE7ZjNLy8s7jB
-	sQRosPaY3g7N/+FyeeproEsC3rSeDckVk1dk48vgQ3FPLqlJC2YcYk1ZHzH9NO/AVvz6nETX5MYHH
-	/p+XkkdHmatrr8Av1+5vJa0GDCyDiyQMcLX1HYCKzHqrjRtKOyQPYZ+3CCxCv8m2acaNeO9EBHcPt
-	2Zkh6OaW9Of0JSrutG5F+PfbJmoapj4ijS2o/djl+R47Yeh/u5/qaSC2ABIkCvZVjRs7Hv5cqum7p
-	cNpRIi0g==;
+	bh=F+k+2oxiLl6/6UTrISiXNYnNRtI1WZzwEvcWMhYDqq4=; b=PjN2MqzDhyI9rNsp5nEdjwFtni
+	DQUcA8rCF/HrG0yPu342JwNtD4u6oLULxR7F2RWlGsnVjUOf7b08tbWXjMbetXAlH8e4gPdXDYrsV
+	0rMO3GrvHEgrjTHQOt9BNxN0+e584APByOhCwuhBRGI2QM83tOy0znOOCpGHzpdwlXHNayspscSE8
+	1Z2v6nhMaf99Pot4N/ODEMax5NMjbh5My2/N7kNRE0cAVc8X0GbUahFNWLJHReJVim3jyTN9/nOzM
+	yeLUbjE286Ef3Dc4Y9r5dX1I8nKqAQ7uvgZL83mpYVUfkdT8/cAU0O/JeSR9NO34o1L8tn9ckiGwW
+	Yu5ynVew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWtqz-0000000FkV2-2Imx;
-	Fri, 27 Nov 2026 11:10:57 +0000
-Received: from sender5-op-o11.zoho.com ([165.173.182.11])
+	id 1xWuBy-0000000FoyK-2JGN;
+	Fri, 27 Nov 2026 11:32:38 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWtqv-0000000FkUJ-2Op2;
-	Fri, 27 Nov 2026 11:10:56 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1795777829; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=a8kmxRhuP5lxuxlojNXAIhQ1L+75cRsEbByPLn3ftBHMUj9oG9mTx7PArvI5a+ZS6iWDmDyu4JpuvZkCC6p54iVlkOLudBQAYIPpQdCQGpv75aE7/N2eiAV2OBpAA9mOVCCxGxfxQaHaAbw1hyNpfqwj2zjKpoDxnatTON/cHYw=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1795777829; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=+37UfqKqX+TJbR+xq7UVWHeaqVYwEZPU+usFmpTGwuo=; 
-	b=PWuZco1L4rVObSyiC+jWQeRLyLZONNIywFAOSO76as126ZRJ/eE+MqdPExL73bPaVbSOQyLRCdZVsvEudybloNDqRCpowUMVSihqQkv9KTDVzOG9UQgpqgZ8jdCBhQ+y/vsH147LXvWOnZrYW2qfsN9NKw0fX1+eUr8vVaNUW4A=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
-	dmarc=pass header.from=<sebastian.reichel@collabora.com>
-DKIM-Signature: a=rsa-sha256; b=fnizvGliRm6udOM5RoPw6WuI/I4rXFx18OTEGxxtyOWVCNDKJYkD/l3zc4wfinBMONiA+k+XK6c6sg5vvgsto4mXqA4N6vbC6cTzt1te0TdSrfUyJX6LLVlTZwNEepk0cDFMw4x5G5d1CdgNv50MdxCgpKkF16VZJ9JN/2xyEOQ=; c=relaxed/relaxed; s=zohomail; d=collabora.com; v=1; bh=+37UfqKqX+TJbR+xq7UVWHeaqVYwEZPU+usFmpTGwuo=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
-Received: by smtp.zohomail.com with SMTPS id 1795777826148667.3884646870919;
-	Fri, 27 Nov 2026 03:10:26 -0800 (PST)
-Received: by venus (Postfix, from userid 1000)
-	id 94313180918; Fri, 27 Nov 2026 12:10:21 +0100 (CET)
-Date: Fri, 27 Nov 2026 12:10:21 +0100
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Chaoyi Chen <kernel@airkyi.com>
-Subject: Re: [PATCH v3 0/3] drm/rockchip: vop2: Add 8K support for RK3588 vop2
-Message-ID: <awljo3X3KWpSovjx@venus>
-References: <20261116084555.1061-1-kernel@airkyi.com>
+	id 1xWuBu-0000000FowJ-1Jze;
+	Fri, 27 Nov 2026 11:32:34 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with UTF8SMTP id 159BE430AD;
+	Fri, 27 Nov 2026 11:32:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with UTF8SMTPSA id 5EB971F0089C;
+	Fri, 27 Nov 2026 11:32:33 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1795779153;
+	bh=wX/FVCUzVIh9tUuN5iJYqAoQF6PWVCKZHLN6FXdcM2w=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=ZRRuUfkxfTyVqsxa0619jUylpIgFMfJ6lDjCL2nbNS67VXHa0Ni0C8STG8WMMK9IT
+	 wqt6CU1IIZtnDihdrxClId1wOj/rKt0r6pz2oFLFcNT8Usf+nBJOEPUvi1ElFdnF2f
+	 IuoE2S1YRWHElrKmo3EAH4QlHcHn2NN27SlY2R1s5k247F6kp3EyVspJ0moVEMu61n
+	 pxD3i+rzlWAZ24RWov3SGRXuE+1rmLX82xOEbHYkLhpky0rA9iLP+mwTDYTAR8+mgZ
+	 olRu4xDnZzP6TGWx/KuZsG51w2x6qzqnesaRMGyPq9omvDtPMQYpl40Tfhkx9aR6hF
+	 an5mI4H/C50mA==
+Date: Fri, 27 Nov 2026 12:32:31 +0100
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <ukleinek@kernel.org>
+To: Vladislav Leonov <vlad@zlab.su>
+Cc: linux-rockchip@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, Simon Glass <sjg@chromium.org>, linux-clk@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, 
+	Heiko Stuebner <heiko@sntech.de>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Rob Herring <robh@kernel.org>, linux-pwm@vger.kernel.org
+Subject: Re: [PATCH 24/25] dt-bindings: pwm: rockchip: Add RV1106 compatible
+Message-ID: <awlpwN73zsCPPpdF@monoceros>
+References: <20260810121121.210040-1-vlad@zlab.su>
+ <20260810121121.210040-25-vlad@zlab.su>
+ <anq1YM2KzkycOzNm@monoceros>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-In-Reply-To: <20261116084555.1061-1-kernel@airkyi.com>
-X-Zoho-Virus-Status: 1
-X-Zoho-AV-Stamp: zmail-av-0.7.7.1.5.4/294.473.96
-X-ZohoMailClient: External
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261127_031053_643394_8028D240 
-X-CRM114-Status: GOOD (  25.80  )
-X-Spam-Score: -2.1 (--)
+In-Reply-To: <anq1YM2KzkycOzNm@monoceros>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,138 +68,71 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Simona Vetter <simona@ffwll.ch>, Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, linux-kernel@vger.kernel.org, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Andy Yan <andyshrk@163.com>, Maxime Ripard <mripard@kernel.org>, Sandy Huang <hjc@rock-chips.com>, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, Thomas Zimmermann <tzimmermann@suse.de>, Chaoyi Chen <chaoyi.chen@rock-chips.com>, David Airlie <airlied@gmail.com>, linux-arm-kernel@lists.infradead.org
-Content-Type: multipart/mixed; boundary="===============8402252786062865565=="
+Content-Type: multipart/mixed; boundary="===============8800730652451242924=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
 
---===============8402252786062865565==
+--===============8800730652451242924==
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="xz5roaz37kmfattc"
+	protocol="application/pgp-signature"; boundary="4yohrfi6hcwzkpgi"
 Content-Disposition: inline
 
 
---xz5roaz37kmfattc
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+--4yohrfi6hcwzkpgi
+Content-Type: text/plain; protected-headers=v1; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v3 0/3] drm/rockchip: vop2: Add 8K support for RK3588 vop2
+Subject: Re: [PATCH 24/25] dt-bindings: pwm: rockchip: Add RV1106 compatible
 MIME-Version: 1.0
 
-Hi,
+On Tue, Aug 11, 2026 at 07:39:37AM +0200, Uwe Kleine-K=F6nig wrote:
+> Hello,
+>=20
+> On Mon, Aug 10, 2026 at 03:11:15PM +0300, Vladislav Leonov wrote:
+> > +  interrupts:
+> > +    minItems: 1
+> > +    maxItems: 2
+> > +    description:
+> > +      Some PWM channels (e.g. on rockchip,rv1106-pwm) additionally
+> > +      support capture mode and use a second interrupt for that.
+>=20
+> Is it clear what the first irq is about? Maybe spend a word on that,
+> too?
+>=20
+> Otherwise looks fine for me.
 
-On Mon, Nov 16, 2026 at 04:45:52PM +0800, Chaoyi Chen wrote:
-> From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-> This series adds support for 8K output on the RK3588 VOP2. HDMI is not
-> ready yet, but I believe many people might be interested in this.
->=20
-> 8K output on the RK3588 is done by splicing two VPs together, with VP0
-> outputting the left half of the screen and VP1 the right half. In
-> addition, 8K planes have to be split in half as well to stay within the
-> width limit of a single plane. Similarly, there are a few post-processing
-> details that need to be handled.
->=20
-> Note that splice mode is not only usable for 8K output. This means the
-> mode can be tested at 4K and even lower resolutions, by simply changing
-> this one line:
->=20
-> -#define VOP2_MAX_VP_OUTPUT_WIDTH    4096
-> +#define VOP2_MAX_VP_OUTPUT_WIDTH    (3840 / 2) /* for 4K test */
->=20
-> And yes, this has been tested at 4K over HDMI on the RK3588 EVB1 :)
+I marked this patch as changes-requested in patchwork now and discard it
+=66rom my inbox. Please send an update mentioning the purpose of the first
+irq if/when you care about it.
 
-I've done this test for 4K over USB-C DP AltMode (using my pending
-patches to get that working in the first place) on the RK3588 EVB1
-(I disabled the HDMI interfaces and routed USB-C to VP0) and it
-works:
+Best regards
+Uwe
 
-Tested-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-
-Greetings,
-
--- Sebastian
-
->=20
-> Changes in v3:
-> - Link to v2: https://lore.kernel.org/all/20261029081429.862-1-kernel@air=
-kyi.com/
-> - Cast the result of drm_format_info_min_pitc() to u32 to avoid 64bit div=
-ision.
-> - Rework the left-window splice check to avoid pulling an unrelated CRTC
->   into non-modeset commits, and use the new CRTC mode instead of the
->   stale splice_mode flag(Sashiko).
-> - Reserve the splice partner window when the partner VP has no CRTC, so
->   it cannot be assigned as another VP's primary plane(Sashiko).
-> - Only set the partner VP's CFG_DONE while the new state is in splice
->   mode; do not force it when leaving splice mode(Sashiko).
-> - Program the main and splice video ports in a single layer-mixer pass,
->   and apply the YUV overlay mode to both VPs(Sashiko).
->=20
-> Changes in v2:
-> - Link to v1: https://lore.kernel.org/all/20261022071737.508-1-kernel@air=
-kyi.com/
-> - Missing removal of the replaced line(Heiko).
-> - vop2_win_get_pstate(): use the left window's state only in splice mode(=
-Sashiko).
-> - Reject splice windows already in use by another CRTC(Sashiko).
-> - Check the splice partner via drm_atomic_get_crtc_state() instead of the=
- runtime flag and unlocked read(Sashiko).
-> - Set splice_mode_right/left_vp before the error paths of vop2_crtc_atomi=
-c_enable()(Sashiko).
-> - Validate each split half against the min width 4 and max input width; a=
-lign NV20/NV30 like NV15(Sashiko).
-> - Latch overlay registers at the left VP's vsync; don't wait for the part=
-ner's own cfg-done(Sashiko).
-> - Program the color key on the window actually being updated(Sashiko).
->=20
-> Cc: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-> Cc: Sebastian Reichel <sebastian.reichel@collabora.com>
->=20
-> Chaoyi Chen (3):
->   drm/rockchip: vop2: Use drm_format_info_min_pitch() for plane offsets
->   drm/rockchip: vop2: Skip UV plane setup for packed YUV formats
->   drm/rockchip: vop2: Support 8K output by splicing two video ports
->=20
->  drivers/gpu/drm/rockchip/rockchip_drm_drv.h  |   5 +
->  drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 579 +++++++++++++++++--
->  drivers/gpu/drm/rockchip/rockchip_drm_vop2.h |  66 ++-
->  drivers/gpu/drm/rockchip/rockchip_vop2_reg.c | 370 ++++++++----
->  4 files changed, 857 insertions(+), 163 deletions(-)
->=20
-> --=20
-> 2.53.0
->=20
-
---xz5roaz37kmfattc
+--4yohrfi6hcwzkpgi
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmsJZRgACgkQ2O7X88g7
-+pqU3Q//R1kUfPIEKaFvN9LmvJDBrOItlO/k7Nwle8vs14eDYVet8bkNUiE5T2mJ
-PLBSzoc0w9KM1+wGCNzlysIH89dh8o8RZzQPpg+6v+D4TRijTLAuhfA11r6SfVkm
-wtcag4MCwgcMTcVxf7V1bT34sum/Kxnpg4rPw7GpAb3CD0Mu+c0BbWig+ndNp7QS
-iXSi9PECwLWP5o2YSY/GdV6dXy2B74QofXUJmw9ve31fNyNQDI8mj4AyObHgSPbV
-Dk0p9SGCij1ImqyESt8jeMM2sgAspQbKJs2nKxvY6C2L1yzK9zuPbIaooPwTKNfl
-IyJ+c+6rcMWltQRTFkWaNiiWIDPkUxDki2qit3rju8FSxDe5yM3jZTVbTDOYECVA
-e2ysSTjqk9EPMPcpE3UbTJ4w4TVNErIz6vrCmjTpJ67da4kV5iTiBpX1QRRT6poj
-wrWR45O+HzASyAdGbeAjDoibZnrGMBSXSXQl+2VPR2RV6irK8faUn+owW/UvHnxr
-OUinP9Ek67fNCpr7y15V+hBUihSI79IOBK3IR5XAt3l2gFTN39NMiif9UZkX9lDZ
-M6SoADc/lYTfmbScC4QpPQxuMoYuV4IEhcUEC3Jnyp/BPmJ36dY3lll4xac1SESA
-AtW3pXF1WiPxGoY2Ndb5iJ0tn18hzXC10qY56vp6esS/et7zcQg=
-=cg/c
+iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmsJakoACgkQj4D7WH0S
+/k7RyQf9GwSgCvWfCEuntvedN0BuWWwDO37M+L0I+K+oTL94nW/JVSeKxnCG0gTT
+s/M8cJ9Vr2DmJ79LzcaXq6+FQJ6qr+ONq6amEq8jt5M36qBMVmVjIphE/VegAfCv
+pL/GO5t7X30eVr5Dmhe9G3lZ9Ud94PdiC9PCaHDPU8nmQz/PnH42FQTnm6BICnkC
+867tlVXHSIHENDN+P3rjSLsgzVH4uYwJOtrQURHpzaE7PQi5GomAcS46c50/asni
+zYOeeLd2cRO/QF2mQUZ496dfaHg2h5t602Kwx81Wc8dAeUwCx01dAslF53OW0mI6
+ya9O1cZmBYu8gzwG+YB7vaTkboHUcw==
+=p8HE
 -----END PGP SIGNATURE-----
 
---xz5roaz37kmfattc--
+--4yohrfi6hcwzkpgi--
 
 
---===============8402252786062865565==
+--===============8800730652451242924==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -211,5 +143,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============8402252786062865565==--
+--===============8800730652451242924==--
 
