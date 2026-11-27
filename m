@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A5955606A31C
-	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Nov 2026 18:43:29 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7E205606A337
+	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Nov 2026 18:44:50 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=t1vMbY3s;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=zohomail header.b=AlhFf8zC
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=azUea6dY;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=zohomail header.b=PQ2Uriou
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,34 +14,34 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=gVtanb0TXzv9TBHUJ+LBoyUMaFqp75zR5Xg2hQ3wN3Q=; b=t1vMbY3sIgFGq9pcNINoZ94p4i
-	yWthcJUHm4+rnOe7RULg7EkKzNn20sCRRPvLBnIHby7CLhL4jAFMPHc4+T9w5XQaMLLdFGAbQDPzD
-	MWib1wUEBbZDUDrOttHHCws8qKsPyGPkviJWIZrp8EaP9wNjhJaYfsbmLq5EpJE41IZVKU5DnZNVR
-	CI0mbGiF0e+LgL1CAQor3mdYt7nYEAzVOpJxnfQX2SFmYf15zUOXdB2/O3YhXc2Up0MbdzXJGp7VC
-	mbBlONOIa51uf/+1YgMFyfFEYfEyzCEr8OTtIbHo0oPT2UziKcOosfSm2KrXw4x6WX75doReiC4GV
-	R9jLOPyA==;
+	bh=Et+yjIniIywgTUhnpzr39FSh+Izq/R+NsT2fZBQdvVQ=; b=azUea6dYkTxj+ttUS/xi/yHco2
+	UtV2zBwBLMqUSllE7TRwxk559jAUGpvvQRvwhluwYXNGDQGig+FLF7gSLjj1rAAWF+m0UxZq90Zts
+	ycSoQW/I/CuEutLXCK8mBTTHxdZJE1+2clwS1I2RYp2jr7A8yM6DPdTKoeScXbTBQ7ehbIbHo/Qfg
+	47ApNCHlM51FRGiTSa3OcP/7efiGvxV21XNjyUqwDPdF+X1PMfyp6VslqdIRscRM2AOIBzq14R5ms
+	37Jh4JdsJjb7LKg669FSq7+qmbASsQ2DJtijLncNhAf4+qNfwFPUgEeJO7Vj1wi4WGxjzJAamt/za
+	3KB8FwAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xX0ur-0000000HSXh-1Ibb;
-	Fri, 27 Nov 2026 18:43:25 +0000
+	id 1xX0w9-0000000HTAK-3mtV;
+	Fri, 27 Nov 2026 18:44:45 +0000
 Received: from sender5-op-o11.zoho.com ([165.173.182.11])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xX0uH-0000000HSOT-39Qe;
-	Fri, 27 Nov 2026 18:42:50 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1795804954; cv=none; 
+	id 1xX0w6-0000000HT9X-34ih;
+	Fri, 27 Nov 2026 18:44:43 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1795805070; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=WcZtN3tD/zjvkk8uI44gdbTyPfvaOlx2Uyw+n6EalGUJfhu2vyRP3ATf6Fs40uUjjalYJ977Uv0z2PRkZEQd4IE76JryonkGpgoiw1qvX9Tjg50seYZmaLv9K8mvWj/gPVkYdhK0u8bXblt9FClGbhL12aU4fpfWVvHFl6VtlEk=
+	b=UtGoH5zyybqW5YigDWrywq5xysoqrasgDxXL9JEz0ellMRdYBFUsZGwp+pYRVgp/u4zxpa10sl9s839bFJ7aMZn5NVlT3SwltpCh26iMkcYSKRoUmhf98aTgqTlLVY+e06VV6IcJyP4+ImtCbBPlajG/KqPag4cAlSh3fXbw6qM=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1795804954; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=RZV2Bz1rnR1nwBwCIHteBeBwrgGrqm/NvJnIi7wGD7A=; 
-	b=msZ1BEW68rpZfIn05UPZaNVYPC8P2EHyim38o+oe5zt9X9dp44yOvAx9CnvPK5qD/D1GBqYnuT/2sBQJt4EHNFrJqJF3szqKvjcqHtF+1tXkCDkPW/S46i+J8E8M7FLiXTWXTUVGU/U0NSV+81pRf4Z5ehYkZFrVipV5e7U4UzA=
+	t=1795805070; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=lFuWskwWRql2Fhx97LXOZZIB1aolGuDk0+v/5Jmc32Q=; 
+	b=mWgaGrSi92+Dnd9S5b6TWvbFQiXEoZkCt63aPbS/vXiGbJmXPPwpi/J+aqJL5n3dX2blKGhVfDAOZeTTYd56HyLW+y1IwS+9Pz2NiyS49GRSKVXEQKjWZhuSr4MFQsE+3tgePe/aMGRXJaxo/LpLHA5Tbjhnl7KP5IlsI3M/Eq4=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=detlev.casanova@collabora.com;
 	dmarc=pass header.from=<detlev.casanova@collabora.com>
-DKIM-Signature: a=rsa-sha256; b=AlhFf8zCtIALPrXe8zga3TTnuSQt0lRzQGYtAzDrHn++w3fCVG+LhzmCx3usebRtnZHI1BJiwQhUVIvcEw6uiMt6Y9Crx6rnJoiYG0SEBR0fRflpO+xdg7OInUwN4YW4I9QP9CdbTZaNb+O6aUic1mFDxOzvtuMlUIk52JxFIY4=; c=relaxed/relaxed; s=zohomail; d=collabora.com; v=1; bh=RZV2Bz1rnR1nwBwCIHteBeBwrgGrqm/NvJnIi7wGD7A=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
-Received: by smtp.zohomail.com with SMTPS id 1795804951277426.7074106650923;
-	Fri, 27 Nov 2026 10:42:31 -0800 (PST)
+DKIM-Signature: a=rsa-sha256; b=PQ2Uriou7khkZGh8nS+1xv5VhQfZJN47Cg9sVWnJe/fmoprMEJpzQk7ivHLNLktg0TauVtssr7qVoTm/LG5Q+Bb9zEWj4gIdc/a28GoijhgFw5NP55dfprxhwJ8kk1QpLXAijYWVC0jt6O1w1h5UlO5pVWpmqLhKVgOYmeI0g8M=; c=relaxed/relaxed; s=zohomail; d=collabora.com; v=1; bh=lFuWskwWRql2Fhx97LXOZZIB1aolGuDk0+v/5Jmc32Q=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
+Received: by smtp.zohomail.com with SMTPS id 1795805068935159.32844594948233;
+	Fri, 27 Nov 2026 10:44:28 -0800 (PST)
 From: Detlev Casanova <detlev.casanova@collabora.com>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>,
  Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
@@ -52,19 +52,19 @@ Cc: Sven =?UTF-8?B?UMO8c2NoZWw=?= <s.pueschel@pengutronix.de>,
  kernel@collabora.com, linux-media@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
  linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v2 2/5] media: rkvdec: Remove unused need_reset
-Date: Fri, 27 Nov 2026 13:42:29 -0500
-Message-ID: <sHCcy4ZARIqHsoGbYpMAqg@collabora.com>
-In-Reply-To: <c0da8a7d22c6b837c2c8d62e6d267b54d6ed28f4.camel@collabora.com>
+Subject: Re: [PATCH v2 3/5] v4l2: export v4l2_m2m_set_max_parallel_jobs
+Date: Fri, 27 Nov 2026 13:44:26 -0500
+Message-ID: <g30LShJ-QraPMSjey2r1Hg@collabora.com>
+In-Reply-To: <d3eccd8c04656a46287a221b3b4f22427b21a74c.camel@collabora.com>
 References: <20260810-rkvdec-multicore-v2-0-986f89d22cdc@collabora.com>
- <20260810-rkvdec-multicore-v2-2-986f89d22cdc@collabora.com>
- <c0da8a7d22c6b837c2c8d62e6d267b54d6ed28f4.camel@collabora.com>
+ <20260810-rkvdec-multicore-v2-3-986f89d22cdc@collabora.com>
+ <d3eccd8c04656a46287a221b3b4f22427b21a74c.camel@collabora.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261127_104249_859132_E44EC4F1 
-X-CRM114-Status: GOOD (  11.05  )
+X-CRM114-CacheID: sfid-20261127_104442_829331_D843D729 
+X-CRM114-Status: GOOD (  13.34  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -80,23 +80,30 @@ Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
-	autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-SGkgIQoKT24gVGh1cnNkYXksIDE5IE5vdmVtYmVyIDIwMjYgMTI6MzU6NDMgRVNUIE5pY29sYXMg
-RHVmcmVzbmUgd3JvdGU6Cj4gTGUgbHVuZGkgMTAgYW/Du3QgMjAyNiDDoCAxMToyMiAtMDQwMCwg
-RGV0bGV2IENhc2Fub3ZhIGEgw6ljcml0IDoKPiA+IEEgbGVmdC1vdmVyIGZyb20gdGhlIGlvbW11
-IHJlc3RvcmUgbWVjYW5pc20gd2FzIGZvcmdvdHRlbi4KPiA+IEFzIG5lZWRfcmVzZXQgaXMgbmV2
-ZXIgc2V0IHRvIHRydWUsIHRoZSBpZiBoYXMgbm8gdXNlLgo+ID4gCj4gPiBUaGUgYWN0dWFsIHJl
-c3RvcmUgZnVuY3Rpb24gaXMgY2FsbGVkIGFib3ZlIGl0IHZhc2UgdGhlIElSUSBpc24ndCBpbiBh
-Cj4gCj4gVGVsbCBtZSB3aGF0IHlvdSB3YW50ZWQgdG8gc2F5IGluc3RlYWQgaWYgIml0IHZhc2Ug
-dGhlIElSUSIsIG9yIGRlZmluZSB0aGUKPiB2ZXJiICJ0byB2YXNlIj8KCkl0J3Mgbm90IGEgdmVy
-YiwgaXQgaXMgdmVyeSBhbmNpZW50IGJlbGdpYW4gRW5nbGlzaCBtZWFuaW5nICJpbiBjYXNlIi4K
-Cj4gPiBzdWNjZXNzIHN0YXR1cy4KPiA+IAo+ID4gU2lnbmVkLW9mZi1ieTogRGV0bGV2IENhc2Fu
-b3ZhIDxkZXRsZXYuY2FzYW5vdmFAY29sbGFib3JhLmNvbT4KPiAKPiBSZXZpZXdlZC1ieTogTmlj
-b2xhcyBEdXJlc25lIDxuaWNvbGFzLmR1ZnJlc25lQGNvbGxhYm9yYS5jb20+CgpEZXRsZXYuCgoK
-Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJv
-Y2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0
-dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+T24gVGh1cnNkYXksIDE5IE5vdmVtYmVyIDIwMjYgMTI6MzY6MzYgRVNUIE5pY29sYXMgRHVmcmVz
+bmUgd3JvdGU6Cj4gTGUgbHVuZGkgMTAgYW/Du3QgMjAyNiDDoCAxMToyMiAtMDQwMCwgRGV0bGV2
+IENhc2Fub3ZhIGEgw6ljcml0IDoKPiAKPiBJIGtub3csIGl0cyBzdHJhaWdodGZvcndhcmQsIGJ1
+dCBpdHMgbm90IGV2ZW4gc2lnbmVkIG9mZi4KCkkgdm9sdW50YXJpbHkgbGVmdCBpdCBvdXQgYmVj
+YXVzZSB0aGlzIGlzIGZpeGVkIGluIHRoZSBsYXRlc3QgUkdBIHBhdGNoIHNldCwgc28gCnRoaXMg
+aXMganVzdCB0byBtYWtlIHN1cmUgdGhlIHJlc3QgYnVpbGRzLgpUaGlzIHBhdGNoIHNob3VsZCBu
+b3QgYmUgYXBwbGllZC4KCj4gTmljb2xhcwo+IAo+ID4gLS0tCj4gPiAKPiA+ICBkcml2ZXJzL21l
+ZGlhL3Y0bDItY29yZS92NGwyLW1lbTJtZW0uYyB8IDEgKwo+ID4gIDEgZmlsZSBjaGFuZ2VkLCAx
+IGluc2VydGlvbigrKQo+ID4gCj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9tZWRpYS92NGwyLWNv
+cmUvdjRsMi1tZW0ybWVtLmMKPiA+IGIvZHJpdmVycy9tZWRpYS92NGwyLWNvcmUvdjRsMi1tZW0y
+bWVtLmMgaW5kZXggMTRhYzljODU4MDNkLi5mNmY4ODY0ZjIzZDIKPiA+IDEwMDY0NAo+ID4gLS0t
+IGEvZHJpdmVycy9tZWRpYS92NGwyLWNvcmUvdjRsMi1tZW0ybWVtLmMKPiA+ICsrKyBiL2RyaXZl
+cnMvbWVkaWEvdjRsMi1jb3JlL3Y0bDItbWVtMm1lbS5jCj4gPiBAQCAtMTI4LDYgKzEyOCw3IEBA
+IHZvaWQgdjRsMl9tMm1fc2V0X21heF9wYXJhbGxlbF9qb2JzKHN0cnVjdAo+ID4gdjRsMl9tMm1f
+ZGV2ICptMm1fZGV2LD4gCj4gPiAgewo+ID4gIAo+ID4gIAltMm1fZGV2LT5tYXhfcGFyYWxsZWxf
+am9icyA9IG1heF9wYXJhbGxlbF9qb2JzOwo+ID4gIAo+ID4gIH0KPiA+IAo+ID4gK0VYUE9SVF9T
+WU1CT0wodjRsMl9tMm1fc2V0X21heF9wYXJhbGxlbF9qb2JzKTsKPiA+IAo+ID4gIHN0cnVjdCB2
+YjJfcXVldWUgKnY0bDJfbTJtX2dldF92cShzdHJ1Y3QgdjRsMl9tMm1fY3R4ICptMm1fY3R4LAo+
+ID4gIAo+ID4gIAkJCQkgICAgICAgZW51bSB2NGwyX2J1Zl90eXBlIHR5cGUpCgoKCgoKX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAg
+bWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xp
+c3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
