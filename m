@@ -2,93 +2,77 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 47716606A31C
-	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Nov 2026 16:22:46 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0FCC3606A68C
+	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Nov 2026 16:45:52 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Pz0Qkyjf
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=ppgnw6kQ;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=bMLqzdv0
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date
-	:From:In-Reply-To:References:MIME-Version:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=33w7OQM+/VGu966rsClRKTSqzDNjr6yQIEvVoUbuL0o=; b=Pz0Qkyjf/pDk2seXh2vvaYLUdR
-	wwGIAB8oN4oN4J1m8VtT9tJfc2f16URgv43O//yN1Sl9bYy6h/E0Pig9hZG/F38NfgoZ7Fv8xw60h
-	7kHcoxb9Wz4M4NWwOf5GFlhXzFMrNsPfZ52PDrbN+8RJfpAkI3WLzLhiUpdG4oCwKxqZj2hQA/T5v
-	g8cVMA/dZ7uL44eJ+lW4LmgDKqisneW9h//ge89te8IN+wjvZrln0XFDCNokKpbUJKtQIBOAYhaCe
-	1FiXE3u9IKq0jtU/A16o51A+9gHfeV9XfF0P59xQdAwY1X4minlZ04TPEhSWSILC49cI2oA5/knde
-	GuD+W3Vw==;
+	bh=CVzMXQhUSIs/XJsKedFP2HFGBjilim/qkdBetY0Gyb4=; b=ppgnw6kQcOoYteMcZhRGrOIyB5
+	ptP/RH97AOLyWuAZF1ojBRaf8OIdIH9/43immYccnnbhlD4XgSez3b4wH6Gf9zbHlPyu66Drr9+pw
+	KgCSOtUCFLlg9ZeW/zciDBOhRe8Dg+r/g81c1nij+vj8Moow1nydEgdcIK9P21p3ByYQGP9eegRJ/
+	Dp6djX5Ur2+jkTWdkPXIM4Kb4jdgPjLNfgDojLAdOmt6/ZI4QVmuthhAbavCCYXelcpGlmcPOhJd1
+	GAKcmQv/e2rPeWG5eZ/Qxloy3nFV8tnABpEO4+fCCDPIq/4XyQAAyPDQF6Biqn8Mf0fSP1k0xY0eX
+	U5tXRDsQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWyif-0000000H2vN-20XZ;
-	Fri, 27 Nov 2026 16:22:41 +0000
-Received: from mail-yw1-f178.google.com ([209.85.128.178])
+	id 1xWz4y-0000000H8Fh-2qwN;
+	Fri, 27 Nov 2026 16:45:44 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWyid-0000000H2tZ-030a
-	for linux-rockchip@lists.infradead.org;
-	Fri, 27 Nov 2026 16:22:40 +0000
-Received: by mail-yw1-f178.google.com with SMTP id 00721157ae682-8b4f4095a7aso72831487b3.0
-        for <linux-rockchip@lists.infradead.org>; Fri, 27 Nov 2026 08:22:37 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1795796557; x=1796401357;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:reply-to:in-reply-to:references:mime-version:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=2FluCkB23A2rX2sPHBDAcwkjRgUYCjrVI/IlnA5wVSI=;
-        b=TU+LRmcO+M6/YM2CoxsW++8RcJTbnsfFDDrJd5wsBor7gTaGBMeAv1UMw98wDSIiWW
-         K4jiDWyPl49VsDMqLnZDxrDxa155vyclmMjvEiL3xcuKBQA+VyV8GJayTvnCTS86KG+W
-         x8tnIjdujFHPR/VUBH0A1cO4cX90KIeUE1xtQUNAURNwmwMX7BjfYCytDvtd9/jE3L4V
-         nbel9X48wmOAYnEe1rRrrhkEzMEBLFF+t8BBJyNtMDkcYKR4Y19xLRx/YF6fLIYe1g08
-         Vl67NbezIgZkWM+OI/lS8vk4NuxxNYetbElKi11QxsmbBIKodjCm3JV1qR0SPX6E5JoH
-         HqVw==
-X-Forwarded-Encrypted: i=1; AL+hErGD8VcoEPrS37ET8ajTFHPbut0xumifXvAQBle3xQwhuSE1K4u1f2zYjRTFs6uwcNVxIRJh7J+UpQ8Pn91EGA==@lists.infradead.org
-X-Gm-Message-State: APuU4Z+HXXwAL91iVBLyrJrpySdm0nOmMrxllxMoNGb6ZJ8GhB65SQyE
-	cerIhCj7g+fJK5d14ZZCyBuPuTigoIBshWxq5ehEaZCz+LYrcoCDtb384+LLRg==
-X-Gm-Gg: AZFdTZe63KqWuIPUt69+RTNfRvTFE0u+w2bt0ARR08iKui9earzmZs3oMc6N1yahuFe
-	+V7rAoDGMHaschjG3tgY632EBM8C/iNsFxa+qx1iDUK2r4LztSstNKgNXSK5BW1dXiX5MzBA1eW
-	nYpLaChcXUXHSW0McNK4FnkPJpnq9wPUdYLa1SY/4TmhIBfxsXpAnCtn+AfHtOKtYuLb5g0Ph5Y
-	FHNCxx+6AnStMXyuFhkdMjYQs+Uy7yCbksaIIvb530rrK5qCQSC0FzxKMUphJrfSKzrwK77LsuE
-	7GMLQTR25mLrsY7CF7NAb5zigZgHzpIMUGxmElXexMrl51mALRu03VVL5maNU2GtVSnEvocu+ft
-	OUKBx3XYzMIxQWkvJpUkWIGhrI/qfqALlsVLa0wTyGu5Do2lOxY1iw1R2Y+Q30q/3wCD66QATwY
-	nzBhNyXfJ/2vLo5mqvOoP8HkS6Wfdg1sVQzidJ6hir8xdIBTc7JG3C90wwZbgk5ncHUtMnZ9xC8
-	kfDK69u9nI6PBqZBBsqs+7wbhUv09UnmIBfTAcHogiYbrQXLL4gasLXOIr+XHAs8UEwunONcn6y
-	jkLh9Rg8TYNd20Q1i1fiFF4QBpXjLZRlqxJdAjoBUvz+UG7isJyG+/3uQ7xaxcnyaywH1vhyDNs
-	2g7IcrEmVKZc8hZBKEoVlXgWy0m7rgqx970z7LqbSE8g9Xs4kf2cbpINIuA==
-X-Received: by 2002:a05:690c:9c11:b0:8b1:60a1:cd3b with SMTP id 00721157ae682-8b5204980a7mr118953257b3.24.1795796556467;
-        Fri, 27 Nov 2026 08:22:36 -0800 (PST)
-Received: from mail-yw1-f181.google.com (mail-yw1-f181.google.com. [209.85.128.181])
-        by smtp.gmail.com with ESMTPSA id 00721157ae682-8b52028c80dsm98418197b3.13.2026.11.27.08.22.35
-        for <linux-rockchip@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 27 Nov 2026 08:22:35 -0800 (PST)
-Received: by mail-yw1-f181.google.com with SMTP id 00721157ae682-8b4b9ba815bso48816317b3.3
-        for <linux-rockchip@lists.infradead.org>; Fri, 27 Nov 2026 08:22:35 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AL+hErEr/41ICCWMRM8dXa1HK4jCkusp0W5yelCGfHpRwQZIYNijCL4H/aFuTz9EKsVegtHIe92uzoUKRLw+Codt2A==@lists.infradead.org
-X-Received: by 2002:a05:690c:9a82:b0:8b0:c71d:2b2b with SMTP id
- 00721157ae682-8b5205137b8mr119923687b3.45.1795796555253; Fri, 27 Nov 2026
- 08:22:35 -0800 (PST)
+	id 1xWz4u-0000000H8Ec-1fwN;
+	Fri, 27 Nov 2026 16:45:42 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1795797937;
+	bh=mxFODSb/WKuiMK1tmmBnOBrFqLuGs+xiiCktJN4Ejsw=;
+	h=From:Subject:Date:To:Cc:From;
+	b=bMLqzdv05IgdzeOe3SjapBamP6TCtIukuOMbct3PvDXhaDkczBi7VzbasX6Tqn5TJ
+	 D9cw5r5s/oZw+zdNvkEK2MdIa33Be0PFfPW6yUn2X8bGkfpDuhgS/MzjQDMfxRL1fg
+	 EKhUcPQnASmcoT/keO9HriS0wSIl/ushunzN9ZJk5X0yOYEUImLLwiI0iXmm5rL9Lg
+	 qluhU1SShJUiIyN9V2NjusmRTR/ljqWFerCjCIq2os3f95uHbgbC6YYMicR79EWzOV
+	 rAyao3sVrGeh8hGxrgoSeFNKzwpi8OdvYZj/I4ZnqNZq3BF1i4b06o25k8p3/SQLM+
+	 NdHtoYwwM677Q==
+Received: from [192.168.0.15] (unknown [100.64.0.170])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: detlev)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id ED1AF17E010F;
+	Fri, 27 Nov 2026 17:45:35 +0100 (CET)
+From: Detlev Casanova <detlev.casanova@collabora.com>
+Subject: [PATCH v4 0/9] v4l2: Add tracing for stateless codecs
+Date: Fri, 27 Nov 2026 11:45:04 -0500
+Message-Id: <20261127-v4l2-add-ftrace-v4-0-24138479002f@collabora.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <20261114133738.52817-1-tanure@linux.com>
-In-Reply-To: <20261114133738.52817-1-tanure@linux.com>
-From: Lucas Tanure <tanure@linux.com>
-Date: Fri, 27 Nov 2026 16:22:23 +0000
-X-Gmail-Original-Message-ID: <CAJX_Q+15Vit+pU3XE+DiUH4u6APf-FYBuhnrVGx9=pZC8MGpWw@mail.gmail.com>
-X-Gm-Features: Aa3M54quNMc8BBDlmy1z8lmGJhR7RotCtAP1c_2g21GpRyDjwzEWIScV0cEj9Ts
-Message-ID: <CAJX_Q+15Vit+pU3XE+DiUH4u6APf-FYBuhnrVGx9=pZC8MGpWw@mail.gmail.com>
-Subject: Re: [PATCH] iommu/rockchip: do not walk the page tables of a disabled MMU
-To: "Joerg Roedel (AMD)" <joro@8bytes.org>, Will Deacon <will@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
-	"open list:IOMMU SUBSYSTEM" <iommu@lists.linux.dev>, 
-	"moderated list:ARM/Rockchip SoC support" <linux-arm-kernel@lists.infradead.org>, 
-	"open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>, 
-	open list <linux-kernel@vger.kernel.org>
-Cc: stable@vger.kernel.org, Robin Murphy <robin.murphy@arm.com>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/2XNQQ7CIBQE0KsY1mKAtrS68h7GxS98LKYWA5Vom
+ t5dqMaFXU4y82YiAb3FQA6biXiMNlg3pFBuN0R1MFyQWp0yEUxIJllDY9kLClpTM3pQSAGVxNp
+ IBlKRtLp7NPa5iKfzJ4dHe0U1ZiY3OhtG51/LZRS599U5W+lRUEb3dSVRm1qA4kfl+h5a52Gn3
+ I3kh1j8DM5FtTaKZHDNdVs2RS1Q/xvzPL8BY14asAgBAAA=
+X-Change-ID: 20260608-v4l2-add-ftrace-aec6e7f60a6c
+To: Daniel Almeida <daniel.almeida@collabora.com>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Steven Rostedt <rostedt@goodmis.org>, 
+ Masami Hiramatsu <mhiramat@kernel.org>, 
+ Mathieu Desnoyers <mathieu.desnoyers@efficios.com>, 
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, Heiko Stuebner <heiko@sntech.de>
+Cc: linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, 
+ linux-trace-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, kernel@collabora.com, 
+ Detlev Casanova <detlev.casanova@collabora.com>
+X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261127_082239_093603_E004F0CB 
-X-CRM114-Status: GOOD (  29.20  )
-X-Spam-Score: -0.8 (/)
+X-CRM114-CacheID: sfid-20261127_084540_603177_90D5E75D 
+X-CRM114-Status: GOOD (  17.46  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,177 +82,141 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: tanure@linux.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-T24gU2F0LCBOb3YgMTQsIDIwMjYgYXQgMTozN+KAr1BNIEx1Y2FzIFRhbnVyZSA8dGFudXJlQGxp
-bnV4LmNvbT4gd3JvdGU6Cj4KPiBBIHBhZ2UgZmF1bHQgaGFuZGxlciBydW5uaW5nIHdoaWxlIGFu
-b3RoZXIgQ1BVIGRldGFjaGVzIHRoZSBzYW1lIElPTU1VCj4gY2FuIHJlYWQgYSBjbGVhcmVkIFJL
-X01NVV9EVEVfQUREUiwgdHVybiBpdCBpbnRvIGEgbGluZWFyLW1hcCBwb2ludGVyCj4gYW5kIGRl
-cmVmZXJlbmNlIGl0LCB3aGljaCBwYW5pY3MgdGhlIG1hY2hpbmUuIEEgZHVtbXkgb3IgZmlybXdh
-cmUtbGVmdAo+IGFkZHJlc3MgaXMgYXMgdW5zYWZlLgo+Cj4gU2VlbiBvbiBQWDMwIGF0IHJlYm9v
-dDogdGhlIGRpc3BsYXkgY29udHJvbGxlciBzdGlsbCBmZXRjaGVkIGFuCj4gdW5tYXBwZWQgZnJh
-bWVidWZmZXIsIGl0cyBJT01NVSBzYXQgaW4gYSBwYWdlIGZhdWx0LCBpZ25vcmVkIHRoZSBzdGFs
-bAo+IGFuZCBwYWdpbmctZGlzYWJsZSBjb21tYW5kcywgYW5kIGhhZCBSS19NTVVfRFRFX0FERFIg
-Y2xlYXJlZCBkdXJpbmcKPiB0aGUgaGFuZGxlcidzIHNlY29uZCBydW4uCj4KPiBObyB3YWl0IHdv
-cmtzOiB0aGUgbWFzdGVyIHNoYXJlcyB0aGUgbGluZSwgdGhlIFJLMzU4OCBOUFUgZHJpdmVyCj4g
-ZGV0YWNoZXMgZnJvbSBpdHMgaW50ZXJydXB0IHRocmVhZCwgd2hlcmUgc3luY2hyb25pemVfaXJx
-KCkgZGVhZGxvY2tzLAo+IGFuZCBzeW5jaHJvbml6ZV9oYXJkaXJxKCkgc2tpcHMgYSBmb3JjZS10
-aHJlYWRlZCBoYW5kbGVyLiBBIHNwaW5sb2NrCj4gb3JkZXJzIHRoZSB3YWxrIGFnYWluc3QgdGhl
-IHJlZ2lzdGVyIGNsZWFyLgo+Cj4gNi4xIHZlbmRvciBrZXJuZWwgbG9nLCBya19wYWdlZmF1bHRf
-ZG9uZSBpcyB0aGUgd2FsaywgcGVyIENQVToKPgo+ICAgQ1BVIDEsIGluaXQsIHJlYm9vdCBwYXRo
-Ogo+ICAgWyAxMDY5Ljc4OTM3NF1bICAgIFQxXSBya19pb21tdSBmZjQ2MGYwMC5pb21tdTogRW5h
-YmxlIHN0YWxsIHJlcXVlc3QgdGltZWQgb3V0LCByZXRyeV9jb3VudCA9IDAsIHN0YXR1czogMHgw
-MDAyY2IKPiAgIFsgMTA2OS43OTEzMTRdWyAgICBUMV0gcmtfaW9tbXUgZmY0NjBmMDAuaW9tbXU6
-IERpc2FibGUgcGFnaW5nIHJlcXVlc3QgdGltZWQgb3V0LCByZXRyeV9jb3VudCA9IDAsIHN0YXR1
-czogMHgwMDAyY2IKPiAgIFsgMTA2OS44MzAxOTddWyAgICBUMV0gQ2FsbCB0cmFjZToKPiAgIFsg
-MTA2OS44MzA5MjJdWyAgICBUMV0gIGlvbW11X2RldGFjaF9kZXZpY2UrMHhkMC8weGRjCj4gICBb
-IDEwNjkuODMxNDgzXVsgICAgVDFdICByb2NrY2hpcF9kcm1fZG1hX2RldGFjaF9kZXZpY2UrMHgx
-Yy8weDM0Cj4gICBbIDEwNjkuODMyMDMzXVsgICAgVDFdICB2b3BfY3J0Y19hdG9taWNfZGlzYWJs
-ZSsweGIwYy8weGM0NAo+ICAgWyAxMDY5LjgzMjc1MV1bICAgIFQxXSAgZHJtX2F0b21pY19oZWxw
-ZXJfY29tbWl0X21vZGVzZXRfZGlzYWJsZXMrMHgzNDgvMHg2OTAKPiAgIC4uLgo+ICAgWyAxMDY5
-LjgzNjYwMV1bICAgIFQxXSAgZHJtX2F0b21pY19oZWxwZXJfc2h1dGRvd24rMHhhMC8weDE1OAo+
-ICAgWyAxMDY5LjgzNzE1Ml1bICAgIFQxXSAgcm9ja2NoaXBfZHJtX3BsYXRmb3JtX3NodXRkb3du
-KzB4MTgvMHgyYwo+ICAgWyAxMDY5LjgzNzg3MF1bICAgIFQxXSAgcGxhdGZvcm1fc2h1dGRvd24r
-MHgzYy8weDU0Cj4gICBbIDEwNjkuODM4NTk5XVsgICAgVDFdICBkZXZpY2Vfc2h1dGRvd24rMHgx
-OTQvMHgyNjAKPiAgIFsgMTA2OS44MzkxNjBdWyAgICBUMV0gIGtlcm5lbF9yZXN0YXJ0KzB4NDAv
-MHgxMjgKPgo+ICAgQ1BVIDAsIHBhZ2UgZmF1bHQgaGFuZGxlcjoKPiAgIFsgMTA2OS43OTAzNjRd
-WyAgICBDMF0gcmtfaW9tbXUgZmY0NjBmMDAuaW9tbXU6IFBhZ2UgZmF1bHQgYXQgMHgwMDAwMDAw
-MGZmZWUwMDAwIG9mIHR5cGUgcmVhZAo+ICAgWyAxMDY5Ljc5MjEyOV1bICAgIEMwXSBya19pb21t
-dSBmZjQ2MGYwMC5pb21tdTogUGFnZSBmYXVsdCB3aGlsZSBpb21tdSBub3QgYXR0YWNoZWQgdG8g
-ZG9tYWluPwo+ICAgWyAxMDY5Ljc5MjE4NF1bICAgIEMwXSBya19pb21tdSBmZjQ2MGYwMC5pb21t
-dTogUGFnZSBmYXVsdCBhdCAweDAwMDAwMDAwZmZlZTAyODAgb2YgdHlwZSByZWFkCj4gICBbIDEw
-NjkuNzk0NjA0XVsgICAgQzBdIFVuYWJsZSB0byBoYW5kbGUga2VybmVsIHBhZ2luZyByZXF1ZXN0
-IGF0IHZpcnR1YWwgYWRkcmVzcyBmZmZmZmY4MDAwMDAwZmZjCj4gICBbIDEwNjkuODA1OTk4XVsg
-ICAgQzBdIEludGVybmFsIGVycm9yOiBPb3BzOiAwMDAwMDAwMDk2MDAwMDA2IFsjMV0gUFJFRU1Q
-VCBTTVAKPiAgIFsgMTA2OS44MDk0ODRdWyAgICBDMF0gcGMgOiBya19wYWdlZmF1bHRfZG9uZSsw
-eDFiNC8weDNjOAo+ICAgWyAxMDY5LjgxMDU0OF1bICAgIEMwXSBsciA6IHJrX3BhZ2VmYXVsdF9k
-b25lKzB4MTljLzB4M2M4Cj4gICBbIDEwNjkuODMyMzkwXVsgICAgQzBdIENhbGwgdHJhY2U6Cj4g
-ICBbIDEwNjkuODMzMTE2XVsgICAgQzBdICBya19wYWdlZmF1bHRfZG9uZSsweDFiNC8weDNjOAo+
-ICAgWyAxMDY5LjgzMzg0NF1bICAgIEMwXSAgcmtfaW9tbXVfaXJxKzB4NjQvMHhjOAo+ICAgWyAx
-MDY5LjgzNDM5NV1bICAgIEMwXSAgX19oYW5kbGVfaXJxX2V2ZW50X3BlcmNwdSsweGU4LzB4MmFj
-Cj4gICBbIDEwNjkuODM0OTQ1XVsgICAgQzBdICBoYW5kbGVfaXJxX2V2ZW50KzB4NDAvMHhiYwo+
-ICAgWyAxMDY5LjgzNTY3NV1bICAgIEMwXSAgaGFuZGxlX2Zhc3Rlb2lfaXJxKzB4MTE4LzB4Mjhj
-Cj4gICBbIDEwNjkuODM2NDA0XVsgICAgQzBdICBnZW5lcmljX2hhbmRsZV9kb21haW5faXJxKzB4
-NDQvMHg2Ywo+ICAgWyAxMDY5LjgzNjk1NF1bICAgIEMwXSAgZ2ljX2hhbmRsZV9pcnErMHg2MC8w
-eGYwCj4gICBbIDEwNjkuODM3NTA1XVsgICAgQzBdICBjYWxsX29uX2lycV9zdGFjaysweDNjLzB4
-NWMKPiAgIFsgMTA2OS44MzgyMzVdWyAgICBDMF0gIGRvX2ludGVycnVwdF9oYW5kbGVyKzB4NGMv
-MHg5NAo+ICAgWyAxMDY5LjgzODk2M11bICAgIEMwXSAgZWwxX2ludGVycnVwdCsweDQ0LzB4YTgK
-PiAgIFsgMTA2OS44Mzk0NDZdWyAgICBDMF0gIGVsMWhfNjRfaXJxX2hhbmRsZXIrMHgxOC8weDJj
-Cj4gICBbIDEwNjkuODM5OTk3XVsgICAgQzBdICBlbDFoXzY0X2lycSsweDc4LzB4N2MKPiAgIFsg
-MTA3MS4yMTUyMjRdWyAgICBDMF0gS2VybmVsIHBhbmljIC0gbm90IHN5bmNpbmc6IE9vcHM6IEZh
-dGFsIGV4Y2VwdGlvbiBpbiBpbnRlcnJ1cHQKPgo+IEZpeGVzOiBjNjhhMjkyMTUyZDMgKCJpb21t
-dS9yb2NrY2hpcDogcmszMjg4IGlvbW11IGRyaXZlciIpCj4gQ2M6IHN0YWJsZUB2Z2VyLmtlcm5l
-bC5vcmcKPiBTaWduZWQtb2ZmLWJ5OiBMdWNhcyBUYW51cmUgPHRhbnVyZUBsaW51eC5jb20+Cj4g
-LS0tCj4gIGRyaXZlcnMvaW9tbXUvcm9ja2NoaXAtaW9tbXUuYyB8IDI4ICsrKysrKysrKysrKysr
-KysrKysrKystLS0tLS0KPiAgMSBmaWxlIGNoYW5nZWQsIDIyIGluc2VydGlvbnMoKyksIDYgZGVs
-ZXRpb25zKC0pCj4KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9pb21tdS9yb2NrY2hpcC1pb21tdS5j
-IGIvZHJpdmVycy9pb21tdS9yb2NrY2hpcC1pb21tdS5jCj4gaW5kZXggMWZhMzExMGIxNDJhLi4w
-ZjQwZDk2NzgzNDQgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9pb21tdS9yb2NrY2hpcC1pb21tdS5j
-Cj4gKysrIGIvZHJpdmVycy9pb21tdS9yb2NrY2hpcC1pb21tdS5jCj4gQEAgLTExNSw2ICsxMTUs
-NyBAQCBzdHJ1Y3QgcmtfaW9tbXUgewo+ICAgICAgICAgc3RydWN0IGlvbW11X2RldmljZSBpb21t
-dTsKPiAgICAgICAgIHN0cnVjdCBsaXN0X2hlYWQgbm9kZTsgLyogZW50cnkgaW4gcmtfaW9tbXVf
-ZG9tYWluLmlvbW11cyAqLwo+ICAgICAgICAgc3RydWN0IGlvbW11X2RvbWFpbiAqZG9tYWluOyAv
-KiBkb21haW4gdG8gd2hpY2ggaW9tbXUgaXMgYXR0YWNoZWQgKi8KPiArICAgICAgIHNwaW5sb2Nr
-X3QgbG9jazsKPiAgICAgICAgIGNvbnN0IHN0cnVjdCBya19pb21tdV9vcHMgKnJrX29wczsKPiAg
-fTsKPgo+IEBAIC01NDMsNyArNTQ0LDggQEAgc3RhdGljIGludCBya19pb21tdV9mb3JjZV9yZXNl
-dChzdHJ1Y3QgcmtfaW9tbXUgKmlvbW11KQo+ICAgICAgICAgcmV0dXJuIDA7Cj4gIH0KPgo+IC1z
-dGF0aWMgdm9pZCBsb2dfaW92YShzdHJ1Y3QgcmtfaW9tbXUgKmlvbW11LCBpbnQgaW5kZXgsIGRt
-YV9hZGRyX3QgaW92YSkKPiArc3RhdGljIHZvaWQgbG9nX2lvdmEoc3RydWN0IHJrX2lvbW11ICpp
-b21tdSwgc3RydWN0IGlvbW11X2RvbWFpbiAqZG9tYWluLAo+ICsgICAgICAgICAgICAgICAgICAg
-IGludCBpbmRleCwgZG1hX2FkZHJfdCBpb3ZhKQo+ICB7Cj4gICAgICAgICB2b2lkIF9faW9tZW0g
-KmJhc2UgPSBpb21tdS0+YmFzZXNbaW5kZXhdOwo+ICAgICAgICAgdTMyIGR0ZV9pbmRleCwgcHRl
-X2luZGV4LCBwYWdlX29mZnNldDsKPiBAQCAtNTYzLDYgKzU2NSwxMiBAQCBzdGF0aWMgdm9pZCBs
-b2dfaW92YShzdHJ1Y3QgcmtfaW9tbXUgKmlvbW11LCBpbnQgaW5kZXgsIGRtYV9hZGRyX3QgaW92
-YSkKPgo+ICAgICAgICAgbW11X2R0ZV9hZGRyID0gcmtfaW9tbXVfcmVhZChiYXNlLCBSS19NTVVf
-RFRFX0FERFIpOwo+ICAgICAgICAgbW11X2R0ZV9hZGRyX3BoeXMgPSBpb21tdS0+cmtfb3BzLT5w
-dF9hZGRyZXNzKG1tdV9kdGVfYWRkcik7Cj4gKyAgICAgICBpZiAoZG9tYWluID09ICZya19pZGVu
-dGl0eV9kb21haW4gfHwKPiArICAgICAgICAgICBtbXVfZHRlX2FkZHJfcGh5cyAhPSB0b19ya19k
-b21haW4oZG9tYWluKS0+ZHRfZG1hKSB7Cj4gKyAgICAgICAgICAgICAgIGRldl9lcnIoaW9tbXUt
-PmRldiwgImlvdmEgPSAlcGFkOiBwYWdlIGRpcmVjdG9yeSAlI3ggaXMgbm90IHRoZSBhdHRhY2hl
-ZCBkb21haW4ncywgbm90IHdhbGtlZFxuIiwKPiArICAgICAgICAgICAgICAgICAgICAgICAmaW92
-YSwgbW11X2R0ZV9hZGRyKTsKPiArICAgICAgICAgICAgICAgcmV0dXJuOwo+ICsgICAgICAgfQo+
-Cj4gICAgICAgICBkdGVfYWRkcl9waHlzID0gbW11X2R0ZV9hZGRyX3BoeXMgKyAoNCAqIGR0ZV9p
-bmRleCk7Cj4gICAgICAgICBkdGVfYWRkciA9IHBoeXNfdG9fdmlydChkdGVfYWRkcl9waHlzKTsK
-PiBAQCAtNTkzLDYgKzYwMSw3IEBAIHN0YXRpYyB2b2lkIGxvZ19pb3ZhKHN0cnVjdCBya19pb21t
-dSAqaW9tbXUsIGludCBpbmRleCwgZG1hX2FkZHJfdCBpb3ZhKQo+ICBzdGF0aWMgaXJxcmV0dXJu
-X3QgcmtfaW9tbXVfaXJxKGludCBpcnEsIHZvaWQgKmRldl9pZCkKPiAgewo+ICAgICAgICAgc3Ry
-dWN0IHJrX2lvbW11ICppb21tdSA9IGRldl9pZDsKPiArICAgICAgIHN0cnVjdCBpb21tdV9kb21h
-aW4gKmRvbWFpbjsKPiAgICAgICAgIHUzMiBzdGF0dXM7Cj4gICAgICAgICB1MzIgaW50X3N0YXR1
-czsKPiAgICAgICAgIGRtYV9hZGRyX3QgaW92YTsKPiBAQCAtNjA2LDYgKzYxNSw4IEBAIHN0YXRp
-YyBpcnFyZXR1cm5fdCBya19pb21tdV9pcnEoaW50IGlycSwgdm9pZCAqZGV2X2lkKQo+ICAgICAg
-ICAgaWYgKFdBUk5fT04oY2xrX2J1bGtfZW5hYmxlKGlvbW11LT5udW1fY2xvY2tzLCBpb21tdS0+
-Y2xvY2tzKSkpCj4gICAgICAgICAgICAgICAgIGdvdG8gb3V0Owo+Cj4gKyAgICAgICBzcGluX2xv
-Y2soJmlvbW11LT5sb2NrKTsKPiArICAgICAgIGRvbWFpbiA9IFJFQURfT05DRShpb21tdS0+ZG9t
-YWluKTsKPiAgICAgICAgIGZvciAoaSA9IDA7IGkgPCBpb21tdS0+bnVtX21tdTsgaSsrKSB7Cj4g
-ICAgICAgICAgICAgICAgIGludF9zdGF0dXMgPSBya19pb21tdV9yZWFkKGlvbW11LT5iYXNlc1tp
-XSwgUktfTU1VX0lOVF9TVEFUVVMpOwo+ICAgICAgICAgICAgICAgICBpZiAoaW50X3N0YXR1cyA9
-PSAwKQo+IEBAIC02MjUsMTUgKzYzNiwxNSBAQCBzdGF0aWMgaXJxcmV0dXJuX3QgcmtfaW9tbXVf
-aXJxKGludCBpcnEsIHZvaWQgKmRldl9pZCkKPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICZpb3ZhLAo+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgc3RyX3dyaXRlX3Jl
-YWQoZmxhZ3MgPT0gSU9NTVVfRkFVTFRfV1JJVEUpKTsKPgo+IC0gICAgICAgICAgICAgICAgICAg
-ICAgIGxvZ19pb3ZhKGlvbW11LCBpLCBpb3ZhKTsKPiArICAgICAgICAgICAgICAgICAgICAgICBs
-b2dfaW92YShpb21tdSwgZG9tYWluLCBpLCBpb3ZhKTsKPgo+ICAgICAgICAgICAgICAgICAgICAg
-ICAgIC8qCj4gICAgICAgICAgICAgICAgICAgICAgICAgICogUmVwb3J0IHBhZ2UgZmF1bHQgdG8g
-YW55IGluc3RhbGxlZCBoYW5kbGVycy4KPiAgICAgICAgICAgICAgICAgICAgICAgICAgKiBJZ25v
-cmUgdGhlIHJldHVybiBjb2RlLCB0aG91Z2gsIHNpbmNlIHdlIGFsd2F5cyB6YXAgY2FjaGUKPiAg
-ICAgICAgICAgICAgICAgICAgICAgICAgKiBhbmQgY2xlYXIgdGhlIHBhZ2UgZmF1bHQgYW55d2F5
-Lgo+ICAgICAgICAgICAgICAgICAgICAgICAgICAqLwo+IC0gICAgICAgICAgICAgICAgICAgICAg
-IGlmIChpb21tdS0+ZG9tYWluICE9ICZya19pZGVudGl0eV9kb21haW4pCj4gLSAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICByZXBvcnRfaW9tbXVfZmF1bHQoaW9tbXUtPmRvbWFpbiwgaW9t
-bXUtPmRldiwgaW92YSwKPiArICAgICAgICAgICAgICAgICAgICAgICBpZiAoZG9tYWluICE9ICZy
-a19pZGVudGl0eV9kb21haW4pCj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICByZXBv
-cnRfaW9tbXVfZmF1bHQoZG9tYWluLCBpb21tdS0+ZGV2LCBpb3ZhLAo+ICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGZsYWdzKTsKPiAgICAgICAgICAg
-ICAgICAgICAgICAgICBlbHNlCj4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBkZXZf
-ZXJyKGlvbW11LT5kZXYsICJQYWdlIGZhdWx0IHdoaWxlIGlvbW11IG5vdCBhdHRhY2hlZCB0byBk
-b21haW4/XG4iKTsKPiBAQCAtNjUxLDYgKzY2Miw3IEBAIHN0YXRpYyBpcnFyZXR1cm5fdCBya19p
-b21tdV9pcnEoaW50IGlycSwgdm9pZCAqZGV2X2lkKQo+Cj4gICAgICAgICAgICAgICAgIHJrX2lv
-bW11X3dyaXRlKGlvbW11LT5iYXNlc1tpXSwgUktfTU1VX0lOVF9DTEVBUiwgaW50X3N0YXR1cyk7
-Cj4gICAgICAgICB9Cj4gKyAgICAgICBzcGluX3VubG9jaygmaW9tbXUtPmxvY2spOwo+Cj4gICAg
-ICAgICBjbGtfYnVsa19kaXNhYmxlKGlvbW11LT5udW1fY2xvY2tzLCBpb21tdS0+Y2xvY2tzKTsK
-Pgo+IEBAIC05MjEsMTYgKzkzMywxOSBAQCBzdGF0aWMgc3RydWN0IHJrX2lvbW11ICpya19pb21t
-dV9mcm9tX2RldihzdHJ1Y3QgZGV2aWNlICpkZXYpCj4gIC8qIE11c3QgYmUgY2FsbGVkIHdpdGgg
-aW9tbXUgcG93ZXJlZCBvbiBhbmQgYXR0YWNoZWQgKi8KPiAgc3RhdGljIHZvaWQgcmtfaW9tbXVf
-ZGlzYWJsZShzdHJ1Y3QgcmtfaW9tbXUgKmlvbW11KQo+ICB7Cj4gKyAgICAgICB1bnNpZ25lZCBs
-b25nIGZsYWdzOwo+ICAgICAgICAgaW50IGk7Cj4KPiAgICAgICAgIC8qIElnbm9yZSBlcnJvciB3
-aGlsZSBkaXNhYmxpbmcsIGp1c3Qga2VlcCBnb2luZyAqLwo+ICAgICAgICAgV0FSTl9PTihjbGtf
-YnVsa19lbmFibGUoaW9tbXUtPm51bV9jbG9ja3MsIGlvbW11LT5jbG9ja3MpKTsKPiAgICAgICAg
-IHJrX2lvbW11X2VuYWJsZV9zdGFsbChpb21tdSk7Cj4gICAgICAgICBya19pb21tdV9kaXNhYmxl
-X3BhZ2luZyhpb21tdSk7Cj4gKyAgICAgICBzcGluX2xvY2tfaXJxc2F2ZSgmaW9tbXUtPmxvY2ss
-IGZsYWdzKTsKPiAgICAgICAgIGZvciAoaSA9IDA7IGkgPCBpb21tdS0+bnVtX21tdTsgaSsrKSB7
-Cj4gICAgICAgICAgICAgICAgIHJrX2lvbW11X3dyaXRlKGlvbW11LT5iYXNlc1tpXSwgUktfTU1V
-X0lOVF9NQVNLLCAwKTsKPiAgICAgICAgICAgICAgICAgcmtfaW9tbXVfd3JpdGUoaW9tbXUtPmJh
-c2VzW2ldLCBSS19NTVVfRFRFX0FERFIsIDApOwo+ICAgICAgICAgfQo+ICsgICAgICAgc3Bpbl91
-bmxvY2tfaXJxcmVzdG9yZSgmaW9tbXUtPmxvY2ssIGZsYWdzKTsKPiAgICAgICAgIHJrX2lvbW11
-X2Rpc2FibGVfc3RhbGwoaW9tbXUpOwo+ICAgICAgICAgY2xrX2J1bGtfZGlzYWJsZShpb21tdS0+
-bnVtX2Nsb2NrcywgaW9tbXUtPmNsb2Nrcyk7Cj4gIH0KPiBAQCAtOTk3LDcgKzEwMTIsNyBAQCBz
-dGF0aWMgaW50IHJrX2lvbW11X2lkZW50aXR5X2F0dGFjaChzdHJ1Y3QgaW9tbXVfZG9tYWluICpp
-ZGVudGl0eV9kb21haW4sCj4gICAgICAgICBpZiAoaW9tbXUtPmRvbWFpbiA9PSBpZGVudGl0eV9k
-b21haW4pCj4gICAgICAgICAgICAgICAgIHJldHVybiAwOwo+Cj4gLSAgICAgICBpb21tdS0+ZG9t
-YWluID0gaWRlbnRpdHlfZG9tYWluOwo+ICsgICAgICAgV1JJVEVfT05DRShpb21tdS0+ZG9tYWlu
-LCBpZGVudGl0eV9kb21haW4pOwo+Cj4gICAgICAgICBzcGluX2xvY2tfaXJxc2F2ZSgmcmtfZG9t
-YWluLT5pb21tdXNfbG9jaywgZmxhZ3MpOwo+ICAgICAgICAgbGlzdF9kZWxfaW5pdCgmaW9tbXUt
-Pm5vZGUpOwo+IEBAIC0xMDUxLDcgKzEwNjYsNyBAQCBzdGF0aWMgaW50IHJrX2lvbW11X2F0dGFj
-aF9kZXZpY2Uoc3RydWN0IGlvbW11X2RvbWFpbiAqZG9tYWluLAo+ICAgICAgICAgaWYgKHJldCkK
-PiAgICAgICAgICAgICAgICAgcmV0dXJuIHJldDsKPgo+IC0gICAgICAgaW9tbXUtPmRvbWFpbiA9
-IGRvbWFpbjsKPiArICAgICAgIFdSSVRFX09OQ0UoaW9tbXUtPmRvbWFpbiwgZG9tYWluKTsKPgo+
-ICAgICAgICAgc3Bpbl9sb2NrX2lycXNhdmUoJnJrX2RvbWFpbi0+aW9tbXVzX2xvY2ssIGZsYWdz
-KTsKPiAgICAgICAgIGxpc3RfYWRkX3RhaWwoJmlvbW11LT5ub2RlLCAmcmtfZG9tYWluLT5pb21t
-dXMpOwo+IEBAIC0xMjI3LDYgKzEyNDIsNyBAQCBzdGF0aWMgaW50IHJrX2lvbW11X3Byb2JlKHN0
-cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4gICAgICAgICAgICAgICAgIHJldHVybiAtRU5P
-TUVNOwo+Cj4gICAgICAgICBpb21tdS0+ZG9tYWluID0gJnJrX2lkZW50aXR5X2RvbWFpbjsKPiAr
-ICAgICAgIHNwaW5fbG9ja19pbml0KCZpb21tdS0+bG9jayk7Cj4KPiAgICAgICAgIHBsYXRmb3Jt
-X3NldF9kcnZkYXRhKHBkZXYsIGlvbW11KTsKPiAgICAgICAgIGlvbW11LT5kZXYgPSBkZXY7Cj4g
-LS0KPiAyLjU2LjEKPgpwaW5nPwoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxp
-c3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0
-aW5mby9saW51eC1yb2NrY2hpcAo=
+Hi !
+
+This patchset aims to improve codec event tracing in v4l2.
+
+The traces added in visl by Daniel Almeida are moved to the global trace
+events.
+They are adapted to trace each each field separately and not just the
+whole struct so that userspace can filter on different fields and
+libraries like libtracefs and libtraceevent can be used to list the
+fields instead of parsing the trace printk's.
+
+The trace event templates are also reworked to avoid long lines, but
+quoted string splits are kept as they don't cut words.
+
+To each trace event are also added a tgid and fd fields, helping
+userspace track different decoding sessions (contexts) based on the given
+file descriptor used by the given process id.
+
+Also for better tracking, stream on and stream off events are added as
+well as HW run and HW done events to track decoder core usage.
+
+The main focus is to be able to generate perfetto traces to show VPU usage,
+a perfetto producer using this can be found at [1].
+Other controls can be traced later as well, this patch set only focuses on
+mem2mem type drivers.
+
+checkpatch.pl reports alignement issues in the trace headers, they are
+voluntary. No other warnings should be reported.
+
+[1]:
+https://gitlab.collabora.com/detlev/v4l2-perfetto.git
+
+Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+---
+Changes in v4:
+- Update visl doc with new trace names
+- hantro: Move hw_cycles in vpu to avoid ctx race in irq with watchdog
+- hantro: trace run before starting watchdog and done after canceling watchdog
+- Trace controls from p_new instead of p_cur
+- Trace controls if there was no errors
+- Add missing EXT_SPS_LT and EXT_SPS_ST tracing
+- Allow fd to be 0
+- Also report queue type in run trace
+- Move v4l2_ctrl_vp9_frame tracepoint symbol to the VP9 code block
+- Use s32 instead of u32 for file descriptors
+- Fix a HEVC flag print in trace
+- Link to v3: https://patch.msgid.link/20261125-v4l2-add-ftrace-v3-0-1d1db48372ed@collabora.com
+
+Changes in v3:
+- Rebased on master
+- Fixed sps_st field size in traces
+- Fixed checkpatch issues (except parenthesis alignment in trace headers)
+- Link to v2: https://patch.msgid.link/20260610-v4l2-add-ftrace-v2-0-9756edf72ac1@collabora.com
+
+Changes in v2:
+- Don't modify the printk format
+- Trace all fields of the structs instead of the whole struct as a buffer
+- Remove fdinfo patches (they will come in another patch set)
+- Fix long lines
+- Rename v4l2_requests.h trace header to v4l2_controls.h
+- Add basic documentation
+
+To: Daniel Almeida <daniel.almeida@collabora.com>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>
+To: Steven Rostedt <rostedt@goodmis.org>
+To: Masami Hiramatsu <mhiramat@kernel.org>
+To: Mathieu Desnoyers <mathieu.desnoyers@efficios.com>
+To: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+To: Philipp Zabel <p.zabel@pengutronix.de>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: kernel@collabora.com
+Cc: linux-kernel@vger.kernel.org
+Cc: linux-media@vger.kernel.org
+Cc: linux-trace-kernel@vger.kernel.org
+Cc: linux-rockchip@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org
+
+---
+Detlev Casanova (9):
+      media: Move visl traces to v4l2-core
+      media: Map each struct field to its own trace field
+      media: Add tgid and fd fields in v4l2_fh struct
+      media: Add tgid and fd to the v4l2-requests trace fields
+      media: Add missing types to v4l2_ctrl_ptr
+      media: Trace the stateless controls when set in v4l2-ctrls-core.c
+      media: Add stream on/off traces and run them in the ioctl
+      media: Add HW run/done trace events
+      media: hantro: Add v4l2_hw run/done traces
+
+ Documentation/admin-guide/media/visl.rst           |   24 +-
+ drivers/media/platform/verisilicon/hantro.h        |    3 +
+ drivers/media/platform/verisilicon/hantro_drv.c    |    9 +
+ .../platform/verisilicon/rockchip_vpu981_regs.h    |    1 +
+ .../media/platform/verisilicon/rockchip_vpu_hw.c   |    2 +
+ drivers/media/test-drivers/visl/Makefile           |    2 +-
+ drivers/media/test-drivers/visl/visl-dec.c         |   76 -
+ drivers/media/test-drivers/visl/visl-trace-av1.h   |  314 ---
+ drivers/media/test-drivers/visl/visl-trace-fwht.h  |   66 -
+ drivers/media/test-drivers/visl/visl-trace-h264.h  |  349 ---
+ drivers/media/test-drivers/visl/visl-trace-hevc.h  |  464 ----
+ drivers/media/test-drivers/visl/visl-trace-mpeg2.h |   99 -
+ .../media/test-drivers/visl/visl-trace-points.c    |   11 -
+ drivers/media/test-drivers/visl/visl-trace-vp8.h   |  156 --
+ drivers/media/test-drivers/visl/visl-trace-vp9.h   |  292 ---
+ drivers/media/v4l2-core/v4l2-ctrls-api.c           |   10 +
+ drivers/media/v4l2-core/v4l2-ctrls-core.c          |  131 +
+ drivers/media/v4l2-core/v4l2-fh.c                  |    2 +
+ drivers/media/v4l2-core/v4l2-ioctl.c               |   39 +-
+ drivers/media/v4l2-core/v4l2-trace.c               |   50 +
+ include/media/v4l2-ctrls.h                         |   19 +
+ include/media/v4l2-fh.h                            |    4 +
+ include/trace/events/v4l2.h                        |   89 +
+ include/trace/events/v4l2_controls.h               | 2704 ++++++++++++++++++++
+ 24 files changed, 3076 insertions(+), 1840 deletions(-)
+---
+base-commit: 8d7fe9885c62fc9a95bf55d9db244d9672a8aadc
+change-id: 20260608-v4l2-add-ftrace-aec6e7f60a6c
+
+Best regards,
+--  
+Detlev Casanova <detlev.casanova@collabora.com>
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
