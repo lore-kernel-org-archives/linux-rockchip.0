@@ -2,70 +2,105 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 563FB606A31C
-	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Nov 2026 21:31:14 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 96CF8606A31C
+	for <linux-rockchip@archiver.kernel.org>; Sat, 28 Nov 2026 01:06:59 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=dbBxXJV+;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=sntech.de header.i=@sntech.de header.a=rsa-sha256 header.s=gloria202408 header.b=e5V8y1Ur
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=gZFL9KdB;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=TwBJoXSP
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version
+	:Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=yh57REYFzP1du3y59ZPCGniQXDeG3zDGjje9A1m/HHw=; b=dbBxXJV+m2DdyQ2NiK53Gq5onT
-	Ik9kU9PvFF2auyMwzSuYbb3X7wCSA5vOrj2cd7k7R9IiPDz19rX74MUz6EznxRvUWw7V9To1fEGYl
-	YcQqT52agllDeGSZ+6i/VuIlxCfQR5DgP0qy1UxTBcrxGAiJD1Ov8zguPGXiePBhnFvg+v7E4zGwG
-	YKFgc+SvktrCsJW+bj6+mlvOYGis2CnmH0e1P1PWdloBel52d4tMvsvmmsfiFIlwQT04+buV8B4KF
-	3LLdzzOVkJQMKjl1mY4pbYqyn2AOCaySYdB91u6XbGr/1rL8u6zU6IpLq3c4Mx6wcRUuE6T7novyH
-	CnkU/UAA==;
+	bh=uODsvWoJbntx9zPOg/Osg9VzxZjnaV2VPU0xSAGivDg=; b=gZFL9KdBkRfkBVapU4a76+UW77
+	KAOwLjIbwCjhwzPzep0t3E0CUjor2S0YkHighG/WVKIFznxXDfE6GK9+0zKZLDvSCSmZSs7LPxtqH
+	lCJUat6xizySdPlFHe5BmqFfzPZcnrzy4BWuiGRWENF4mr0RACi2KPBYHNHL2eAZvov2TNcxCopUS
+	E2D41h1bP5Bg4SzqwYkHEW7p5BEJbgq4iSmJ/uFAP4lIEIl9SePl1dpdrW00Hum95JW4EXPZJGerw
+	B+pJyOhhlv4G2rMeBbVbaYmm+EaVE/o0mcejTW6Y36VV/h9VOTmJQLznQ8H0T8eOSVp5kiYx3ON+1
+	75yajNyQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xX3X2-000000007D6-15aE;
-	Fri, 27 Nov 2026 21:31:00 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1xX6tx-00000000FdW-1qft;
+	Sat, 28 Nov 2026 01:06:53 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xX3Wz-000000007CX-1p5D;
-	Fri, 27 Nov 2026 21:30:59 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=q3m2yyt50RINKi6ioBAszyxO/hF+Qz9GpX0rwheQRCQ=; b=e5V8y1UrtccmyPxmIkUjF2ky3U
-	exC1EK59wpjZe9T+uL8fDgx5yQnFLqvPPdf5wVpYR4AJDFvFarpaJ0we3NixMOBz5+Laf3+VkDQ7c
-	gGFyGoHCP2domoIm+STqlYwwvxhnqjGKFJp4CATKCk7mjuX4buNRea9eF2/OCuvT5QKSOsg9LJtxy
-	nBhWutwfY3LNRTLq8udK7VI8Xer4qBRRmVo6k5Yy53uJn5cAssMH+2HjAOh2r6o05sUCp5yAxDq/q
-	iZx2haoFDURMSaUDE0TqY/u7XuVnsgsJF/a+SomX4q0VkDbQ5+b83JCXnYzlI8whw7zKYHkXjGKJQ
-	7BICBRrQ==;
-From: Heiko Stuebner <heiko@sntech.de>
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Brian Masney <bmasney+clk@redhat.com>,
-	Jerome Brunet <jbrunet+clk@baylibre.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Chanwoo Choi <cwchoi00@gmail.com>,
-	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
-	linux-clk@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	kernel@collabora.com
-Subject: Re: [PATCH v3 0/6] arm64: dts: rockchip: add RK3588 DFI clocks and RK3576 DFI
-Date: Fri, 27 Nov 2026 22:30:41 +0100
-Message-ID: <179581499871.254621.2470437130945394639.b4-ty@b4>
-X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20261126-dfi-clocks-and-rk3576-support-v3-0-0f33c1b8df48@collabora.com>
-References: <20261126-dfi-clocks-and-rk3576-support-v3-0-0f33c1b8df48@collabora.com>
+	id 1xX6tt-00000000Fd8-2CEV;
+	Sat, 28 Nov 2026 01:06:51 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id E388D45523;
+	Sat, 28 Nov 2026 01:06:48 +0000 (UTC)
+Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
+ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
+	t=1795828008;
+	b=f8H+e5SwiP/eYqn4INZZxKhO8+rzxGfrKQpWFr7iihQRWry6vTV+82CL7X74XUZFromn
+	 zgtzsyT4Pjkh5yUg/SkKtHs/sXPUjV0VGUq/gDlKtYUu8fvhX51XXMe4qGU2AqWZjd7Jt
+	 jpfX1WoGeQyOyN5L0dbZRJtcMN8DmKqga+oGQgV2da0retpsCCqc605wwfZ1E9YqohDeL
+	 lEghVan5YTAbqZjXtvOmwCfRhrBK2FKyKFImOJ1TDyMNhlXNvdHYWVdfb8gfI8U8RVaot
+	 f5FGmNAYgfeYr12J+cg94bYX0y9M5GIz++UAzs5rxHSSftE7yegB3BBoJyYlqtP3epw==
+ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
+	c=relaxed/relaxed; t=1795828008;
+	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
+	 Message-Id:X-B4-Tracking:To:Cc:X-Mailer:X-Developer-Signature:
+	 X-Developer-Key:X-Endpoint-Received:X-Original-From:Reply-To:
+	 Content-Transfer-Encoding;
+	bh=aguOstNiNosKFJOAXsnYWl5uoiVa6iE06IgtXJTe9mM=;
+	b=S3LBMYzHoAYm88k7XCJ8AG4m0TDyQ15ymFClcV2L7I3aOV9KFxEJDnCYi782DKbaP8Wg
+	 gR+Mj7ZiENZz6VG86UEoxYmMa+LTffqzvYaBSvsYb4aGqp6OQ7yjBx9nfLf0LSiC2No08
+	 FnuDcwPiKBL/RHeiHECHaL3GV0c+p64Uz+vr0LFsYhcEf5deNDNP1nDuUPaVNH+psfTAp
+	 C4+q75/Jia/S7iu+GRzE2gZgBYtQJOm3WVfVt5neZpb2ZQvfE2GwxDxJXjwY0PaJIjU0h
+	 JFQHAIY/zTrIVQ40c/V0ssM8XYSDHwxv0+5s03FnlG/9InuDuVQTJRVoybbzZ/HYZNw==
+ARC-Authentication-Results: i=1; smtp.kernel.org; 
+	arc=none smtp.remote-ip=100.80.115.77
+Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
+	(No client certificate requested)
+	by smtp.kernel.org (Postfix) with ESMTPS id 56BCD1F000C1;
+	Sat, 28 Nov 2026 01:06:48 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1795828008;
+	bh=aguOstNiNosKFJOAXsnYWl5uoiVa6iE06IgtXJTe9mM=;
+	h=From:Date:Subject:To:Cc:Reply-To;
+	b=TwBJoXSPZB4npE8z1hJ/eEqSP/fckt7RkTpEF0Av8fRAHqWkIjCDwGtEfZftwSbuE
+	 cRUL9AaeHaUQK9ZUg+OcHL4mIbt0AkIuHi1aVFOIOIMLWr/4gZC8XyxhQjTcWLgTjM
+	 Wz1qA7Av9FpH+2TxCEUmfCKCHlI5X/ohS+OlUp410ESr/dHnWm3tjzjkFsuujoAMlS
+	 ecpIx/BFYXxlXQmjIju5d+KxI92JSwVx6VruO0TkVrvD6PC2U1qvQTwYwFNoV5iGU3
+	 xhVdjR17BCW4EYV/u2thtmrcNzNMgg4Awm34meyxqdPGcZ9h4ZErJ6YGSNPaMDkfFe
+	 7hprf3hx+w24Q==
+Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
+	by lkml.kernel.org (Postfix) with ESMTP id D96044DED5;
+	Sat, 28 Nov 2026 01:06:47 +0000 (UTC)
+From: Igor Velkov via B4 Relay <devnull+iav.iav.lv@kernel.org>
+Date: Sat, 28 Nov 2026 03:06:46 +0200
+Subject: [PATCH] ASoC: rk817: Do not free the regmap of the parent PMIC
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261127_133057_835326_4156CC3A 
-X-CRM114-Status: GOOD (  11.30  )
-X-Spam-Score: -2.1 (--)
+Message-Id: <20261128-rk817-keep-parent-regmap-v1-1-de515c2899ed@iav.lv>
+X-B4-Tracking: v=1; b=H4sIACUpCmsC/x3MQQqDMBBG4avIrB1oorXRq4iLaH/tIMYwKUUQ7
+ 27o8lu8d1KCChJ1xUmKnyTZQ4YpC5o+PixgeWeTfdjGGOtYV2devAKRo1eELyuWzUeunrV3YzO
+ 1s2sp51Exy/Ff98N13VMNwg9qAAAA
+To: Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>
+Cc: Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+ Chris Morgan <macromorgan@hotmail.com>, Lee Jones <lee@kernel.org>, 
+ Heiko Stuebner <heiko@sntech.de>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ linux-sound@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, Igor Velkov <iav@iav.lv>
+X-Mailer: b4 0.13.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1879; i=iav@iav.lv;
+ h=from:subject:message-id;
+ bh=VRMDAVdATty+o32CLZkZxbTwRbwASeEGt2T/3vL6z4Y=;
+ b=owGbwMvMwCVmNH1q96v4SmbG02pJDNlcmmq6V7Y55yq95pH6bOB2/VrVltPnfaJua2g0RRyyE
+ D6121Gho5SFQYyLQVZMkWXCIY1bGUuu/vX3MH8AM4eVCWQIAxenAEwkIp2R4dIPw4sGhl26lcrR
+ 32RUZiZcjEratrHA33P2tYfBf8Q4VjEyPPl6Us76z0XbCZVexY9jhAs/tPUek+ezWvE6qvmp05+
+ jDAA=
+X-Developer-Key: i=iav@iav.lv; a=openpgp;
+ fpr=90C228DA68A4D5FD4F4837E03297958BEA5F7903
+X-Endpoint-Received: by B4 Relay for iav@iav.lv/default with auth_id=1060
+X-Original-From: Igor Velkov <iav@iav.lv>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,45 +110,68 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Reply-To: iav@iav.lv
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-6.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=no
-	autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
+From: Igor Velkov <iav@iav.lv>
 
-On Thu, 26 Nov 2026 15:52:35 +0100, Sebastian Reichel wrote:
-> When RK3588 DFI support was added, support for the clocks was missed.
-> This series fixes that and also adds the clocks for RK3576 as well as
-> RK3576 DFI node itself.
-> 
-> The DT binding for the DFI side already got merged together with the
-> driver changes today, so there is no dependencies for this series:
-> 
-> [...]
+The codec uses the regmap of its RK817/RK809 PMIC parent, which the
+PMIC core, RTC and regulator drivers use too. rk817_remove() calls
+snd_soc_component_exit_regmap(), so removing the component, on a card
+unbind or a failed bind, runs regmap_exit() on that shared regmap. The
+other users are left with a freed regmap, and devm runs regmap_exit()
+on it again when the PMIC goes away.
 
-Applied, thanks!
+Clear the pointer instead, as commit 6d66c5ccf5cb ("ASoC: mediatek:
+mt6359: Fix unexpected error in bind/unbind flow") does for mt6359.
 
-[1/6] dt-bindings: clock: rk3588: add PCLK_DDR_MON_CH clocks
-      commit: 76c1bc06e04007247ca47e45d7313c24ac0b2570
-[2/6] dt-bindings: clock: rk3576: add more DFI clocks
-      commit: 2268455f297ec61b42ab44dfeaf982d2af370255
-[3/6] clk: rockchip: rk3588: add PCLK_DDR_MON_CH gate branches
-      commit: 2fb95541b66c05384c75259f06d51efa69e16bca
-[4/6] clk: rockchip: rk3576: add missing DFI clock branch
-      commit: 8b8862a19dc62e1fd838ce3eafd43382f78d4d01
-[5/6] arm64: dts: rockchip: add dfi clocks on RK3588
-      commit: 6046a394edaff1e6f67911ebe4ef0f508a9f82cf
-[6/6] arm64: dts: rockchip: add DFI node to RK3576
-      commit: b4f857a1d2ca5999295247933d29ebaf3b5377db
+On an ODROID-M1 (RK3568, RK809) the PMIC regmap (3-0020) disappears
+from debugfs after unbinding the card, and a later hybrid sleep oopsed
+in regmap_update_bits_base() called from rk808_rtc_readtime(). With
+this change the regmap stays, the RTC reads and binding the card again
+works.
+
+Fixes: 0d6a04da9b25 ("ASoC: Add Rockchip rk817 audio CODEC support")
+Signed-off-by: Igor Velkov <iav@iav.lv>
+---
+mt6660 has a similar issue: mt6660_component_remove() calls
+snd_soc_component_exit_regmap() on a regmap created with
+devm_regmap_init(). Not tested, I have no such hardware.
+---
+ sound/soc/codecs/rk817_codec.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/sound/soc/codecs/rk817_codec.c b/sound/soc/codecs/rk817_codec.c
+index 2c0fe1dfd842..c7804b2b559c 100644
+--- a/sound/soc/codecs/rk817_codec.c
++++ b/sound/soc/codecs/rk817_codec.c
+@@ -434,7 +434,7 @@ static int rk817_probe(struct snd_soc_component *component)
+ 
+ static void rk817_remove(struct snd_soc_component *component)
+ {
+-	snd_soc_component_exit_regmap(component);
++	component->regmap = NULL;
+ }
+ 
+ static const struct snd_soc_component_driver soc_codec_dev_rk817 = {
+
+---
+base-commit: a6c7e545d8abac8ad0b48da4c8b4ca5ef8ea8eda
+change-id: 20261128-rk817-keep-parent-regmap-354a8b6c9f89
 
 Best regards,
 -- 
-Heiko Stuebner <heiko@sntech.de>
+Igor Velkov <iav@iav.lv>
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
