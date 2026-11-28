@@ -2,98 +2,113 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D9AEB606A31C
-	for <linux-rockchip@archiver.kernel.org>; Sat, 28 Nov 2026 06:39:28 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 77CE0606A31F
+	for <linux-rockchip@archiver.kernel.org>; Sat, 28 Nov 2026 08:30:21 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=rp42x1VV;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=furiosa.ai header.i=@furiosa.ai header.a=rsa-sha256 header.s=google header.b=UQhG0BRh
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=avXqVi18;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=NEvY7QnV
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id
+	:Date:Subject:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=FqSOycrXczQmom63Wo6cCBSEpm9AC+gnTMJunPkL89Y=; b=rp42x1VV0/287+j9MnSkXIJR5i
-	zvMYhD7pnoJWB8KD+Rqsx5z93rxonzNiESAWdKK0DNf1WkdBsdX5YAMtdoPI3zgtsLS2PInRM9wQa
-	RVEGI+We7YPvl+Nm5TSTlI9ntXFoiYHEebcjkZIm3OA2fBn0FvuCsulLF/iGZ5vkc/+phrIWhaNrw
-	trd/Xq1mjx7c1c+dwFuOmlm0A92cYatnniGLwdLp//dEYL1Ki5VP3DFF9Z3mwfFUFkTWiocw+SClh
-	xJt8XEkdYJz0KabHYtxJJhiXeIIwEVRHM1oOqyjEVgxSn0XSLH8CnfHZMBqeJXfyZSBIBL6Q/3zbu
-	MQYCvWQQ==;
+	bh=8nAotjzKznnakGkmxeR2z+VD00td01dYRlmjfGBznF4=; b=avXqVi18LpICG5DTCqi/ow2KID
+	i67a7b8mRRLojuZwnYYgipQZ7lyr8z6NN5mQnzmJVqs9MhAGjmnDdTplzizhMVx/6g4yiZIlEojih
+	EGYeVptxiQ6dkpLRSnf6U/cVJPoN7L+i4vu6Vi1U2OZzCbWFio27kXlVxYCXptH3r8SUfOAPuF0Cw
+	0r6u3w25Pszz+1of1hkuQ0mgIULaORM1g//nJaHUURMgwtBP9W3q6VDqthCx5HFHbv94LfnZwU3jh
+	OrV8ujwj0PYFETtA9IOAtaq3n/bEiwKoPPPjOkzbox3GqctBg3KkJSmVIgqGrjW32fJ0spJkfQS0B
+	F8YRYahw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xXC5k-00000000QVv-213H;
-	Sat, 28 Nov 2026 06:39:24 +0000
-Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
+	id 1xXDp0-00000000XBI-0OYo;
+	Sat, 28 Nov 2026 08:30:14 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xXC5c-00000000QRv-1KCA
-	for linux-rockchip@lists.infradead.org;
-	Sat, 28 Nov 2026 06:39:18 +0000
-Received: by mail-pf1-x436.google.com with SMTP id d2e1a72fcca58-8d2d4cdb478so605738b3a.1
-        for <linux-rockchip@lists.infradead.org>; Fri, 27 Nov 2026 22:39:16 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=furiosa.ai; s=google; t=1795847955; x=1796452755; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=9gp1NYV9MXlZIke0oUQdNHBR+MQ+XNi8DFIhrHDnoJQ=;
-        b=UQhG0BRh3MmJNs0mn/WmxL7ByMMVne+D3w5ch4w7iC8az7eegJbd0u4JSUEfn40LrR
-         xBPHn4S63JyNPHw/dDfDtDRQ1hOPhKZmT24E0noTx/4+fqwoRTBCCTxwYnYtkdiHx8ok
-         U/oowH3U50vXzjH5k/BjDHnzsLw2d5Ocgf8os=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1795847955; x=1796452755;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=9gp1NYV9MXlZIke0oUQdNHBR+MQ+XNi8DFIhrHDnoJQ=;
-        b=D6cevm36AkfWGZUMndiwelkBwXyj5U3xHu9TXBlAWhmp8ibSzoYUMy83dBKrIWnTnA
-         Pdb8eA2o/3Zz1Zn1R+/lokj7dMDoroyVXLqYd5ITxYO0PY9Mhi1Z4MMmPSSQj2rF6jbJ
-         qGLUs4Q4db4+C8iRI8wDAm+TUbXs7APHIJ6OC/Dfpy7wj7L366UTtfc23Y8bISVYpD6c
-         X9e5P9YnY8eQyBG7Me5uq7Luxk797YxH8L3oOwwRpJX6G2Sp6tCxkVmcdgiN781QJblM
-         oGxpvcf7fAdq2Jy0wrB6nPXCa/L5mb6LmlVuTZGJ+Ok1RBGt/IA3dzA5t52f90NivHMF
-         wSug==
-X-Forwarded-Encrypted: i=1; AL+hErGgMno86qhgCs+Qg4sJTW8ZgKzN+VosXOPX4UDgyeNpeiV4jETfRkuxIaTMRC1BB03J2UAMsx9Kd1N0Nxielg==@lists.infradead.org
-X-Gm-Message-State: APuU4Z/1Nb5W2M4wLFm1SRtCujpDPDcExVZDIFVyrmm4yLNqaBv6uGju
-	Zx86YNWoeUsEMw9ErdxuQLlklO6uin5k0glXslBekw2u14xFasB6EiWsvv/qOG1zrc95LPi/eXU
-	hnz/88NM=
-X-Gm-Gg: AZFdTZdsmkXyuGVB8YVcCxhh/SKgMXx8H1Y0WmKPinR/eJFAvt1lNGseqmm10kr/kDG
-	+NwYeoXoMDbDQSKDhiuRHc/0Uf527Wh/QEUSAf51AY2HCOWVZyJcDjDpVJ1BtwQwc0L02POFQfJ
-	FfDlKhUWQT7pXzzxTKTKgWUebkd2yg4OYW4WrLurix8xg4E99d/bX3luwO+nnMv4u3RHOoNKk2i
-	oEtT/n7utH6sSyD1YgKnjS5pcsUt6FZ3j+Kk9QJ5oEeGWQlXaWtWoSNVyfV2uq29WiUu/dEIFON
-	ZsGSlSRQFbWm5qb5TaB4zCJTYyQezvVSyZ8QZar1bpC2woOFltB47U4L8izQce1R2djCkmimy0q
-	7V6ULYkfuC6W3vv1RvMV1l8zpIfxXtgZ1ahTvVp2C9RLmmfmrf5CRMtadeBrDzNSmqL9iJsoAlg
-	GTkrcMIv/dwY0g2tkDSz4aWebHA1lm06Nue/mwREtYszSroGQxP5nFAJwxhElkGlTlULljoX8q+
-	wOE2kULclQxWUctqjauypXhJpl+Rm5YPY0vLS/H5dGIaLHVqBRKHYrZvREZIOnQHFpIL440q2U0
-	rMbZbNg3tK9fMO1/bIQkUFdCyYK4bazdrfRSfDBsNhZ2cGtAxMubMZwgvVqxgbCNgVw7sW4efx/
-	XA6E8WCF9+Ld4pk2gW21aPXd74nKe2qL8fA==
-X-Received: by 2002:a05:6a00:368e:b0:89e:3742:3e16 with SMTP id d2e1a72fcca58-8c87bdb526amr26434266b3a.18.1795847955449;
-        Fri, 27 Nov 2026 22:39:15 -0800 (PST)
-Received: from rock-5b-plus ([61.83.209.48])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-8c87077944bsm13939838b3a.2.2026.11.27.22.39.12
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 27 Nov 2026 22:39:15 -0800 (PST)
-From: Sidong Yang <sidong.yang@furiosa.ai>
-To: Tomeu Vizoso <tomeu@tomeuvizoso.net>,
-	Oded Gabbay <ogabbay@kernel.org>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	Jeff Hugo <jeff.hugo@oss.qualcomm.com>,
-	Haoming Gao <Naixumogu@whut.edu.cn>,
-	dri-devel@lists.freedesktop.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Sidong Yang <sidong.yang@furiosa.ai>
-Subject: [PATCH 4/4] accel/rocket: Wait for read fences in rocket_ioctl_prep_bo()
-Date: Sat, 28 Nov 2026 15:38:44 +0900
-Message-ID: <20261128063844.1537615-5-sidong.yang@furiosa.ai>
-X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20261128063844.1537615-1-sidong.yang@furiosa.ai>
-References: <20261128063844.1537615-1-sidong.yang@furiosa.ai>
+	id 1xXDox-00000000XAh-3MBj;
+	Sat, 28 Nov 2026 08:30:11 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 437F54233F;
+	Sat, 28 Nov 2026 08:30:11 +0000 (UTC)
+Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
+ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
+	t=1795854610;
+	b=Z+CPoWJTsCXPq/PmCmXF+yrUaZqPIpFfTvPOQj24thyC6eWeQ0LrcPusNXLSb6L8wt4G
+	 RPsRdpGbYeJ1P03/VLqK9lRlINVMcYTzznteacvf5x9Xe31jDzpS1xgWD6a5KnJcwaBcW
+	 hmol/vavPDTwnJrJmYNQ6xzDT6yo+rueJJukDxyosacGwM2xDkSDkzS5GBTS8evCbKnPD
+	 CZnACewKP2xKe9qWXishfyCYDxkd7oR1pkcd6RwjT+BQfhf+MajKmu5janqNgMEOCNZod
+	 6g0QXWmRDsVO3wFFZtsWJwRkl19BUWpDPR1dWHUCt51gB880ZozkQXJ1p9SXyIYCWBg==
+ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
+	c=relaxed/relaxed; t=1795854610;
+	h=DKIM-Signature:Received:From:Subject:Date:Message-Id:MIME-Version:
+	 Content-Type:Content-Transfer-Encoding:X-B4-Tracking:X-Change-ID:To:
+	 Cc:X-Mailer:X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
+	 X-Original-From:Reply-To;
+	bh=1L8y7/SvVJPBXVNhtWStywFXrh9qI7ojM3poj+inXm4=;
+	b=IqpZmhAynb97lh27iyyjbcZV2IOmD1pMklyiEneoSAhHZmcAA+YmfqLJqYucy7+qvApS
+	 ddcBdKhVktqEnhyQF7lwlK3iJxKLAb6ESqWSSqjSw4R9nFEfk1g8Ywgqjo4qqPDZhKX3f
+	 SOje3QR/tm9GKHxHlMq/pZaPmB7ZaWNk8N/48XMPeQXAvDzASGjOJaMIXYkNTW4pYGlkL
+	 yIHGHnPei3dbPgzi5mgtvZgXXn2ZGMyp5+bmRPBOJqfd+6f3AXrle9fe4ICNDH8pRbIds
+	 SwY2cwjnzlzA6grsrbVyxPlcogJHTPgwwfXuJmlPp8/NsZ3hNik7v5z5kf9s8kFbRfw==
+ARC-Authentication-Results: i=1; smtp.kernel.org; 
+	arc=none smtp.remote-ip=100.80.115.77
+Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
+	(No client certificate requested)
+	by smtp.kernel.org (Postfix) with ESMTPS id A5F671F00893;
+	Sat, 28 Nov 2026 08:30:08 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1795854610;
+	bh=1L8y7/SvVJPBXVNhtWStywFXrh9qI7ojM3poj+inXm4=;
+	h=From:Subject:Date:To:Cc:Reply-To;
+	b=NEvY7QnVuWJ2zOQn2P9Wq/gOeNvr4e260/IgCjx1zN5XRz2tIZAHMU8QgfyKivqOL
+	 JYBtwnX8ab0p/BE6OkR6BOaAG6XUsLa28878KR97IsActpdXDIYDd6YY1cylOGScIV
+	 hCzS7J5kj9vgwW6gVuT5hRQZAR9zDStN/QF254qiJtgTcaCvaXsjfJkTtR5i/fnLOY
+	 hB8M+bLDGQNyaNwCQupR3lPvpsP8l5uFc74n7/0KtngVAjr/x2xflKYK27T5yiGvsQ
+	 F8p92XiizOz+Jsa9c3yKc0FwU1ih/p005dWWSFCDCbW3XhlJCRJT5TzS2bSWvO3A0p
+	 zyNfQ1eAJz9AQ==
+Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
+	by lkml.kernel.org (Postfix) with ESMTP id 057454E03E;
+	Sat, 28 Nov 2026 08:30:08 +0000 (UTC)
+From: Arun Iyengar via B4 Relay <devnull+aiyengar1990.gmail.com@kernel.org>
+Subject: [PATCH v6 0/4] media: rockchip: Add the IEP2 deinterlacer of
+ RK3568/RK3588
+Date: Sat, 28 Nov 2026 08:30:06 +0000
+Message-Id: <20261128-iep2-v6-0-5f4f10a0dbeb@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261127_223917_611970_2F632A3B 
-X-CRM114-Status: GOOD (  10.26  )
-X-Spam-Score: -2.1 (--)
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/13OTW7DIBAF4KtErEvFjPkxWfUeVRcYhoSqiSOTo
+ laR717suBLy8knvezMPlmlKlNnx8GATlZTTeK1BvxyYP7vriXgKNTMUqAFA8EQ35IN11msyxkv
+ JavU2UUw/68z7xzPn7+GT/H2xS+Oc8n2cftc7BZbe/6R8ThbggrueQiDlEAjeTheXvl79eGHLZ
+ MEWqQ1hRV3oje19sE6pPeoahNvzpauIrKTBRo024B7JFsGGZEVGCx9RxQ5x2CPVIr0htb5Hzgt
+ rdATRonme/wCLRsEmfgEAAA==
+X-Change-ID: 20261110-iep2-b9a9c6e77c44
+To: Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ "Joerg Roedel (AMD)" <joro@8bytes.org>, Will Deacon <will@kernel.org>, 
+ Robin Murphy <robin.murphy@arm.com>, Philipp Zabel <p.zabel@pengutronix.de>
+Cc: linux-rockchip@lists.infradead.org, linux-media@vger.kernel.org, 
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, iommu@lists.linux.dev, 
+ Hans Verkuil <hverkuil@kernel.org>, 
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
+ Alex Bee <knaerzche@gmail.com>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>, 
+ Arun Iyengar <aiyengar1990@gmail.com>
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1795854607; l=3235;
+ i=aiyengar1990@gmail.com; s=20261110; h=from:subject:message-id;
+ bh=rFNZILi2ME4y6OfNvGVSrCQyr6wuwJ3qgVj2XSS5dA8=;
+ b=WgtOWwnabvlgKjmdigImzuW1G0Qw7LJLJ+7qbj6QJSAT/WgbDKleaZjZoILRGeyC6qubZP/Px
+ zQMQRfKwRt6Akk3R2nDAjcR5FwmN4xyKJvGw2xljgrBM6rW4Ugcd5D7
+X-Developer-Key: i=aiyengar1990@gmail.com; a=ed25519;
+ pk=zXpRgUTrhaFe6jLyPqbBy3ccfkj04w0g2690Wv3mg+0=
+X-Endpoint-Received: by B4 Relay for aiyengar1990@gmail.com/20261110 with
+ auth_id=1480
+X-Original-From: Arun Iyengar <aiyengar1990@gmail.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,49 +118,90 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Reply-To: aiyengar1990@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-9.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_REPLYTO_END_DIGIT,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-DRM_IOCTL_ROCKET_PREP_BO begins CPU ownership of a BO and has no
-read/write direction flag: userspace calls it before reading an output
-buffer as well as before overwriting an input buffer for reuse.
+Add a V4L2 mem2mem driver for the IEP2 deinterlacer of the RK3568 and
+RK3588, with its binding and the RK3588 DT node. The V4L2 side follows
+Alex Bee's IEP driver. 2/4 adds the Rockchip IOMMU helper the driver
+uses after a reset. 2/4 needs an ack from the IOMMU maintainers to go
+through the media tree.
 
-Since commit 4d8cb7be620e ("accel/rocket: publish read fences for input
-buffers"), in-flight jobs attach DMA_RESV_USAGE_READ fences to their
-input BOs. Waiting only for DMA_RESV_USAGE_WRITE therefore returns
-immediately while an NPU job is still reading the buffer.
+Tested on an Orange Pi 5 (RK3588S) with a 7.3-based kernel (KASAN,
+lockdep); build-tested on media next. The test kernel also carries the
+rockchip-iommu fixes 1-4 of
+<20261110-iommu-rockchip-faults-v1-0-b1dda574dbb8@gmail.com>.
+v4l2-compliance 59/59, FFmpeg deinterlacing (local patches; no
+upstream application uses the driver yet), suspend and unbind while
+streaming, forced watchdog and IOMMU fault resets. Not tested: RK3568.
 
-Wait for DMA_RESV_USAGE_READ so PREP_BO waits for both write and read
-fences before transferring ownership back to the CPU.
+Open: a reset that cuts a transfer (seen only with forced 1 ms
+watchdogs) can leave the IOMMU with the transfer outstanding: its
+stall and reset commands then time out. Jobs fail until PD_VDPU
+powers off.
 
-Fixes: 4d8cb7be620e ("accel/rocket: publish read fences for input buffers")
-Signed-off-by: Sidong Yang <sidong.yang@furiosa.ai>
+Developed with Claude (Anthropic), which wrote the code and the commit
+messages. I reviewed every change.
+
 ---
- drivers/accel/rocket/rocket_gem.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Changes in v6:
+- 2/4: kernel-doc says the caller must own the IOMMU (Nicolas)
+- Collected Acked-by
+- Link to v5: https://patch.msgid.link/20261126-iep2-v5-0-3deac0976f10@gmail.com
 
-diff --git a/drivers/accel/rocket/rocket_gem.c b/drivers/accel/rocket/rocket_gem.c
-index dddaf9d2fbc8..c5c08da72f76 100644
---- a/drivers/accel/rocket/rocket_gem.c
-+++ b/drivers/accel/rocket/rocket_gem.c
-@@ -165,7 +165,7 @@ int rocket_ioctl_prep_bo(struct drm_device *dev, void *data, struct drm_file *fi
- 	if (!gem_obj)
- 		return -ENOENT;
- 
--	ret = dma_resv_wait_timeout(gem_obj->resv, DMA_RESV_USAGE_WRITE, true, timeout);
-+	ret = dma_resv_wait_timeout(gem_obj->resv, DMA_RESV_USAGE_READ, true, timeout);
- 	if (!ret)
- 		ret = timeout ? -ETIMEDOUT : -EBUSY;
- 	else if (ret > 0)
--- 
-2.53.0
+Changes in v5:
+- 1/4: clocks before interrupts (Sashiko)
+- 2/4: new: rockchip_iommu_restore() (Nicolas)
+- 3/4: use it instead of attaching an empty domain (Nicolas)
+- 3/4: IRQ saves and clears the status; the thread finishes the job
+  only if it cancels the watchdog; no spinlock (Nicolas)
+- 3/4: drop the IOMMU fault detection, forced suspend and reset
+  retries (Nicolas)
+- 3/4: after a failed IOMMU restore, fail jobs until PD_VDPU powers
+  off
+- 3/4: defines for md_lambda and the default size; comment the motion
+  table (Nicolas)
+- Link to v4: https://patch.msgid.link/20261121-iep2-v4-0-760cf25f322b@gmail.com
+
+---
+Arun Iyengar (4):
+      media: dt-bindings: Add Rockchip IEP2 deinterlacer
+      iommu/rockchip: Add rockchip_iommu_restore()
+      media: rockchip: Add IEP2 deinterlacer driver
+      arm64: dts: rockchip: Add IEP2 deinterlacer to RK3588
+
+ Documentation/admin-guide/media/rockchip-iep2.rst  |   32 +
+ Documentation/admin-guide/media/v4l-drivers.rst    |    1 +
+ .../bindings/media/rockchip,rk3568-iep2.yaml       |   95 ++
+ MAINTAINERS                                        |    8 +
+ arch/arm64/boot/dts/rockchip/rk3588-base.dtsi      |   22 +
+ drivers/iommu/rockchip-iommu.c                     |   38 +
+ drivers/media/platform/rockchip/Kconfig            |    1 +
+ drivers/media/platform/rockchip/Makefile           |    1 +
+ drivers/media/platform/rockchip/iep2/Kconfig       |   16 +
+ drivers/media/platform/rockchip/iep2/Makefile      |    3 +
+ drivers/media/platform/rockchip/iep2/iep2-regs.h   |  191 +++
+ drivers/media/platform/rockchip/iep2/iep2.c        | 1263 ++++++++++++++++++++
+ drivers/media/platform/rockchip/iep2/iep2.h        |  107 ++
+ include/soc/rockchip/rockchip_iommu.h              |   17 +
+ 14 files changed, 1795 insertions(+)
+---
+base-commit: b7ac871daee981f1963f632586ff9b9d898ce5dd
+change-id: 20261110-iep2-b9a9c6e77c44
+
+Best regards,
+--  
+Arun Iyengar <aiyengar1990@gmail.com>
+
 
 
 _______________________________________________
