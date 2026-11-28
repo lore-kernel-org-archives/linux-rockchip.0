@@ -2,63 +2,94 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9BCAB606A31E
-	for <linux-rockchip@archiver.kernel.org>; Sat, 28 Nov 2026 06:18:43 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 627FD606A330
+	for <linux-rockchip@archiver.kernel.org>; Sat, 28 Nov 2026 06:39:14 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Luw5QyIa;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=mainlining.org header.i=@mainlining.org header.a=rsa-sha256 header.s=202507r header.b=Rodce3Gt;
-	dkim=fail reason="signature verification failed" header.d=mainlining.org header.i=@mainlining.org header.a=ed25519-sha256 header.s=202507e header.b=8Cukuoul
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=NUEDDUqw;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=furiosa.ai header.i=@furiosa.ai header.a=rsa-sha256 header.s=google header.b=Wq5o5SRj
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=QVUxgzcaX/SJn4BUvKwq3pF0kyI/zx8ZeyEhMqxVcO8=; b=Luw5QyIaDN/1MggflDlchP18UR
-	BTF81eOGZ5pCZ4dayUNG55MZLAv0Rs1KS/ojBG3+6iiqBQrDy89pU8+FV5GN5s2pW4Yb1qxQFctBd
-	AjSNRjxMpNGsBoET8ACyncVMKOfuP18TqdZWOZt4UzpNQYAgBoChNmcTCw6SyfNk4fsOWNRS6hj4e
-	5m2l0Y0GExsTcFXJlhCZ9wNYVFp4EDqJ4ZyI3cc44XIWiaIpW57mqwI8nbLVUCF9fnCH0EZB1VDb2
-	lrMjlDp6RDgGPxJhna5+iweHEsG5JiEanwmYRjPr9YLJrkYoBMWMkOEoTpeZlMQwRFrEM6w+QyKn4
-	9o0TZxlw==;
+	bh=ju0WDnmSPdJF6MNCMqXMxjPLDXlox8xQTcZ6PhrSk10=; b=NUEDDUqwmKwhGypclcISAMTLP3
+	XvBt5x4ah0B0xphXjJ6ZbXWobZXcGWRkm0Zk8xBegVkgAtz/nbK3lFTgo1+0zOrN6q58deJz7mWsM
+	mBV4yH65bEchdPAQ6JeBk1zXE7/V8KG0yVv5wGUiLWsdD4M5iABHcioSNJls1P1rhZXKESmcVFcpP
+	U5nkimfQoIaKFqYB+A8H77Q4A1W/9PCB0+2C1Okko5E/bMDJJYaxyDRJr0C1tXsPAoeLvT+DCAsaK
+	7LAcuVpVi2kT92VX1TrUJmMfNVk1tG2w86aRDsqQolld6GSd4Ik4pg9dc2XxV7cAHCWvJIPh2zKlZ
+	jlUgI7NA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xXBla-00000000Pdv-1WMb;
-	Sat, 28 Nov 2026 06:18:34 +0000
-Received: from mail.mainlining.org ([5.75.144.95])
+	id 1xXC5V-00000000QPt-1A1P;
+	Sat, 28 Nov 2026 06:39:09 +0000
+Received: from mail-pg1-x52d.google.com ([2607:f8b0:4864:20::52d])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xXBlS-00000000PdK-2XRa;
-	Sat, 28 Nov 2026 06:18:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; s=202507r; d=mainlining.org; c=relaxed/relaxed;
-	h=Message-ID:Subject:To:From:Date; t=1795846699; bh=k7J6TLLCIarsWD8/5ux9wv2
-	wr1oM4S9+UrlbnYXYYKU=; b=Rodce3Gta8SDLrjSPXWt6cEgDCtwC1bW2cG/8/B/EEXW3UYnjH
-	1FO/eUvRMQq+4pu5kS79Z6+XnZvV3MpGmsqrARQ1QzsWFYsQPY20KY5kaSOYe+WMIyQBccnFbj+
-	xyMsiMiXl/Z5vuA8prXQF2JP7catU2D73g5yqZ4HR/IXnOKrcmy8TaWoj+Wb1+vWgj7aDKUtyjl
-	mQOgfEiajFou4nJ0epnMdieVL+T5F9uMlMsx7gzHe9F+ZUKekW0dEiTeBYJg0KhU8hq+gYI8ZNV
-	xWo0sbUgGPCTan5vODNeMR5/LW8sLhg6ABpZsGlV0SlCysTr0MwbYdlv7mu5DJZ6OAA==;
-DKIM-Signature: v=1; a=ed25519-sha256; s=202507e; d=mainlining.org; c=relaxed/relaxed;
-	h=Message-ID:Subject:To:From:Date; t=1795846699; bh=k7J6TLLCIarsWD8/5ux9wv2
-	wr1oM4S9+UrlbnYXYYKU=; b=8CukuoulCXMMpGEKLE537432nLlqh8SMeUbgHIgTSdYagE9Fm6
-	oPHQ2G41QrpG/zUjxQoxFKI6hfBB7p10oXDg==;
-Date: Sat, 28 Nov 2026 13:18:14 +0700
-From: Dang Huynh <dang.huynh@mainlining.org>
-To: Quentin Schulz <quentin.schulz@cherry.de>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH] arm64: dts: rockchip: Add CD GPIO to Orange Pi 5/5B/5Pro
-Message-ID: <awpxYCW9N_tqAhiX@melt-pi5>
-References: <20261121-orange-pi-5-sdcard-v1-1-e431e7c46ba0@mainlining.org>
- <c6930807-24de-49c2-adcb-5dbbc3da0c45@cherry.de>
+	id 1xXC5Q-00000000QPD-1R7e
+	for linux-rockchip@lists.infradead.org;
+	Sat, 28 Nov 2026 06:39:07 +0000
+Received: by mail-pg1-x52d.google.com with SMTP id 41be03b00d2f7-cdb75699c7cso3400945a12.2
+        for <linux-rockchip@lists.infradead.org>; Fri, 27 Nov 2026 22:39:03 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=furiosa.ai; s=google; t=1795847943; x=1796452743; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=nUqNSCpFAuXqhx4v1WEMdxqMn1uV2jBGy3KoprDM6Os=;
+        b=Wq5o5SRjeTOVt/kHkSgsqFOliuOu5FNXpMCi0o52COAljDROuBADlC4WQsnSGOXpzN
+         KchhB2hfIRgXGiazW7+zKo+XL5HiwmbD5alywMwGw6ZBBDbUR9iNn8gNbq8Gmy1hJr05
+         J2r6vUDf/rU9NAdCQmTm8TUeXWx2YKlzMUJTw=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1795847943; x=1796452743;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=nUqNSCpFAuXqhx4v1WEMdxqMn1uV2jBGy3KoprDM6Os=;
+        b=xkC3ZqFxt85Xr2OJP15w7p0suLjn5QE0nV1qXwqL8Mug0RTVPZ9ALCk0aKb6lqC3zG
+         RZAtNxHXN/Qyr67LG3NOVJEpuZ1EHM2Z827yFoELDCxoF9PY15iuT0yy0HrRDloS7MrJ
+         z3x09/diFH+zfF5b+eb8eJ6bgrr52x7lfJKux+BPstl8w9RsPoBO6h3sMNozJH4JrL1D
+         J6Ydxu1Z02i8pEvytgXgeUNsd1NRsM0qfWo9goaRLFJL+lCeYR9pQfZGorKFK0zwkzKy
+         2AtVPzRwD2syt0Ut2dbs5r/NNg30eYyQ1snL0bMc/7NDC9D3qXIxwNsmCWRA/5SCD5CG
+         u8Ow==
+X-Forwarded-Encrypted: i=1; AL+hErEhP9xubRoEjK4QN3qSN5lIDWx7a2+DRmeCvh/rjUaWWUtVUODp1DfLYgWrmguAReNveZAR7w1tWli/Jp4MeQ==@lists.infradead.org
+X-Gm-Message-State: APuU4Z9Gh2o7cKAP6/oo/qe+vqXubCfgJw38FJJ/QkKfRNeEC6LKNRd0
+	xN0FgzOs8qFPOAalUzg4nVzdEr64CpSnkdFM/D0af/8w24UVc84gcEw6clYSkOljqhc=
+X-Gm-Gg: AZFdTZfIXsMMZo/XeAH7TL26fGo7Bw3CtKo4ZXVdgLCQsXoPavC5jcJCqGRI3svbBpf
+	uduyvmhOiO/sSFXoYoRzG8FhyhNSTSUHcaZuUuy6PwV67pYCM6d1nGhFrZXzo9L0u/aq0VZaDTG
+	grukXEDhLuKoHoxoDxYQt6t9fIBiJUrh+scgfC6nXFN6fxJMM8kEOEClV3YCazyr3032n0D9LCv
+	P+3NUhIE5kSFlbip7oWa037VtFeiuc3/b9FPmNAUHN3Tm/jVCTkLQstuwcEyMXDK5AvPtlU5wZl
+	z2R/cvX/Izx1A9k1wnxWJkLiLsoeR6UA3Td/6lfaNWZcsU5AhltZc4MGKVVD40jtrCuQzQTfGUp
+	X8Ji6FnYRWgdj2GtArvyDSIU+oOXJ5EOENWjDSiwTfWlpqtm3IX+9xiP8/qxLkmVxW1QDyA9uf7
+	A7n47zv/ZzPoFkvG+6SdYmmViSxWP8zV5wvdRGAqw8c/uXW1A7mUbB/qfwn3R91hXImJCyoo3iC
+	yrvV1YMbDM9biYwFICFgLjBpvX9iPA3AIWwZ26I0w/QvWHVHNp84JNMVWdsO5pYxeKwf+e0Z3sa
+	CnZpZbHVFKnhDz10QMut/8PSiLxOtf+MhF2sn/ryHsuW1mWAoDgjcQ1bARWedi4SO1CJyLA7P21
+	8Z/glN26PQw+D
+X-Received: by 2002:a05:6a20:4314:b0:3e0:b1b2:2af9 with SMTP id adf61e73a8af0-4014c2573a7mr29687518637.60.1795847942770;
+        Fri, 27 Nov 2026 22:39:02 -0800 (PST)
+Received: from rock-5b-plus ([61.83.209.48])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-8c87077944bsm13939838b3a.2.2026.11.27.22.39.00
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 27 Nov 2026 22:39:02 -0800 (PST)
+From: Sidong Yang <sidong.yang@furiosa.ai>
+To: Tomeu Vizoso <tomeu@tomeuvizoso.net>,
+	Oded Gabbay <ogabbay@kernel.org>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	Jeff Hugo <jeff.hugo@oss.qualcomm.com>,
+	Haoming Gao <Naixumogu@whut.edu.cn>,
+	dri-devel@lists.freedesktop.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Sidong Yang <sidong.yang@furiosa.ai>
+Subject: [PATCH 0/4] accel/rocket: Fix BO creation and prep_bo handling
+Date: Sat, 28 Nov 2026 15:38:40 +0900
+Message-ID: <20261128063844.1537615-1-sidong.yang@furiosa.ai>
+X-Mailer: git-send-email 2.53.0
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <c6930807-24de-49c2-adcb-5dbbc3da0c45@cherry.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261127_221826_814882_0B0B9D8B 
-X-CRM114-Status: GOOD (  21.57  )
+X-CRM114-CacheID: sfid-20261127_223906_139032_50032B0D 
+X-CRM114-Status: UNSURE (   5.37  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -72,57 +103,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-11.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
-	autolearn_force=no version=4.0.1
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi Quentin,
+This series fixes four bugs in drivers/accel/rocket/rocket_gem.c, based
+on drm-misc-fixes:
 
-On Thu, Nov 26, 2026 at 10:56:12AM +0100, Quentin Schulz wrote:
-> Hi Dang,
-> 
-> On 11/21/26 8:03 AM, Dang Huynh wrote:
-> > CD GPIO is currently not defined in Orange Pi 5, this breaks
-> > SD card hotplugging.
-> 
-> That's not the issue. The issue is that the card detect signal is muxed in
-> the SDMMC_DET function (c.f. sdmmc_det in rk3588-base.dtsi) and that relies
-> on the SDMMC controller being powered on to detect such an event. This
-> cannot work when the controller is in runtime suspend, so we have a chicken
-> and the egg problem. The card detect should resume the controller, but it
-> can only work when the controller is running. Hence why we now go for the
-> gpio function (via cd-gpios) instead. See
-> c7a9549ce46e ("arm64: dts: rockchip: Switch microSD card detect to gpio on
-> Radxa ROCK 5 ITX/5C") for an example.
-Interesting, I didn't know that the controller could do that. You learn
-something new every day I guess.
+1. Reject zero (post-PAGE_ALIGN) BO sizes in rocket_ioctl_create_bo() to
+   prevent a ZERO_SIZE_PTR dereference in sg_alloc_append_table_from_pages().
+2. Store iommu_map_sgtable() return values in ssize_t (avoiding int
+   truncation and leaked IOMMU mappings on >= 2 GiB allocations), size
+   the drm_mm node from gem_obj->size, and unmap short mappings on error.
+3. Skip dma_sync_sgtable_for_cpu() in rocket_ioctl_prep_bo() when the
+   fence wait fails.
+4. Wait on DMA_RESV_USAGE_READ in rocket_ioctl_prep_bo() so PREP_BO also
+   waits for in-flight jobs that published read fences on input BOs.
 
-> > diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dtsi
-> > index 2db6ee95e504..8fbb0ba19b74 100644
-> > --- a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dtsi
-> > +++ b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dtsi
-> > @@ -282,6 +282,7 @@ &sdhci {
-> >   &sdmmc {
-> >   	bus-width = <4>;
-> >   	cap-sd-highspeed;
-> > +	cd-gpios = <&gpio0 RK_PA4 GPIO_ACTIVE_LOW>;
-> 
-> issue: missing pinmuxing
-> 
-> You need to configure the pinmux and pinconf for this pin (via pinctrl-0 and
-> we require repeating pinctrl-names wherever pinctrl-0 is modified).
-pinmux/pinconf is already defined in rk3588-base-pinctrl.dtsi for this
-exact GPIO. I guess this is in case when controller's card detect works?
+Sidong Yang (4):
+  accel/rocket: Reject zero-sized BO creation
+  accel/rocket: Fix iommu_map_sgtable() return handling in create_bo
+  accel/rocket: Skip CPU cache sync when prep_bo wait fails
+  accel/rocket: Wait for read fences in rocket_ioctl_prep_bo()
 
-> 
-> Cheers,
-> Quentin
+ drivers/accel/rocket/rocket_gem.c | 43 +++++++++++++++++++++----------
+ 1 file changed, 29 insertions(+), 14 deletions(-)
 
-Best regards,
-Dang
+
+base-commit: e950f467b8adbfb2f460d9b9454280cdbf597885
+-- 
+2.53.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
