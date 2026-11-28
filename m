@@ -2,105 +2,64 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 96CF8606A31C
-	for <linux-rockchip@archiver.kernel.org>; Sat, 28 Nov 2026 01:06:59 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9BCAB606A31E
+	for <linux-rockchip@archiver.kernel.org>; Sat, 28 Nov 2026 06:18:43 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=gZFL9KdB;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=TwBJoXSP
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Luw5QyIa;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=mainlining.org header.i=@mainlining.org header.a=rsa-sha256 header.s=202507r header.b=Rodce3Gt;
+	dkim=fail reason="signature verification failed" header.d=mainlining.org header.i=@mainlining.org header.a=ed25519-sha256 header.s=202507e header.b=8Cukuoul
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version
-	:Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=uODsvWoJbntx9zPOg/Osg9VzxZjnaV2VPU0xSAGivDg=; b=gZFL9KdBkRfkBVapU4a76+UW77
-	KAOwLjIbwCjhwzPzep0t3E0CUjor2S0YkHighG/WVKIFznxXDfE6GK9+0zKZLDvSCSmZSs7LPxtqH
-	lCJUat6xizySdPlFHe5BmqFfzPZcnrzy4BWuiGRWENF4mr0RACi2KPBYHNHL2eAZvov2TNcxCopUS
-	E2D41h1bP5Bg4SzqwYkHEW7p5BEJbgq4iSmJ/uFAP4lIEIl9SePl1dpdrW00Hum95JW4EXPZJGerw
-	B+pJyOhhlv4G2rMeBbVbaYmm+EaVE/o0mcejTW6Y36VV/h9VOTmJQLznQ8H0T8eOSVp5kiYx3ON+1
-	75yajNyQ==;
+	bh=QVUxgzcaX/SJn4BUvKwq3pF0kyI/zx8ZeyEhMqxVcO8=; b=Luw5QyIaDN/1MggflDlchP18UR
+	BTF81eOGZ5pCZ4dayUNG55MZLAv0Rs1KS/ojBG3+6iiqBQrDy89pU8+FV5GN5s2pW4Yb1qxQFctBd
+	AjSNRjxMpNGsBoET8ACyncVMKOfuP18TqdZWOZt4UzpNQYAgBoChNmcTCw6SyfNk4fsOWNRS6hj4e
+	5m2l0Y0GExsTcFXJlhCZ9wNYVFp4EDqJ4ZyI3cc44XIWiaIpW57mqwI8nbLVUCF9fnCH0EZB1VDb2
+	lrMjlDp6RDgGPxJhna5+iweHEsG5JiEanwmYRjPr9YLJrkYoBMWMkOEoTpeZlMQwRFrEM6w+QyKn4
+	9o0TZxlw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xX6tx-00000000FdW-1qft;
-	Sat, 28 Nov 2026 01:06:53 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xXBla-00000000Pdv-1WMb;
+	Sat, 28 Nov 2026 06:18:34 +0000
+Received: from mail.mainlining.org ([5.75.144.95])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xX6tt-00000000Fd8-2CEV;
-	Sat, 28 Nov 2026 01:06:51 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id E388D45523;
-	Sat, 28 Nov 2026 01:06:48 +0000 (UTC)
-Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
-ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1795828008;
-	b=f8H+e5SwiP/eYqn4INZZxKhO8+rzxGfrKQpWFr7iihQRWry6vTV+82CL7X74XUZFromn
-	 zgtzsyT4Pjkh5yUg/SkKtHs/sXPUjV0VGUq/gDlKtYUu8fvhX51XXMe4qGU2AqWZjd7Jt
-	 jpfX1WoGeQyOyN5L0dbZRJtcMN8DmKqga+oGQgV2da0retpsCCqc605wwfZ1E9YqohDeL
-	 lEghVan5YTAbqZjXtvOmwCfRhrBK2FKyKFImOJ1TDyMNhlXNvdHYWVdfb8gfI8U8RVaot
-	 f5FGmNAYgfeYr12J+cg94bYX0y9M5GIz++UAzs5rxHSSftE7yegB3BBoJyYlqtP3epw==
-ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1795828008;
-	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
-	 Message-Id:X-B4-Tracking:To:Cc:X-Mailer:X-Developer-Signature:
-	 X-Developer-Key:X-Endpoint-Received:X-Original-From:Reply-To:
-	 Content-Transfer-Encoding;
-	bh=aguOstNiNosKFJOAXsnYWl5uoiVa6iE06IgtXJTe9mM=;
-	b=S3LBMYzHoAYm88k7XCJ8AG4m0TDyQ15ymFClcV2L7I3aOV9KFxEJDnCYi782DKbaP8Wg
-	 gR+Mj7ZiENZz6VG86UEoxYmMa+LTffqzvYaBSvsYb4aGqp6OQ7yjBx9nfLf0LSiC2No08
-	 FnuDcwPiKBL/RHeiHECHaL3GV0c+p64Uz+vr0LFsYhcEf5deNDNP1nDuUPaVNH+psfTAp
-	 C4+q75/Jia/S7iu+GRzE2gZgBYtQJOm3WVfVt5neZpb2ZQvfE2GwxDxJXjwY0PaJIjU0h
-	 JFQHAIY/zTrIVQ40c/V0ssM8XYSDHwxv0+5s03FnlG/9InuDuVQTJRVoybbzZ/HYZNw==
-ARC-Authentication-Results: i=1; smtp.kernel.org; 
-	arc=none smtp.remote-ip=100.80.115.77
-Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
-	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 56BCD1F000C1;
-	Sat, 28 Nov 2026 01:06:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1795828008;
-	bh=aguOstNiNosKFJOAXsnYWl5uoiVa6iE06IgtXJTe9mM=;
-	h=From:Date:Subject:To:Cc:Reply-To;
-	b=TwBJoXSPZB4npE8z1hJ/eEqSP/fckt7RkTpEF0Av8fRAHqWkIjCDwGtEfZftwSbuE
-	 cRUL9AaeHaUQK9ZUg+OcHL4mIbt0AkIuHi1aVFOIOIMLWr/4gZC8XyxhQjTcWLgTjM
-	 Wz1qA7Av9FpH+2TxCEUmfCKCHlI5X/ohS+OlUp410ESr/dHnWm3tjzjkFsuujoAMlS
-	 ecpIx/BFYXxlXQmjIju5d+KxI92JSwVx6VruO0TkVrvD6PC2U1qvQTwYwFNoV5iGU3
-	 xhVdjR17BCW4EYV/u2thtmrcNzNMgg4Awm34meyxqdPGcZ9h4ZErJ6YGSNPaMDkfFe
-	 7hprf3hx+w24Q==
-Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id D96044DED5;
-	Sat, 28 Nov 2026 01:06:47 +0000 (UTC)
-From: Igor Velkov via B4 Relay <devnull+iav.iav.lv@kernel.org>
-Date: Sat, 28 Nov 2026 03:06:46 +0200
-Subject: [PATCH] ASoC: rk817: Do not free the regmap of the parent PMIC
+	id 1xXBlS-00000000PdK-2XRa;
+	Sat, 28 Nov 2026 06:18:29 +0000
+DKIM-Signature: v=1; a=rsa-sha256; s=202507r; d=mainlining.org; c=relaxed/relaxed;
+	h=Message-ID:Subject:To:From:Date; t=1795846699; bh=k7J6TLLCIarsWD8/5ux9wv2
+	wr1oM4S9+UrlbnYXYYKU=; b=Rodce3Gta8SDLrjSPXWt6cEgDCtwC1bW2cG/8/B/EEXW3UYnjH
+	1FO/eUvRMQq+4pu5kS79Z6+XnZvV3MpGmsqrARQ1QzsWFYsQPY20KY5kaSOYe+WMIyQBccnFbj+
+	xyMsiMiXl/Z5vuA8prXQF2JP7catU2D73g5yqZ4HR/IXnOKrcmy8TaWoj+Wb1+vWgj7aDKUtyjl
+	mQOgfEiajFou4nJ0epnMdieVL+T5F9uMlMsx7gzHe9F+ZUKekW0dEiTeBYJg0KhU8hq+gYI8ZNV
+	xWo0sbUgGPCTan5vODNeMR5/LW8sLhg6ABpZsGlV0SlCysTr0MwbYdlv7mu5DJZ6OAA==;
+DKIM-Signature: v=1; a=ed25519-sha256; s=202507e; d=mainlining.org; c=relaxed/relaxed;
+	h=Message-ID:Subject:To:From:Date; t=1795846699; bh=k7J6TLLCIarsWD8/5ux9wv2
+	wr1oM4S9+UrlbnYXYYKU=; b=8CukuoulCXMMpGEKLE537432nLlqh8SMeUbgHIgTSdYagE9Fm6
+	oPHQ2G41QrpG/zUjxQoxFKI6hfBB7p10oXDg==;
+Date: Sat, 28 Nov 2026 13:18:14 +0700
+From: Dang Huynh <dang.huynh@mainlining.org>
+To: Quentin Schulz <quentin.schulz@cherry.de>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH] arm64: dts: rockchip: Add CD GPIO to Orange Pi 5/5B/5Pro
+Message-ID: <awpxYCW9N_tqAhiX@melt-pi5>
+References: <20261121-orange-pi-5-sdcard-v1-1-e431e7c46ba0@mainlining.org>
+ <c6930807-24de-49c2-adcb-5dbbc3da0c45@cherry.de>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261128-rk817-keep-parent-regmap-v1-1-de515c2899ed@iav.lv>
-X-B4-Tracking: v=1; b=H4sIACUpCmsC/x3MQQqDMBBG4avIrB1oorXRq4iLaH/tIMYwKUUQ7
- 27o8lu8d1KCChJ1xUmKnyTZQ4YpC5o+PixgeWeTfdjGGOtYV2devAKRo1eELyuWzUeunrV3YzO
- 1s2sp51Exy/Ff98N13VMNwg9qAAAA
-To: Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>
-Cc: Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
- Chris Morgan <macromorgan@hotmail.com>, Lee Jones <lee@kernel.org>, 
- Heiko Stuebner <heiko@sntech.de>, Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- linux-sound@vger.kernel.org, linux-rockchip@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- linux-kernel@vger.kernel.org, Igor Velkov <iav@iav.lv>
-X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1879; i=iav@iav.lv;
- h=from:subject:message-id;
- bh=VRMDAVdATty+o32CLZkZxbTwRbwASeEGt2T/3vL6z4Y=;
- b=owGbwMvMwCVmNH1q96v4SmbG02pJDNlcmmq6V7Y55yq95pH6bOB2/VrVltPnfaJua2g0RRyyE
- D6121Gho5SFQYyLQVZMkWXCIY1bGUuu/vX3MH8AM4eVCWQIAxenAEwkIp2R4dIPw4sGhl26lcrR
- 32RUZiZcjEratrHA33P2tYfBf8Q4VjEyPPl6Us76z0XbCZVexY9jhAs/tPUek+ezWvE6qvmp05+
- jDAA=
-X-Developer-Key: i=iav@iav.lv; a=openpgp;
- fpr=90C228DA68A4D5FD4F4837E03297958BEA5F7903
-X-Endpoint-Received: by B4 Relay for iav@iav.lv/default with auth_id=1060
-X-Original-From: Igor Velkov <iav@iav.lv>
+Content-Disposition: inline
+In-Reply-To: <c6930807-24de-49c2-adcb-5dbbc3da0c45@cherry.de>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261127_221826_814882_0B0B9D8B 
+X-CRM114-Status: GOOD (  21.57  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,68 +69,60 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: iav@iav.lv
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Igor Velkov <iav@iav.lv>
+Hi Quentin,
 
-The codec uses the regmap of its RK817/RK809 PMIC parent, which the
-PMIC core, RTC and regulator drivers use too. rk817_remove() calls
-snd_soc_component_exit_regmap(), so removing the component, on a card
-unbind or a failed bind, runs regmap_exit() on that shared regmap. The
-other users are left with a freed regmap, and devm runs regmap_exit()
-on it again when the PMIC goes away.
+On Thu, Nov 26, 2026 at 10:56:12AM +0100, Quentin Schulz wrote:
+> Hi Dang,
+> 
+> On 11/21/26 8:03 AM, Dang Huynh wrote:
+> > CD GPIO is currently not defined in Orange Pi 5, this breaks
+> > SD card hotplugging.
+> 
+> That's not the issue. The issue is that the card detect signal is muxed in
+> the SDMMC_DET function (c.f. sdmmc_det in rk3588-base.dtsi) and that relies
+> on the SDMMC controller being powered on to detect such an event. This
+> cannot work when the controller is in runtime suspend, so we have a chicken
+> and the egg problem. The card detect should resume the controller, but it
+> can only work when the controller is running. Hence why we now go for the
+> gpio function (via cd-gpios) instead. See
+> c7a9549ce46e ("arm64: dts: rockchip: Switch microSD card detect to gpio on
+> Radxa ROCK 5 ITX/5C") for an example.
+Interesting, I didn't know that the controller could do that. You learn
+something new every day I guess.
 
-Clear the pointer instead, as commit 6d66c5ccf5cb ("ASoC: mediatek:
-mt6359: Fix unexpected error in bind/unbind flow") does for mt6359.
+> > diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dtsi
+> > index 2db6ee95e504..8fbb0ba19b74 100644
+> > --- a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dtsi
+> > +++ b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dtsi
+> > @@ -282,6 +282,7 @@ &sdhci {
+> >   &sdmmc {
+> >   	bus-width = <4>;
+> >   	cap-sd-highspeed;
+> > +	cd-gpios = <&gpio0 RK_PA4 GPIO_ACTIVE_LOW>;
+> 
+> issue: missing pinmuxing
+> 
+> You need to configure the pinmux and pinconf for this pin (via pinctrl-0 and
+> we require repeating pinctrl-names wherever pinctrl-0 is modified).
+pinmux/pinconf is already defined in rk3588-base-pinctrl.dtsi for this
+exact GPIO. I guess this is in case when controller's card detect works?
 
-On an ODROID-M1 (RK3568, RK809) the PMIC regmap (3-0020) disappears
-from debugfs after unbinding the card, and a later hybrid sleep oopsed
-in regmap_update_bits_base() called from rk808_rtc_readtime(). With
-this change the regmap stays, the RTC reads and binding the card again
-works.
-
-Fixes: 0d6a04da9b25 ("ASoC: Add Rockchip rk817 audio CODEC support")
-Signed-off-by: Igor Velkov <iav@iav.lv>
----
-mt6660 has a similar issue: mt6660_component_remove() calls
-snd_soc_component_exit_regmap() on a regmap created with
-devm_regmap_init(). Not tested, I have no such hardware.
----
- sound/soc/codecs/rk817_codec.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/sound/soc/codecs/rk817_codec.c b/sound/soc/codecs/rk817_codec.c
-index 2c0fe1dfd842..c7804b2b559c 100644
---- a/sound/soc/codecs/rk817_codec.c
-+++ b/sound/soc/codecs/rk817_codec.c
-@@ -434,7 +434,7 @@ static int rk817_probe(struct snd_soc_component *component)
- 
- static void rk817_remove(struct snd_soc_component *component)
- {
--	snd_soc_component_exit_regmap(component);
-+	component->regmap = NULL;
- }
- 
- static const struct snd_soc_component_driver soc_codec_dev_rk817 = {
-
----
-base-commit: a6c7e545d8abac8ad0b48da4c8b4ca5ef8ea8eda
-change-id: 20261128-rk817-keep-parent-regmap-354a8b6c9f89
+> 
+> Cheers,
+> Quentin
 
 Best regards,
--- 
-Igor Velkov <iav@iav.lv>
-
-
+Dang
 
 _______________________________________________
 Linux-rockchip mailing list
